@@ -3,12 +3,15 @@ from bson import ObjectId
 from fastapi import FastAPI, HTTPException
 from students_model import Student
 from database import collection
+from Dahab import xisaab_Dahab
 #app
 app = FastAPI(title="E-sako API", version="1.01")
 
-@app.get("/")
-def home():
-    return {"msg" : "Welcome To E-sako Api"}
+@app.get("/{nooc,xadiga}")
+def home(nooc:int,xadiga:int):
+    if nooc or xadiga:
+        return xisaab_Dahab(nooc,xadiga)
+    
 
 
 @app.get("/students")
