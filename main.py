@@ -1,16 +1,18 @@
 from gc import collect
 from bson import ObjectId
 from fastapi import FastAPI, HTTPException
+import Dahab
 from students_model import Student
 from database import collection
 from Dahab import xisaab_Dahab
 #app
 app = FastAPI(title="E-sako API", version="1.01")
 
-@app.get("/{nooc,xadiga}")
-def home(nooc:int,xadiga:int):
-    if nooc or xadiga:
+@app.get("/{dahab}/{nooc},{xadiga}")
+def home(nooc:int,xadiga:float,dahab:str):
+    if dahab:
         return xisaab_Dahab(nooc,xadiga)
+    raise ValueError("nooca xadiga labadaaba waa loo bahan yahay")
     
 
 

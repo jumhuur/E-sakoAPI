@@ -5,7 +5,7 @@ from jawaabo import jawaab
 def saafi(nooc:int,xadiga:int)-> int:
     result = (xadiga * nooc) / Sako.Noocyo["24"]
     return result
-def xisaab_Dahab(nooc:int, xadiga:int):
+def xisaab_Dahab(nooc:int, xadiga:float):
     reg = r"^\d{2}$"
     # Hubin in Tiradu tahay laba lanbar oo kaliya sida 24 - 16
     if re.match(reg, str(nooc)):
@@ -15,7 +15,7 @@ def xisaab_Dahab(nooc:int, xadiga:int):
         for n_key , n_value in Sako.Noocyo.items():
             grams.append(n_value)
         if nooc in grams: # waxaa la hubinayaa in grams-ka nooca user-ka qoray kamid yahay 
-                if type(xadiga) == int:
+                if type(xadiga) == float:
                     if xadiga >= Sako.Nisaab_dahab:
                         # xisaabinta rasmiga ah waa halkan
                         if nooc == Sako.Noocyo["24"]:
