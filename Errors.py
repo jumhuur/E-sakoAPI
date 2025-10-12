@@ -1,6 +1,8 @@
 from Nisaabyo import Sako , selfinfo
 URL_DOC = "https://esakoapi.org/docs"
 Errors_Code_messages = {
+    # blobal
+    404: "Ma jiro URL-Kani",
     # Errors
     460:"Fadlan Markale isku day".title(),
     461 :"Qaab Tiro Ahaan Ah U qor Xadiga aad Xisaabinayso".title(),
@@ -14,7 +16,10 @@ Errors_Code_messages = {
 
     # warbixin
     320: "dahabka aad xisabinaysaa sako(nisaab) ma gaadhin waxa uu ku gaadhaa sako(nisaab) 85-g".title(),
+    321: F"Qiimaha Fidada sako ma gaadhin Fidada waxay sako ku gaadhaa {round(Sako.Nisaab_Fidada, 4)} Giraam".title(),
+    323: F"Qiimaha Rikaaska sako ma gaadhin rikaasku waxu  sako ku gaadhaa {round(Sako.Nisaab_Rikaas, 4)} Giraam".title(),
     325: F"Qiimaha lacagtu sako ma gaadhin lacagtu waxay sako ku gaadhaa {round(selfinfo.Nisaab_lacag_d, 4)}$ marka lagu xisaabiyo Dahab ama {round(selfinfo.Nisaab_Lacag_f, 4)}$ marka lagu xisaabiyo Fido".title(),
+    326: f"Sako laguma laha xadiga aad qortay Geelu Waxa uu Ku sako Gaadhaa {Sako.Nisaab_Geel} Neef".title()
 }
 
 def Errors(code,succsess=False):

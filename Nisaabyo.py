@@ -26,6 +26,11 @@ class Sako():
     # nisaabyo
     Nisaab_dahab = 85;
     Nisaab_Fidada = 595;
+    Nisaab_Rikaas = Nisaab_dahab
+    Nisaab_Geel = 5
+    Nisaab_adhi = 40
+    Nisaab_lo = 30
+    Nisaab_Midhaha = 612;  # waa sida jumhuurka ayaa qaba in uu yahay 612  // 672 // 750  // 653
 
     # hal ounce inta giraam ee yahay
     one_ounce = 31.1035
@@ -35,7 +40,6 @@ class Sako():
 
     # halbeegyada xisaabta Midhaha
     Dahab_40:int = 40
-    Nisaabka_Midhaha = 612;  # waa sida jumhuurka ayaa qaba in uu yahay 612  // 672 // 750  // 653
     x_bilaa_kharash = 0.1;
     x_kharaskha = 0.05;
     isku_jir = 0.075;

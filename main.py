@@ -1,11 +1,12 @@
-from gc import collect
 from bson import ObjectId
 from fastapi import FastAPI, HTTPException
-import Dahab
 from students_model import Student
 from database import collection
 from Dahab import xisaab_Dahab
 from Lacag import Lacag
+from Fido import Fido
+from Rikaas import Rikaas
+from Geel import Geel
 from Errors import Errors
 #app
 app = FastAPI(title="E-sako API", version="1.01")
@@ -16,19 +17,42 @@ def home():
     return {"code" : 200, "Fariin": "ku soo dhawaaw E-sako API"}
 
 
-@app.get("/api/{dahab}/{nooc},{xadiga}")
-def xisaab(nooc:int,xadiga:float,dahab:str):
-    if dahab:
+@app.get("/api/dahab/{nooc},{xadiga}")
+def xisaab(nooc:int,xadiga:float):
+    if nooc and xadiga:
         return xisaab_Dahab(nooc,xadiga)
     raise Errors(467)
 
-@app.get("/api/{lacag}/{xadi}")
-def lacag(lacag:str,xadi:int):
-    if lacag:
-        return Lacag(lacag,xadi)
+@app.get("/api/lacag/{xadi}")
+def lacag(xadi:int):
+    if xadi:
+        return Lacag(xadi)
     else:
         raise Errors(467)
 
+
+
+@app.get("/api/fido/{xadi}")
+def Fido_sako(xadi:int):
+    if xadi:
+        return Fido(xadi)
+    else:
+        return Errors(467)
+
+
+@app.get("/api/rikaas/{xadi}")
+def Rikaas_xisaab(xadi:int):
+    if xadi:
+        return Rikaas(xadi)
+    else:
+        return Errors(467)
+
+@app.get("/api/geel/{xadi}")
+def xisaab_geel(xadi:int):
+    if xadi:
+        return Geel(xadi)
+    else:
+        return Errors(467)
 
 
 @app.get("/students")

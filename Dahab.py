@@ -5,8 +5,7 @@ from jawaabo import jawaab
 def saafi(nooc:int,xadiga:int)-> int:
     result = (xadiga * nooc) / Sako.Noocyo["24"]
     return result
-def xisaab_Dahab(nooc:int, xadiga:float):
-
+def xisaab_Dahab(nooc:int,xadiga:float):
     reg = r"^\d{2}$"
     # Hubin in Tiradu tahay laba lanbar oo kaliya sida 24 - 16
     if re.match(reg, str(nooc)):
