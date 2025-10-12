@@ -85,6 +85,24 @@ laakiin waxaad u adeegsan kartaa luuqada aad aduu xiisanayso sida
   iyo
 - python lafteeda
 
+### Tusaale JavaScript
+
+```JavaScript
+const sakoapi = "https://esakoapi.org/api/rikaas/100";
+const sako = async () => {
+  try {
+    const respnse = await fetch(sakoapi);
+    const data = await respnse.json();
+    console.log(data);
+    console.log(`waxaa lagaa doonayaa ${data.jawaab} ${data.Qiyaas}`); //waxaa lagaa doonayaa 20 Giraam
+  } catch (Error) {
+    console.log(Error);
+  }
+};
+
+sako();
+```
+
 Fiiro Gaar ah
 
 Hadda mashruucan weli gacanta lagu hayaa , waxaad si ku meel gaadh ah ugu tijaabin kartaa endpoints-ka kor ku xusan.
