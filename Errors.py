@@ -1,5 +1,5 @@
 from Nisaabyo import Sako , selfinfo
-URL_DOC = "https:esakoapi.com/docs"
+URL_DOC = "https://esakoapi.org/docs"
 Errors_Code_messages = {
     # Errors
     460:"Fadlan Markale isku day".title(),
