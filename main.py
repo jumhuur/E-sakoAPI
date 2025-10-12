@@ -1,5 +1,6 @@
 from bson import ObjectId
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from students_model import Student
 from database import collection
 from Dahab import xisaab_Dahab
@@ -11,6 +12,14 @@ from Errors import Errors
 #app
 app = FastAPI(title="E-sako API", version="1.01")
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],      # origins allowed
+    allow_credentials=True,
+    allow_methods=["*"],        # GET, POST, etc
+    allow_headers=["*"],        # headers
+)
 
 @app.get("/")
 def home():

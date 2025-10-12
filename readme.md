@@ -71,9 +71,19 @@ https://esakoapi.org/api/dahab/24,145
 
 _Taariikh iyo Wakhti_ → waqtiga jawaabta la helay, maadaama qiimaha dahabku isbeddeli karo
 
-Luqadda Barnaamijka
+## Luqadda Barnaamijka
 
 API-ga waxaa lagu programiyay **Python**, taas oo fududaynaysa in lagu daro mashruucyada kala duwan oo backend ah.
+
+laakiin waxaad u adeegsan kartaa luuqada aad aduu xiisanayso sida
+
+- js
+- go
+- rupy
+- c#
+- c++
+  iyo
+- python lafteeda
 
 Fiiro Gaar ah
 
