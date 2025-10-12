@@ -5,15 +5,30 @@ import Dahab
 from students_model import Student
 from database import collection
 from Dahab import xisaab_Dahab
+from Lacag import Lacag
+from Errors import Errors
 #app
 app = FastAPI(title="E-sako API", version="1.01")
 
-@app.get("/{dahab}/{nooc},{xadiga}")
-def home(nooc:int,xadiga:float,dahab:str):
+
+@app.get("/")
+def home():
+    return {"code" : 200, "Fariin": "ku soo dhawaaw E-sako API"}
+
+
+@app.get("/api/{dahab}/{nooc},{xadiga}")
+def xisaab(nooc:int,xadiga:float,dahab:str):
     if dahab:
         return xisaab_Dahab(nooc,xadiga)
-    raise ValueError("nooca xadiga labadaaba waa loo bahan yahay")
-    
+    raise Errors(467)
+
+@app.get("/api/{lacag}/{xadi}")
+def lacag(lacag:str,xadi:int):
+    if lacag:
+        return Lacag(lacag,xadi)
+    else:
+        raise Errors(467)
+
 
 
 @app.get("/students")

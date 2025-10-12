@@ -34,44 +34,42 @@ class Sako():
     # qiimaha_fidada = 50.008999  # waa marka lagu xisaabiyo OUNCE = OO AH 1TROY OO U DHIGMA 31.1035G SAAFI AH
 
     # halbeegyada xisaabta Midhaha
+    Dahab_40:int = 40
     Nisaabka_Midhaha = 612;  # waa sida jumhuurka ayaa qaba in uu yahay 612  // 672 // 750  // 653
     x_bilaa_kharash = 0.1;
     x_kharaskha = 0.05;
     isku_jir = 0.075;
     Nocyada_dahabka = [24,22,21,20,18,16]
     def __init__(self):
-        data = requests.get(os.getenv("URL_DAHAB"))
-        if data.status_code == 200:
-            for info in data:
-                byte_data = list(data)[0]
-                json_string = byte_data.decode('utf-8')
-                info = json.loads(json_string)
-                self.qiimaha_ounce = info["price"]
-                self.nooca = info["symbol"]
-                self.Wakhtiga_update_ka = info["updatedAt"]
-                self.qiimaha_dahab_24 = self.qiimaha_ounce / Sako.one_ounce
-                self.qiimaha_dahab_22 = self.qiimaha_dahab_24 * Sako.__22
-                self.qiimaha_dahab_21 = self.qiimaha_dahab_24 * Sako.__21
-                self.qiimaha_dahab_18 = self.qiimaha_dahab_24 * Sako.__18
-                self.qiimaha_dahab_16 = self.qiimaha_dahab_24 * Sako.__16
+        Dahab_data = requests.get(os.getenv("URL_DAHAB"))
+        Fido_data = requests.get(os.getenv("URL_FIDO"))
+        if Dahab_data.status_code == 200:
+            byte_data = list(Dahab_data)[0]
+            json_string = byte_data.decode('utf-8')
+            info = json.loads(json_string)
+            self.qiimaha_ounce = info["price"]
+            self.nooca = info["symbol"]
+            self.Wakhtiga_update_ka = info["updatedAt"]
+            self.qiimaha_dahab_24 = self.qiimaha_ounce / Sako.one_ounce
+            self.qiimaha_dahab_22 = self.qiimaha_dahab_24 * Sako.__22
+            self.qiimaha_dahab_21 = self.qiimaha_dahab_24 * Sako.__21
+            self.qiimaha_dahab_18 = self.qiimaha_dahab_24 * Sako.__18
+            self.qiimaha_dahab_16 = self.qiimaha_dahab_24 * Sako.__16
+            self.Nisaab_lacag_d:int = self.qiimaha_dahab_24 * Sako.Nisaab_dahab
         else:
             raise RuntimeError("Ma Helin Wali Qiime Saxa !")
-        
-    def qiimaha_dahabka(self):
-        pass
-       
-    def qiimaha_fidada(self):
-        data = requests.get(os.getenv("URL_FIDO"))
-        if data.status_code == 200:
-            for info in data:
-                byte_data = list(data)[0]
-                json_string = byte_data.decode('utf-8')
-                info = json.loads(json_string)
-                self.qiimaha_ounce = info["price"]
-                self.nooca = info["symbol"]
-                self.Wakhtiga_update_ka = info["updatedAt"]
-            return info
+        # hawsha fidada
+        if Fido_data.status_code == 200:
+            #fido
+            byte_fido = list(Fido_data)[0]
+            json_string_f = byte_fido.decode('utf-8')
+            fido_info = json.loads(json_string_f)
+            self.qiimaha_ounce_fido = fido_info["price"]
+            self.Qiimah_fidada_1G = self.qiimaha_ounce_fido / Sako.one_ounce
+            self.Nisaab_Lacag_f:int = self.Qiimah_fidada_1G * Sako.Nisaab_Fidada # waa nisaabka lacagta marka fido lagu xisaabiyo
         else:
             raise RuntimeError("Ma Helin Wali Qiime Saxa !")
+    
 
-Sakaat = Sako()
+selfinfo = Sako()
+# print(selfinfo.Qiimah_fidada_1G)
