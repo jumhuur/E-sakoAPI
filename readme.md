@@ -103,6 +103,24 @@ const sako = async () => {
 sako();
 ```
 
+### Tusaale JavaScript
+
+```py
+import requests
+
+url = "https://esakoapi.org/api/rikaas/100"
+
+try:
+    response = requests.get(url)
+    response.raise_for_status()  # hubi in request-ku uu guuleystay
+    data = response.json()       # JSON-ka ka soo saar response
+    print(data)
+except requests.exceptions.RequestException as e:
+    print("Error:", e)
+
+
+```
+
 Fiiro Gaar ah
 
 Hadda mashruucan weli gacanta lagu hayaa , waxaad si ku meel gaadh ah ugu tijaabin kartaa endpoints-ka kor ku xusan.
