@@ -18,7 +18,7 @@ Errors_Code_messages = {
     # warbixin
     320: "dahabka aad xisabinaysaa sako(nisaab) ma gaadhin waxa uu ku gaadhaa sako(nisaab) 85-g".title(),
     321: F"Qiimaha Fidada sako ma gaadhin Fidada waxay sako ku gaadhaa {round(Sako.Nisaab_Fidada, 4)} Giraam".title(),
-    322: f"Xadiga Adhiga aad Qoratay Sako Ma gaadhin Adhigu wax uu ku sako gaadhaa {Sako.Nisaab_adhi} Neet".title(),
+    322: f"Xadiga Adhiga aad Qoratay Sako Ma gaadhin Adhigu wax uu ku sako gaadhaa {Sako.Nisaab_adhi} Neef".title(),
     323: F"Qiimaha Rikaaska sako ma gaadhin rikaasku waxu  sako ku gaadhaa {round(Sako.Nisaab_Rikaas, 4)} Giraam".title(),
     324: f"Sako Ma gaadhin Xadiga looda aad qoratay Looda waxay ku sako Gaadhaa {Sako.Nisaab_lo} Neef".title(),
     325: F"Qiimaha lacagtu sako ma gaadhin lacagtu waxay sako ku gaadhaa {round(selfinfo.Nisaab_lacag_d, 4)}$ marka lagu xisaabiyo Dahab ama {round(selfinfo.Nisaab_Lacag_f, 4)}$ marka lagu xisaabiyo Fido".title(),
