@@ -11,7 +11,19 @@ from Adhi import Adhi
 from Dalag import Dalag
 from Errors import Errors
 #app
-app = FastAPI(title="E-sako API", version="1.01")
+app = FastAPI(
+    title="E-sako API", 
+    version="1.01",
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None
+    )
+
+
+# app = FastAPI(
+#     title="E-sako API", 
+#     version="1.01",
+#     )
 
 
 app.add_middleware(

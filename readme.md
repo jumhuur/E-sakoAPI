@@ -366,3 +366,6 @@ Hadda wali wax lagu wadaa tijaabin iyo hubin hadii wax qalada aad aragto sharci 
 
 mashruucan waa open source sida aad arkaysaba waxana uu ku LICENSE-garaysan yahay MIT License
 waad nagala qayb qaadan kartaa horumarintiisa iyo hagaajintiisaba
+
+ugu danbayn qofkii u baahan faah faahin dheeraada waxa uu igala soo xidhiidhi karaa emailkan
+jumhuur123@hotmail.com ama number +252634645195
