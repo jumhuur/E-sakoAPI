@@ -27,7 +27,7 @@ API-ga waxaa loo qaabeeyay si uu u bixiyo **jawaabo degdeg ah** oo ku dhisan kit
 Si aad u tijaabiso EsakoAPI, booqo:  
 [https://esakoapi.org](https://esakoapi.org)
 
-Halkan waxaa ku yaal tusaalooyin **endpoint** iyo sharaxaad ku saabsan:
+Halkan Hoose ku sharaxnay API-ga tusaalooyin **endpoint** iyo sharaxaad ku saabsan:
 
 ### 1. Xisaabinta Dahabka
 
