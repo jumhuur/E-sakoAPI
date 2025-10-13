@@ -142,6 +142,3 @@ def Geel(xadi:int):
             return Errors(326)
     else: 
         return Errors(464)
-
-# print(125 // 50)
-# print(125 // 40)

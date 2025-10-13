@@ -1,13 +1,13 @@
-from bson import ObjectId
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from students_model import Student
-from database import collection
+from fastapi.responses import JSONResponse
 from Dahab import xisaab_Dahab
 from Lacag import Lacag
 from Fido import Fido
 from Rikaas import Rikaas
 from Geel import Geel
+from Loa import Loa
+from Adhi import Adhi
 from Errors import Errors
 #app
 app = FastAPI(title="E-sako API", version="1.01")
@@ -15,11 +15,18 @@ app = FastAPI(title="E-sako API", version="1.01")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],      # origins allowed
+    allow_origins=["*"],      # dhamaan waa lo ogol_yahay
     allow_credentials=True,
-    allow_methods=["*"],        # GET, POST, etc
+    allow_methods=["GET"],        # GET
     allow_headers=["*"],        # headers
 )
+
+@app.exception_handler(404)
+async def not_found(request: Request, exc):
+    return JSONResponse(
+        status_code=404,
+        content=Errors(467,False)
+    )
 
 @app.get("/")
 def home():
@@ -27,69 +34,76 @@ def home():
 
 
 @app.get("/api/dahab/{nooc},{xadiga}")
-def xisaab(nooc:int,xadiga:float):
+async def xisaab(nooc:int,xadiga:float):
     if nooc and xadiga:
-        return xisaab_Dahab(nooc,xadiga)
-    raise Errors(467)
+        return  xisaab_Dahab(nooc,xadiga)
+    raise JSONResponse(
+            status_code=467,
+            content= Errors(467)
+        )
 
 @app.get("/api/lacag/{xadi}")
-def lacag(xadi:int):
+async def lacag(xadi:int):
     if xadi:
         return Lacag(xadi)
     else:
-        raise Errors(467)
+        raise JSONResponse(
+            status_code=467,
+            content= Errors(467)
+        )
 
 
 
 @app.get("/api/fido/{xadi}")
-def Fido_sako(xadi:int):
+async def Fido_sako(xadi:int):
     if xadi:
         return Fido(xadi)
     else:
-        return Errors(467)
+        return JSONResponse(
+            status_code=467,
+            content= Errors(467)
+        )
 
 
 @app.get("/api/rikaas/{xadi}")
-def Rikaas_xisaab(xadi:int):
+async def Rikaas_xisaab(xadi:int):
     if xadi:
         return Rikaas(xadi)
     else:
-        return Errors(467)
+        return JSONResponse(
+            status_code=467,
+            content= Errors(467)
+        )
 
 @app.get("/api/geel/{xadi}")
-def xisaab_geel(xadi:int):
+async def xisaab_geel(xadi:int):
     if xadi:
         return Geel(xadi)
     else:
-        return Errors(467)
+        return JSONResponse(
+            status_code=467,
+            content= Errors(467)
+        )
 
-
-@app.get("/students")
-def get_students():
-    Students = []
-    for student in collection.find():
-        student["_id"] = str(student["_id"])
-        Students.append(student)
-    return Students
-
-@app.post("/students")
-def add_students(new_student:Student):
-    newstudent = collection.insert_one(new_student.model_dump())
-    return f"id : { str(newstudent.inserted_id)}, waa la diwaan galiyay"
-
-
-@app.put("/students/{Id}")
-def update_student(Id:str,student_info:Student):
-    student = collection.update_one({"_id": ObjectId(Id)}, {"$set":student_info.model_dump()})
-    if student.modified_count == 1:
-        return f"Waa La Cusboonaysiiyay"
-    raise HTTPException(status_code=400, detail="qalad ayaa jira")
-
-
-@app.delete("/student/{Id}")
-def delete_student(Id:str):
-    deleted = collection.delete_one({"_id": ObjectId(Id)})
-    if deleted.deleted_count == 1:
-        return "waa la masaxay"
+@app.get("/api/lo/{xadi}")
+async def xisaab_lo(xadi):
+    if xadi:
+        return Loa(xadi)
     else:
-        raise HTTPException(status_code=404, detail="ardaygan maan helin")
+        return JSONResponse(
+            status_code=467,
+            content= Errors(467)
+        )
+
+
+
+@app.get("/api/adhi/{xadi}")
+async def xisaab_adhi(xadi):
+    if xadi:
+        return Adhi(xadi)
+    else:
+        return JSONResponse(
+            status_code=467,
+            content= Errors(467)
+        )
+

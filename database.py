@@ -12,4 +12,4 @@ client = MongoClient(uri, server_api=ServerApi("1"))
 
 
 db = client.esakoapi
-collection = db["Students_data"]
+collection = db["Sakawaat"]

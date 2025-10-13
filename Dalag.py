@@ -1,0 +1,2 @@
+def Dalag(xadi):
+    pass

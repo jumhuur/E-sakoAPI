@@ -1,3 +1,4 @@
+from fastapi.responses import JSONResponse
 from Nisaabyo import Sako , selfinfo
 import re
 from Errors import Errors
@@ -21,13 +22,19 @@ def xisaab_Dahab(nooc:int,xadiga:float):
                         if nooc == Sako.Noocyo["24"]:
                             jw = round(xadiga / Sako.Dahab_40, 4)
                             usd_price = round(jw  * selfinfo.qiimaha_dahab_24, 4)
-                            return jawaab(jw, ["waa inuu yahay saafi 100%".title(), "waa inaad sanad haysay".title(), f"lacag hadaad ku bixinayso waa {usd_price}$".title()], "Giraam")
+                            return JSONResponse(
+                                status_code=200,
+                                content=jawaab(jw, ["waa inuu yahay saafi 100%".title(), "waa inaad sanad haysay".title(), f"lacag hadaad ku bixinayso waa {usd_price}$".title()], "Giraam")
+                            ) 
                         elif nooc == Sako.Noocyo["22"]:
                             d_saafi = saafi(nooc,xadiga)
                             if d_saafi >= Sako.Nisaab_dahab:
                                 jw = round(d_saafi / Sako.Dahab_40 , 4)
                                 usd_price = round(jw  * selfinfo.qiimaha_dahab_24, 4)
-                                return jawaab(jw, [f"waa inuu yahay nooca {nooc}".title(), "waa inaad sanad haysay".title(), f"lacag hadaad ku bixinayso waa {usd_price}$".title()], "Giraam")
+                                return JSONResponse(
+                                status_code=200,
+                                content=jawaab(jw, [f"waa inuu yahay nooca {nooc}".title(), "waa inaad sanad haysay".title(), f"lacag hadaad ku bixinayso waa {usd_price}$".title()], "Giraam")
+                            ) 
                             else:
                                 return Errors(466, True)
                         elif nooc == Sako.Noocyo["21"]:
@@ -35,7 +42,10 @@ def xisaab_Dahab(nooc:int,xadiga:float):
                             if d_saafi >= Sako.Nisaab_dahab:
                                 jw = round(d_saafi / Sako.Dahab_40 , 4)
                                 usd_price = round(jw  * selfinfo.qiimaha_dahab_24, 4)
-                                return jawaab(jw, [f"waa inuu yahay nooca {nooc}".title(),"waa inaad sanad haysay".title()], f"lacag hadaad ku bixinayso waa {usd_price}$".title(), "Giraam")
+                                return JSONResponse(
+                                status_code=200,
+                                content=jawaab(jw, [f"waa inuu yahay nooca {nooc}".title(),"waa inaad sanad haysay".title()], f"lacag hadaad ku bixinayso waa {usd_price}$".title(), "Giraam")
+                            )  
                             else:
                                 return Errors(466, True)
                         elif nooc == Sako.Noocyo["20"]:
@@ -43,7 +53,10 @@ def xisaab_Dahab(nooc:int,xadiga:float):
                             if d_saafi >= Sako.Nisaab_dahab:
                                 jw = round(d_saafi / Sako.Dahab_40 , 4)
                                 usd_price = round(jw  * selfinfo.qiimaha_dahab_24, 4)
-                                return jawaab(jw, [f"waa inuu yahay nooca {nooc}".title(), "waa inaad sanad haysay".title(), f"lacag hadaad ku bixinayso waa {usd_price}$".title()], "Giraam")
+                                return JSONResponse(
+                                status_code=200,
+                                content=jawaab(jw, [f"waa inuu yahay nooca {nooc}".title(), "waa inaad sanad haysay".title(), f"lacag hadaad ku bixinayso waa {usd_price}$".title()], "Giraam")
+                            )  
                             else:
                                 return Errors(466, True)
                         elif nooc == Sako.Noocyo["18"]:
@@ -51,7 +64,10 @@ def xisaab_Dahab(nooc:int,xadiga:float):
                             if d_saafi >= Sako.Nisaab_dahab:
                                 jw = round(d_saafi / Sako.Dahab_40 , 4)
                                 usd_price = round(jw  * selfinfo.qiimaha_dahab_24, 4)
-                                return jawaab(jw, [f"waa inuu yahay nooca {nooc}".title(), "waa inaad sanad haysay".title(), f"lacag hadaad ku bixinayso waa {usd_price}$".title()], "Giraam")
+                                return JSONResponse(
+                                status_code=200,
+                                content=jawaab(jw, [f"waa inuu yahay nooca {nooc}".title(), "waa inaad sanad haysay".title(), f"lacag hadaad ku bixinayso waa {usd_price}$".title()], "Giraam")
+                            )  
                             else:
                                 return Errors(466, True)
                         elif nooc == Sako.Noocyo["16"]:
@@ -59,7 +75,10 @@ def xisaab_Dahab(nooc:int,xadiga:float):
                             if d_saafi >= Sako.Nisaab_dahab:
                                 jw = round(d_saafi / Sako.Dahab_40 , 4)
                                 usd_price = round(jw  * selfinfo.qiimaha_dahab_24, 4)
-                                return jawaab(jw, [f"waa inuu yahay nooca {nooc}".title(), "waa inaad sanad haysay".title(), f"lacag hadaad ku bixinayso waa {usd_price}$".title()], "Giraam")
+                                return JSONResponse(
+                                status_code=200,
+                                content=jawaab(jw, [f"waa inuu yahay nooca {nooc}".title(), "waa inaad sanad haysay".title(), f"lacag hadaad ku bixinayso waa {usd_price}$".title()], "Giraam")
+                            ) 
                             else:
                                 return Errors(466, True)
                         else:
