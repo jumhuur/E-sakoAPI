@@ -8,6 +8,7 @@ from Rikaas import Rikaas
 from Geel import Geel
 from Loa import Loa
 from Adhi import Adhi
+from Dalag import Dalag
 from Errors import Errors
 #app
 app = FastAPI(title="E-sako API", version="1.01")
@@ -107,3 +108,13 @@ async def xisaab_adhi(xadi):
             content= Errors(467)
         )
 
+
+@app.get("/api/dalag/{xadi}")
+async def xisaab_dalag(xadi,nooc=1):
+    if xadi:
+        return Dalag(xadi,nooc)
+    else:
+        return JSONResponse(
+            status_code=467,
+            content= Errors(467)
+        )
