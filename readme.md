@@ -16,8 +16,6 @@ Iyo sidoo kale **xoolaha** noocyadooda kala duwan sida:
 - **Adhiga**
 - **Looda**
 
-Waxaa kale oo lagu daray **Dalagyada baxa ee dadku beertaan** noocyadooda kala duwan.
-
 API-ga waxaa loo qaabeeyay si uu u bixiyo **jawaabo degdeg ah** oo ku dhisan kitaabka Ilaahay iyo sunada Rasuulka (NNKH), iyadoo loo marayo algorithms qoto dheer oo u hoggaansamaya sharciga sakada.
 
 ---
@@ -27,7 +25,7 @@ API-ga waxaa loo qaabeeyay si uu u bixiyo **jawaabo degdeg ah** oo ku dhisan kit
 Si aad u tijaabiso EsakoAPI, booqo:  
 [https://esakoapi.org](https://esakoapi.org)
 
-Halkan Hoose ku sharaxnay API-ga tusaalooyin **endpoint** iyo sharaxaad ku saabsan:
+Halkan Hoose waxaan ku sharaxnay API-ga Si aad si sahlan ugu adeegsan karto anagoo ka bixinay tusaalooyin **endpoint** iyo sharaxaado ku response-ga:
 
 ### 1. Xisaabinta Dahabka
 
@@ -44,10 +42,6 @@ inta hore ee *https://esakoapi.org/api/* mar walba waa loo bahan yahay
 | Nooca Waxa Aad Xisaabinayso | Nooca Dahabka             | Xadiga                              |
 | --------------------------- | ------------------------- | ----------------------------------- |
 | dahab = `string`            | 24,21,22,20,18,16 = `int` | xadiga Dahabka giraam ahaan = `int` |
-
-<!-- - `dahab` → cadeynaya inaad xisaabinayso dahab
-- `24` → nooca dahabka (waxaad badali kartaa: 22, 21, 20, 18, 16)
-- `145` → xadiga dahabka aad doonayso inaad ogaato sakada lagu leeyahay -->
 
 **Response Tusaale:**
 
@@ -74,7 +68,7 @@ inta hore ee *https://esakoapi.org/api/* mar walba waa loo bahan yahay
 
 **Shuruudo** → shuruudaha sakada (tusaale: saafi, sanad haysta, lacag haddii lagu bixiyo)
 
-**Qiyaas** → qiyaasta jawaabta (halkan: giraam)
+**Qiyaas** → qiyaasta jawaabta (Maadaama la xisaabinaya dahab qiyaastiisu waa: giraam)
 
 _Taariikh iyo Wakhti_ → waqtiga jawaabta la helay, maadaama qiimaha dahabku isbeddeli karo
 
@@ -161,28 +155,34 @@ inta hore ee *https://esakoapi.org/api/* mar walba waa loo bahan yahay
 | dalag = `string`            | 9920 xadiga fidada dalag KG ahaan = `int` | ?nooc=1 |
 
 **Fahanka query-ga:**
-dalag yada marka la eego sida ay u baxeen waa sadex nooc sida sharciga ilaahay kutubta fiqigana ku taal
+dalag yada marka la eego sida ay u baxeen waa sadex nooc sida kutubta fiqigana ku taal
 
 - Nooc Ku Baxay Biyihii Dabiciga ahaa ilaahay Keenay wax Qarash Ahna Aanu Galin waraabitood
   noocan waxaan u soo qaadanay lanbarka-ka **`1`** sidaas darteed waxaad adeegsan doontaa `?nooc=1`
   hadii aad xisaabinayso sakada lagu leeyahay noocan 1aad
 
+  ### Tusaale
+
   ```bash
   https://esakoapi.org/api/dalag/9920?nooc=1
   ```
 
-- Nooca Labaad Kuwo ku Baxay Biyo Kharas Galay Sida in Loo IIbiyay Biyihii
+- Nooca Labaad Kuwo ku Baxay Biyo Kharash Galay Sida in Loo IIbiyay Biyihii
   noocana waxaan u soo qaadanay Lanbarka **`2`** sidaas darteed hadii aad noocan xisaabinayso
   waxaad adeegsan doontaa sidan `?nooc=2`
+
+  ### Tusaale
 
   ```bash
   https://esakoapi.org/api/dalag/9920?nooc=2
   ```
 
-- Nooca Sadexaad Kuwo ku Baxay Biyo Kharas Galay Sida in Loo IIbiyay Biyihii iyo Biyo roob oo aan
+- Nooca Sadexaad Kuwo ku Baxay Biyo Kharash Galay Sida in Loo IIbiyay Biyihii iyo Biyo roob oo aan
   kharash galin oo isku jira
   noocana waxaan u soo qaadanay Lanbarka **`3`** sidaas darteed hadii aad noocan xisaabinayso
   waxaad adeegsan doontaa sidan `?nooc=3`
+
+  ### Tusaale
 
   ```bash
   https://esakoapi.org/api/dalag/9920?nooc=3
