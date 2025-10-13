@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="so">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EsakoAPI - Tijaabinta Endpoints</title>
+    <link rel="icon" href="./Fav.png" type="image/x-icon" />
+    <style>
+      :root {
+        --primary: #6366f1;
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --muted: #6b7280;
+        --radius: 12px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --primary: #818cf8;
+          --bg: #0f172a;
+          --card: #1e293b;
+          --muted: #94a3b8;
+          --radius: 12px;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #0f172a;
+        padding: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .wrap {
+        width: 100%;
+        max-width: 980px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+      .brand {
+        display: flex;
+        flex-direction: column;
+      }
+      .brand h1 {
+        margin: 0;
+        font-size: 18px;
+        color: var(--primary);
+      }
+      .brand p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 16px;
+      }
+      .card {
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 16px;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      }
+
+      label {
+        font-size: 13px;
+        color: var(--muted);
+        display: block;
+        margin-bottom: 6px;
+      }
+      input[type="text"],
+      input[type="url"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid #e6e9ef;
+        font-size: 14px;
+      }
+      textarea {
+        min-height: 160px;
+        resize: vertical;
+      }
+
+      .row {
+        display: flex;
+        gap: 12px;
+      }
+      .row .col {
+        flex: 1;
+      }
+
+      .btn {
+        background: var(--primary);
+        color: white;
+        padding: 10px 14px;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+
+      .response {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
+          monospace;
+        background: #0b1220;
+        color: #dbeafe;
+        padding: 12px;
+        border-radius: 8px;
+        overflow: auto;
+        max-height: 420px;
+      }
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .small {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      footer {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .response {
+          max-height: 260px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div>
+          <img
+            style="
+              width: 30px;
+              height: 30px;
+              border-radius: 5px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: white;
+              font-weight: 700;
+            "
+            src="./Fav.png"
+            alt="logo_esako"
+          />
+        </div>
+        <div class="brand">
+          <h1>EsakoAPI — UI</h1>
+          <p>
+            Waxaad Halkan Ku Tijaabin Kartaa Sida Uu Shaqaynayo Api-ga Esako
+          </p>
+          <p>
+            Project repo :
+            <a href="https://github.com/jumhuur/E-sakoAPI" target="_blank"
+              >GitHub</a
+            >
+          </p>
+        </div>
+      </header>
+
+      <div class="grid">
+        <div class="card">
+          <div class="meta">
+            <div class="small">Request</div>
+            <div class="small">Ready</div>
+          </div>
+
+          <label for="endpoint">Endpoint (URL)</label>
+          <input
+            id="endpoint"
+            type="url"
+            placeholder="https://esakoapi.org/api/geel/180"
+            value="https://esakoapi.org/api/geel/180"
+          />
+
+          <div style="height: 12px"></div>
+
+          <div class="row">
+            <div class="col">
+              <label for="method">Method</label>
+              <select id="method">
+                <option>GET</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="apikey">API Key (haddii loo baahdo)</label>
+              <input id="apikey" type="text" placeholder="API Key (optional)" />
+            </div>
+          </div>
+
+          <div style="height: 12px"></div>
+
+          <label for="body">JSON Body (POST/PUT) Ha Looma Baahna</label>
+          <textarea id="body" placeholder='{"key":"value"}'></textarea>
+
+          <div style="height: 12px"></div>
+
+          <div style="display: flex; gap: 8px; align-items: center">
+            <button id="send" class="btn">Send Request</button>
+            <button
+              id="clear"
+              class="btn"
+              style="
+                background: #e6e9ef;
+                color: var(--primary);
+                font-weight: 700;
+              "
+            >
+              Clear Response
+            </button>
+          </div>
+
+          <div style="height: 12px"></div>
+
+          <details>
+            <summary style="cursor: pointer">Instructions</summary>
+            <div style="margin-top: 8px; color: var(--muted); font-size: 13px">
+              1. Gali endpoint-ka EsakoAPI (tusaale:
+              <code>https://esakoapi.org/api/geel/180</code>).<br />
+              2. Haddii endpoint-ku u baahan yahay API key, geli qaybta API Key
+              (ama header Authorization).<br />
+              3. Haddii aad isticmaalayso POST ama PUT, geli JSON body sax
+              ah.<br />
+              4. Guji "Send Request" si aad u aragto response-ka hoos.
+            </div>
+          </details>
+        </div>
+
+        <div class="card">
+          <div class="meta">
+            <div class="small">Response</div>
+            <div class="small" id="status">—</div>
+          </div>
+          <div id="resp" class="response">
+            Natiijada waxay ka muuqan doontaa halkan...
+          </div>
+          <div style="height: 12px"></div>
+          <div class="small">Headers (Response)</div>
+          <pre
+            id="headers"
+            class="response"
+            style="max-height: 140px; margin-top: 8px"
+          >
+—</pre
+          >
+        </div>
+      </div>
+
+      <footer>
+        Hadii aad doonayso inaad mashruucan wax ku darsto ama aad nagala qay
+        qaadato booqo github-ka
+        <a href="https://github.com/jumhuur/E-sakoAPI" target="_blank"
+          >GitHub</a
+        >
+      </footer>
+    </div>
+
+    <script>
+      const endpoint = document.getElementById("endpoint");
+      const method = document.getElementById("method");
+      const apikey = document.getElementById("apikey");
+      const body = document.getElementById("body");
+      const send = document.getElementById("send");
+      const clear = document.getElementById("clear");
+      const resp = document.getElementById("resp");
+      const headersEl = document.getElementById("headers");
+      const status = document.getElementById("status");
+
+      function safeJson(text) {
+        try {
+          return JSON.stringify(JSON.parse(text), null, 2);
+        } catch (e) {
+          return text;
+        }
+      }
+
+      send.addEventListener("click", async () => {
+        resp.textContent = "Loading...";
+        headersEl.textContent = "—";
+        status.textContent = "Running...";
+
+        const url = endpoint.value.trim();
+        if (!url) {
+          resp.textContent = "Fadlan gali endpoint sax ah.";
+          return;
+        }
+
+        const opts = {
+          method: method.value,
+          headers: { Accept: "application/json" },
+        };
+        if (apikey.value.trim())
+          opts.headers["Authorization"] = apikey.value.trim();
+
+        if (method.value === "POST" || method.value === "PUT") {
+          const txt = body.value.trim();
+          if (txt) {
+            try {
+              opts.body = JSON.stringify(JSON.parse(txt));
+              opts.headers["Content-Type"] = "application/json";
+            } catch (e) {
+              resp.textContent = "JSON body ma saxna — hubi syntax-ka.";
+              status.textContent = "JSON error";
+              return;
+            }
+          }
+        }
+
+        try {
+          const r = await fetch(url, opts);
+          const contentType = r.headers.get("content-type") || "";
+          status.textContent = r.status + " " + r.statusText;
+
+          // headers
+          const hdrs = {};
+          r.headers.forEach((v, k) => (hdrs[k] = v));
+          headersEl.textContent = JSON.stringify(hdrs, null, 2);
+
+          if (contentType.includes("application/json")) {
+            const j = await r.json();
+            resp.textContent = JSON.stringify(j, null, 2);
+          } else {
+            const txt = await r.text();
+            resp.textContent = txt;
+          }
+        } catch (err) {
+          resp.textContent = "Error: " + err.message;
+          status.textContent = "Network/Error";
+        }
+      });
+
+      clear.addEventListener("click", () => {
+        resp.textContent = "";
+        headersEl.textContent = "—";
+        status.textContent = "—";
+      });
+    </script>
+  </body>
+</html>
