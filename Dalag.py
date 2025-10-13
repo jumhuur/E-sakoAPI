@@ -20,25 +20,18 @@ def Dalag(xadi: int, nooc: int):
     jw = int(xadi) * qaab[int(nooc)]
     if int(nooc) == 1:
         shuruudo = [
-            "Dalag roob ku baxay".title(),
-            "Waa in la goostay dalag kaydsan sida hadhuudh, bariis, ama galley".title(),
+            "Waa inuu yahay Dalag roob ku baxay".title(),
+            "Waa in la goostay oo la kaydsan karro sida hadhuudh, bariis, ama galley".title(),
         ]
     elif int(nooc) == 2:
         shuruudo = [
             "Dalag lagu waraabiyay biyo lacag lagu bixiyay".title(),
-            "Waa in la goostay dalag kaydsan sida hadhuudh, bariis, ama galley".title(),
+            "Waa in la goostay oo la kaydsan karro sida hadhuudh, bariis, ama galley".title(),
         ]
     else:
         shuruudo = [
             "Dalag ku baxay biyo roob iyo biyo lacag lagu bixiyay oo isku jira".title(),
-            "Waa in la goostay dalag kaydsan sida hadhuudh, bariis, ama galley".title(),
+            "Waa in la goostay oo la kaydsan karro sida hadhuudh, bariis, ama galley".title(),
         ]
 
     return JSONResponse(status_code=200, content=jawaab(jw, shuruudo, "Kg"))
-
-
-# qaabab = {1,2.3}
-# if 6 not in qaabab:
-#     print("ok")
-# else:
-#     print("no")
