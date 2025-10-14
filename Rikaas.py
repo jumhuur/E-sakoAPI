@@ -3,19 +3,23 @@ from Errors import Errors
 from Nisaabyo import Sako, selfinfo
 from jawaabo import jawaab
 import re
-def Rikaas(xadi:int):
+
+def Rikaas(amount: int):
     reg_exp = r"^\d+$"
-    if not re.match(reg_exp, str(xadi)):
+    if not re.match(reg_exp, str(amount)):
         return JSONResponse(status_code=464, content=Errors(464))
-    if xadi < Sako.Nisaab_Rikaas:
+
+    if amount < Sako.Nisaab_Rikaas:
         return JSONResponse(status_code=323, content=Errors(323, True))
-    # Xisaabin 
-    jw = round(xadi / 5,4)
-    lacag = round(jw * selfinfo.qiimaha_dahab_24, 4)
-    shuruud = ["waa inay tahay Rikaas".title(), 
-                "Waa Inuu Yahaya Wax Dadkii Inaga Horeeyay Aaseen Ayna Ka Muuqayto Calaamadahodii".title(), 
-                f"Lacag Hadaad ku bixinayso waxay noqonaysaa {lacag}$"
-            ]
-    return jawaab(jw, shuruud, "Giraam")
-        
-        
+
+    # Zakat calculation
+    jw = round(amount / 5, 4)
+    money = round(jw * selfinfo.qiimaha_dahab_24, 4)
+
+    requirements = [
+        "Must be pure Rikaas.",
+        "Must be inherited or passed down and show its original markings.",
+        f"If paying in cash, the amount is {money}$."
+    ]
+
+    return jawaab(jw, requirements, "Grams")

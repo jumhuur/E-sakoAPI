@@ -1,37 +1,43 @@
 import re
 from Errors import Errors
 from fastapi.responses import JSONResponse
-from Nisaabyo import Sako , selfinfo
+from Nisaabyo import Sako, selfinfo
 from jawaabo import jawaab
 
-def Dalag(xadi: int, nooc: int):
-    qaab = {1: 1/10, 2: 1/20, 3: 3/40}  # 10%, 5%, 7.5%
-    options = {1,2,3}
+def Dalag(quantity: int, option: int):
+    rates = {1: 1/10, 2: 1/20, 3: 3/40}  # 10%, 5%, 7.5%
+    valid_options = {1, 2, 3}
     reg_exp = r"^\d+$"
-    if not re.match(reg_exp, str(xadi)):
+
+    if not re.match(reg_exp, str(quantity)):
         return JSONResponse(status_code=464, content=Errors(464))
 
-    if int(nooc) not in options:
+
+    if int(option) not in valid_options:
         return JSONResponse(status_code=468, content=Errors(468))
 
-    if int(xadi) < Sako.Nisaab_Midhaha:
+
+    if int(quantity) < Sako.Nisaab_Midhaha:
         return JSONResponse(status_code=327, content=Errors(327))
 
-    jw = int(xadi) * qaab[int(nooc)]
-    if int(nooc) == 1:
-        shuruudo = [
-            "Waa inuu yahay Dalag roob ku baxay".title(),
-            "Waa in la goostay oo la kaydsan karro sida hadhuudh, bariis, ama galley".title(),
+    # Calculate Zakat amount
+    jw = int(quantity) * rates[int(option)]
+
+
+    if int(option) == 1:
+        requirements = [
+            "Must be rain-fed crops.",
+            "Must be harvested and storable (e.g., wheat, rice, or maize)."
         ]
-    elif int(nooc) == 2:
-        shuruudo = [
-            "Dalag lagu waraabiyay biyo lacag lagu bixiyay".title(),
-            "Waa in la goostay oo la kaydsan karro sida hadhuudh, bariis, ama galley".title(),
+    elif int(option) == 2:
+        requirements = [
+            "Must be irrigated crops cultivated with paid water.",
+            "Must be harvested and storable (e.g., wheat, rice, or maize)."
         ]
     else:
-        shuruudo = [
-            "Dalag ku baxay biyo roob iyo biyo lacag lagu bixiyay oo isku jira".title(),
-            "Waa in la goostay oo la kaydsan karro sida hadhuudh, bariis, ama galley".title(),
+        requirements = [
+            "Must be crops grown with a combination of rain and paid irrigation.",
+            "Must be harvested and storable (e.g., wheat, rice, or maize)."
         ]
 
-    return JSONResponse(status_code=200, content=jawaab(jw, shuruudo, "Kg"))
+    return JSONResponse(status_code=200, content=jawaab(jw, requirements, "Kg"))

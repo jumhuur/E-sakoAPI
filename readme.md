@@ -1,346 +1,330 @@
 # EsakoAPI
 
-**EsakoAPI** waa API bilaash ah (free API) oo aadan u baahnayn **API key** si aad u isticmaasho. Waxaa loogu talagalay in lagu xisaabiyo **sakada noocyadeeda kala duwan** sida waafaqsan shareecada Islaamka.
+**EsakoAPI** is a free API that **does not require an API key** to use. It is designed to calculate **different types of Zakat** according to Islamic Shariah.
 
-Waxaad ku xisaabin kartaa waxyaabaha kala duwan ee sakada laga bixiyo sida:
+You can calculate Zakat on:
 
-- **Dahab**
-- **Lacag**
-- **Rikaas** (macdanta dhulka)
-- **Fido** (dahabka cad ama qalin)
-- **Dalagyada**
+- **Gold**
+- **Money**
+- **Minerals (Rikas)**
+- **Silver**
+- **Crops**
 
-Iyo sidoo kale **xoolaha** noocyadooda kala duwan sida:
+And also on livestock:
 
-- **Geela**
-- **Adhiga**
-- **Looda**
+- **Camels**
+- **Sheep/Goats**
+- **Cattle**
 
-API-ga waxaa loo qaabeeyay si uu u bixiyo **jawaabo degdeg ah** oo ku dhisan kitaabka Ilaahay iyo sunada Rasuulka (NNKH), iyadoo loo marayo algorithms qoto dheer oo u hoggaansamaya sharciga sakada.
-
----
-
-## Tijaabinta API-ga
-
-Si aad u tijaabiso EsakoAPI, booqo:  
-[https://esakoapi.org](https://esakoapi.org)
-
-Halkan Hoose waxaan ku sharaxnay API-ga Si aad si sahlan ugu adeegsan karto anagoo ka bixinay tusaalooyin **endpoint** iyo sharaxaado ku response-ga:
-
-### 1. Xisaabinta Dahabka
-
-**Endpoint:**
-
-```bash
-https://esakoapi.org/api/dahab/24,145
-```
-
-**Sharaxaad:**
-
-inta hore ee *https://esakoapi.org/api/* mar walba waa loo bahan yahay
-
-| Nooca Waxa Aad Xisaabinayso | Nooca Dahabka             | Xadiga                              |
-| --------------------------- | ------------------------- | ----------------------------------- |
-| dahab = `string`            | 24,21,22,20,18,16 = `int` | xadiga Dahabka giraam ahaan = `int` |
-
-**Response Tusaale:**
-
-```json
-{
-  "code": 200,
-  "jawaab": 3.625,
-  "Shuruudo": [
-    "Waa Inuu Yahay Saafi 100%",
-    "Waa Inaad Sanad Haysay",
-    "Lacag Hadaad Ku Bixinayso Waa 468.3299$"
-  ],
-  "Qiyaas": "Giraam",
-  "Taariikh": "Sunday 12-October-2025",
-  "Wakhti": "05:29 PM"
-}
-```
-
-### Sharaxaadda Response:-
-
-**code: 200 → OK**, wax walba waa sax
-
-**jawaab: 3.625** → inta giraam ee sakada ka baxaysa
-
-**Shuruudo** → shuruudaha sakada (tusaale: saafi, sanad haysta, lacag haddii lagu bixiyo)
-
-**Qiyaas** → qiyaasta jawaabta (Maadaama la xisaabinaya dahab qiyaastiisu waa: giraam)
-
-_Taariikh iyo Wakhti_ → waqtiga jawaabta la helay, maadaama qiimaha dahabku isbeddeli karo
-
-### 1. Xisaabinta Lacagta
-
-**Endpoint:**
-
-```bash
-https://esakoapi.org/api/lacag/9920
-```
-
-**Sharaxaad:**
-
-inta hore ee *https://esakoapi.org/api/* mar walba waa loo bahan yahay
-
-| Nooca Waxa Aad Xisaabinayso | Xadiga                              |
-| --------------------------- | ----------------------------------- |
-| lacag = `string`            | 9920 xadiga lacagta $ ahaan = `int` |
-
-**Response Tusaale:**
-
-```json
-{
-  "code": 200,
-  "jawaab": 248,
-  "Shuruudo": [
-    "Waa Inay Tahay Lacagtu Dollar 'Usd'",
-    "Waa Inaad Sanad Haysay",
-    "waxaa lagugu xisaabiyay sakadan qiimaha fidada oo maraysa 1.6426"
-  ],
-  "Qiyaas": "$",
-  "Taariikh": "Monday 13-October-2025",
-  "Wakhti": "10:33 AM"
-}
-```
-
-### 1. Xisaabinta Fidada (dahabka cad ama qalin sida dadka qaar u yaqaanaan)
-
-**Endpoint:**
-
-```bash
-https://esakoapi.org/api/fido/9920
-```
-
-**Sharaxaad:**
-
-inta hore ee *https://esakoapi.org/api/* mar walba waa loo bahan yahay
-
-| Nooca Waxa Aad Xisaabinayso | Xadiga                                  |
-| --------------------------- | --------------------------------------- |
-| fido = `string`             | 9920 xadiga fidada giraam ahaan = `int` |
-
-**Response Tusaale:**
-
-```json
-{
-  "code": 200,
-  "jawaab": 248,
-  "Shuruudo": [
-    "Waa Inay Tahay Fido Saafi Ah 100%",
-    "Waa Inaad Sanad Haysay",
-    "Lacag Hadaad ku bixinayso waxay noqonaysaa 407.3679$"
-  ],
-  "Qiyaas": "Giraam",
-  "Taariikh": "Monday 13-October-2025",
-  "Wakhti": "10:33 AM"
-}
-```
-
-### 1. Xisaabinta Dalag-yada(sida hadhuudhka Galayda bariiska iwm)
-
-**Endpoint:**
-
-```bash
-https://esakoapi.org/api/dalag/9920?nooc=1
-```
-
-**Sharaxaad:**
-
-inta hore ee *https://esakoapi.org/api/* mar walba waa loo bahan yahay
-
-| Nooca Waxa Aad Xisaabinayso | Xadiga                                    | Query   |
-| --------------------------- | ----------------------------------------- | ------- |
-| dalag = `string`            | 9920 xadiga fidada dalag KG ahaan = `int` | ?nooc=1 |
-
-**Fahanka query-ga:**
-dalag yada marka la eego sida ay u baxeen waa sadex nooc sida kutubta fiqigana ku taal
-
-- Nooc Ku Baxay Biyihii Dabiciga ahaa ilaahay Keenay wax Qarash Ahna Aanu Galin waraabitood
-  noocan waxaan u soo qaadanay lanbarka-ka **`1`** sidaas darteed waxaad adeegsan doontaa `?nooc=1`
-  hadii aad xisaabinayso sakada lagu leeyahay noocan 1aad
-
-  ### Tusaale
-
-  ```bash
-  https://esakoapi.org/api/dalag/9920?nooc=1
-  ```
-
-- Nooca Labaad Kuwo ku Baxay Biyo Kharash Galay Sida in Loo IIbiyay Biyihii
-  noocana waxaan u soo qaadanay Lanbarka **`2`** sidaas darteed hadii aad noocan xisaabinayso
-  waxaad adeegsan doontaa sidan `?nooc=2`
-
-  ### Tusaale
-
-  ```bash
-  https://esakoapi.org/api/dalag/9920?nooc=2
-  ```
-
-- Nooca Sadexaad Kuwo ku Baxay Biyo Kharash Galay Sida in Loo IIbiyay Biyihii iyo Biyo roob oo aan
-  kharash galin oo isku jira
-  noocana waxaan u soo qaadanay Lanbarka **`3`** sidaas darteed hadii aad noocan xisaabinayso
-  waxaad adeegsan doontaa sidan `?nooc=3`
-
-  ### Tusaale
-
-  ```bash
-  https://esakoapi.org/api/dalag/9920?nooc=3
-  ```
+The API provides **fast and reliable responses** based on the Qur’an and Sunnah, using advanced algorithms that comply with Islamic Zakat rulings.
 
 ---
 
-**Response Tusaale:**
+## 🔍 Test the API
 
-```json
-{
-  "code": 200,
-  "jawaab": 90,
-  "Shuruudo": [
-    "Waa Inuu Yahay Dalag Roob Ku Baxay",
-    "Waa In La Goostay Oo La Kaydsan Karro Sida Hadhuudh, Bariis, Ama Galley"
-  ],
-  "Qiyaas": "Kg",
-  "Taariikh": "Monday 13-October-2025",
-  "Wakhti": "10:33 AM"
-}
-```
+Visit: [https://esakoapi.org](https://esakoapi.org)
 
-### 1. Xisaabinta Geela
+---
+
+## 📌 Endpoints and Examples
+
+### 1. Gold Zakat
 
 **Endpoint:**
 
 ```bash
-https://esakoapi.org/api/geel/35
+https://esakoapi.org/api/gold/24,145
 ```
 
-**Sharaxaad:**
+**Description:**
 
-inta hore ee *https://esakoapi.org/api/* mar walba waa loo bahan yahay
+The prefix *https://esakoapi.org/api/* is always required.
 
-| Nooca Waxa Aad Xisaabinayso | Xadiga                 |
-| --------------------------- | ---------------------- |
-| geel = `string`             | 35 xadiga Geel = `int` |
+| Type of Calculation | Gold Karat Type           | Weight (in grams)               |
+| ------------------- | ------------------------- | ------------------------------- |
+| gold = `string`     | 24,21,22,20,18,16 = `int` | amount of gold in grams = `int` |
 
-**Response Tusaale:**
+**Sample Response:**
 
 ```json
 {
   "code": 200,
-  "jawaab": 1,
-  "Shuruudo": [
-    "Waxa La Bixinayaa Waa Geel",
-    "Waa Inuu Galay Sanadkii 2Aad",
-    "Waa Inuu Yahay Dhedig"
+  "response": 3.625,
+  "requirements": [
+    "It must be 100% pure gold.",
+    "You must have possessed it for one full year.",
+    "If paying in cash, the amount is 468.3299$."
   ],
-  "Qiyaas": "Neef",
-  "Taariikh": "Monday 13-October-2025",
-  "Wakhti": "10:33 AM"
+  "unit": "Grams",
+  "date": "Sunday 12-October-2025",
+  "time": "05:29 PM"
 }
 ```
 
-### 1. Xisaabinta lo'a-da
+**Response Explanation:**
+
+- **code: 200 → OK** → Everything is correct
+- **response: 3.625** → The amount of Zakat due in grams
+- **requirements** → Conditions of Zakat (e.g., purity, one-year possession, cash equivalent)
+- **unit** → The unit of measurement (since it’s gold, the unit is grams)
+- **date** and **time** → The response timestamp (gold prices may fluctuate daily)
+
+---
+
+### 2. Money Zakat
 
 **Endpoint:**
 
 ```bash
-https://esakoapi.org/api/lo/35
+https://esakoapi.org/api/money/9920
 ```
 
-**Sharaxaad:**
+**Description:**
 
-inta hore ee *https://esakoapi.org/api/* mar walba waa loo bahan yahay
+The prefix *https://esakoapi.org/api/* is always required.
 
-| Nooca Waxa Aad Xisaabinayso | Xadiga                  |
-| --------------------------- | ----------------------- |
-| lo = `string`               | 35 xadiga Looda = `int` |
+| Type of Calculation | Amount ($)                 |
+| ------------------- | -------------------------- |
+| money = `string`    | 9920 amount in USD = `int` |
 
-**Response Tusaale:**
+**Sample Response:**
 
 ```json
 {
   "code": 200,
-  "jawaab": 1,
-  "Shuruudo": [
-    "Waa Inuu Galay Sanadkii 2Aad (Tabiic Ama Tabiica)",
-    "Inuu Dhedig Noqdo Ayaa Fiican Labna Waad Ku Bixin Kartaa",
-    "waa inuu yahay neef Lo'a ah "
+  "response": 248,
+  "requirements": [
+    "The amount must be in US dollars (USD).",
+    "You must have possessed it for one full year.",
+    "The Zakat has been calculated based on the silver price, currently 1.6426."
   ],
-  "Qiyaas": "neef",
-  "Taariikh": "Monday 13-October-2025",
-  "Wakhti": "10:33 AM"
+  "unit": "$",
+  "date": "Monday 13-October-2025",
+  "time": "10:33 AM"
 }
 ```
 
-### 1. Xisaabinta Adhiga
+---
+
+### 3. Silver Zakat (also known as white gold)
 
 **Endpoint:**
 
 ```bash
-https://esakoapi.org/api/adhi/62
+https://esakoapi.org/api/silver/9920
 ```
 
-**Sharaxaad:**
+**Description:**
 
-inta hore ee *https://esakoapi.org/api/* mar walba waa loo bahan yahay
+The prefix *https://esakoapi.org/api/* is always required.
 
-| Nooca Waxa Aad Xisaabinayso | Xadiga                   |
-| --------------------------- | ------------------------ |
-| adhi = `string`             | 62 xadiga adhiga = `int` |
+| Type of Calculation | Weight (grams)                         |
+| ------------------- | -------------------------------------- |
+| silver = `string`   | 9920 amount of silver in grams = `int` |
 
-**Response Tusaale:**
+**Sample Response:**
 
 ```json
 {
   "code": 200,
-  "jawaab": 1,
-  "Shuruudo": [
-    "Haduu Yahay Ido Waa In Sanad U Buuxsamay",
-    "Haduu Yahay Riyo Waa In Uu Gaadhay 2 Sano "
+  "response": 248,
+  "requirements": [
+    "Must be 100% pure silver.",
+    "You must have possessed it for one full year.",
+    "If paying in cash, the amount is 407.3679$."
   ],
-  "Qiyaas": "neef",
-  "Taariikh": "Monday 13-October-2025",
-  "Wakhti": "10:33 AM"
+  "unit": "Grams",
+  "date": "Monday 13-October-2025",
+  "time": "10:33 AM"
 }
 ```
 
-## Luqadda Barnaamijka
+---
 
-API-ga waxaa lagu programiyay **Python**, taas oo fududaynaysa in lagu daro mashruucyada kala duwan oo Frontend and Backend ah.
+### 4. Crops Zakat (e.g., wheat, corn, rice, etc.)
 
-laakiin waxaad u adeegsan kartaa luuqada aad aduu xiisanayso sida
+**Endpoint:**
+
+```bash
+https://esakoapi.org/api/crops/9920?Type=1
+```
+
+**Description:**
+
+The prefix *https://esakoapi.org/api/* is always required.
+
+| Type of Calculation | Amount (KG)                              | Query   |
+| ------------------- | ---------------------------------------- | ------- |
+| crops = `string`    | 9920 amount of crop in kilograms = `int` | ?Type=1 |
+
+the default Type is 1
+
+**Understanding the Query:**
+
+There are **three crop types** based on their irrigation method:
+
+- **Type 1:** Naturally rain-fed crops, without human irrigation costs.  
+  Use `?nooc=1`
+
+- **Type 2:** Crops irrigated with paid water (e.g., purchased or artificial irrigation).  
+  Use `?nooc=2`
+
+- **Type 3:** Crops irrigated with both rain and paid water combined.  
+  Use `?nooc=3`
+
+**Sample Response:**
+
+```json
+{
+  "code": 200,
+  "response": 90,
+  "requirements": [
+    "Must be rain-fed crops.",
+    "Must be harvested and storable (e.g., wheat, rice, or maize)."
+  ],
+  "unit": "Kg",
+  "date": "Monday 13-October-2025",
+  "time": "10:33 AM"
+}
+```
+
+---
+
+### 5. Camel Zakat
+
+**Endpoint:**
+
+```bash
+https://esakoapi.org/api/camels/35
+```
+
+**Description:**
+
+The prefix *https://esakoapi.org/api/* is always required.
+
+| Type of Calculation | Quantity of Camels          |
+| ------------------- | --------------------------- |
+| camels = `string`   | 35 number of camels = `int` |
+
+**Sample Response:**
+
+```json
+{
+  "code": 200,
+  "response": 1,
+  "requirements": [
+    "To be paid as a camel.",
+    "Must have entered its second year.",
+    "Must be female."
+  ],
+  "unit": "Heads",
+  "date": "Monday 13-October-2025",
+  "time": "10:33 AM"
+}
+```
+
+---
+
+### 6. Cattle Zakat
+
+**Endpoint:**
+
+```bash
+https://esakoapi.org/api/cattle/35
+```
+
+**Description:**
+
+The prefix *https://esakoapi.org/api/* is always required.
+
+| Type of Calculation | Quantity of Cattle          |
+| ------------------- | --------------------------- |
+| cattle = `string`   | 35 number of cattle = `int` |
+
+**Sample Response:**
+
+```json
+{
+  "code": 200,
+  "response": 1,
+  "requirements": [
+    "Must have entered its second year (natural or domestic).",
+    "It is preferable to offer a female, but a male is also acceptable.",
+    "Must be a cattle species."
+  ],
+  "unit": "Heads",
+  "date": "Monday 13-October-2025",
+  "time": "10:33 AM"
+}
+```
+
+---
+
+### 7. Sheep/Goat Zakat
+
+**Endpoint:**
+
+```bash
+https://esakoapi.org/api/sheep/62
+```
+
+**Description:**
+
+The prefix *https://esakoapi.org/api/* is always required.
+
+| Type of Calculation | Quantity of Sheep/Goats          |
+| ------------------- | -------------------------------- |
+| sheep = `string`    | 62 number of sheep/goats = `int` |
+
+**Sample Response:**
+
+```json
+{
+  "code": 200,
+  "response": 1,
+  "requirements": [
+    "If they are lambs, they must be one year old.",
+    "If they are goats, they must be at least two years old."
+  ],
+  "unit": "Heads",
+  "date": "Monday 13-October-2025",
+  "time": "10:33 AM"
+}
+```
+
+---
+
+## Programming Language
+
+The API is built using **Python**, making it easy to integrate into both frontend and backend projects.  
+You can also use any programming language, such as:
 
 - JavaScript
-
 - Go
-
 - Ruby
-
 - C#
-
 - C++
-
 - Python
 
-### Tusaale JavaScript
+### JavaScript Example
 
-```JavaScript
+```js
 const sakoapi = "https://esakoapi.org/api/rikaas/100";
 const sako = async () => {
   try {
-    const respnse = await fetch(sakoapi);
-    const data = await respnse.json();
+    const response = await fetch(sakoapi);
+    const data = await response.json();
     console.log(data);
-    console.log(`waxaa lagaa doonayaa ${data.jawaab} ${data.Qiyaas}`); //waxaa lagaa doonayaa 20 Giraam
-  } catch (Error) {
-    console.log(Error);
+    console.log(`You owe ${data.response} ${data.unit}`); // Example: You owe 20 Grams
+  } catch (error) {
+    console.log(error);
   }
 };
 
 sako();
 ```
 
-### Tusaale Python
+### Python Example
 
 ```py
 import requests
@@ -349,23 +333,26 @@ url = "https://esakoapi.org/api/rikaas/100"
 
 try:
     response = requests.get(url)
-    response.raise_for_status()  # hubi in request-ku uu guuleystay
-    data = response.json()       # JSON-ka ka soo saar response
+    response.raise_for_status()  # Check if the request was successful
+    data = response.json()       # Extract JSON response
     print(data)
 except requests.exceptions.RequestException as e:
     print("Error:", e)
-
-
 ```
 
-## Fiiro Gaar ah
+---
 
-Hadda wali wax lagu wadaa tijaabin iyo hubin hadii wax qalada aad aragto sharci ahaan ama qoraal ahaan ama code ahaan waxaad nala soo wadaagi kartaaa mashruucan weli gacanta lagu hayaa , waxaad si ku meel gaadh ah ugu tijaabin kartaa endpoints-ka kor ku xusan.
+## ⚠️ Note
 
-## Ka Qayb Qaado Mashruucan
+This project is still under testing.  
+If you find any **legal, textual, or technical errors**, feel free to report them.
 
-mashruucan waa open source sida aad arkaysaba waxana uu ku LICENSE-garaysan yahay MIT License
-waad nagala qayb qaadan kartaa horumarintiisa iyo hagaajintiisaba
+---
 
-ugu danbayn qofkii u baahan faah faahin dheeraada waxa uu igala soo xidhiidhi karaa emailkan
-jumhuur123@hotmail.com ama number +252634645195
+## 🤝 Contribute
+
+This is an open-source project licensed under **MIT**.  
+Contributions are welcome!
+
+📧 **Email:** jumhuur123@hotmail.com  
+📞 **Phone:** +25263464519

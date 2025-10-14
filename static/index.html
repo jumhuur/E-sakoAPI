@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="so">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EsakoAPI - Tijaabinta Endpoints</title>
+    <title>EsakoAPI - Test Endpoints</title>
     <link rel="icon" href="Images/fav.png" type="image/x-icon" />
     <style>
       :root {
@@ -159,7 +159,6 @@
         }
       }
 
-      /* From Uiverse.io by Galahhad */
       .ui-btn {
         --btn-default-bg: linear-gradient(135deg, var(--primary), #8b5cf6);
         --btn-padding: 10px 15px;
@@ -172,13 +171,9 @@
         --hover-btn-color: #0f172a;
         --default-btn-color: #fff;
         --font-size: 16px;
-        /* 👆 this field should not be empty */
         --font-weight: 600;
         --font-family: Menlo, Roboto Mono, monospace;
-        /* 👆 this field should not be empty */
       }
-
-      /* button settings 👆 */
 
       .ui-btn {
         box-sizing: border-box;
@@ -204,13 +199,6 @@
         background: inherit;
       }
 
-      .ui-btn span::before {
-        box-sizing: border-box;
-        position: absolute;
-        content: "";
-        background: inherit;
-      }
-
       .ui-btn:hover,
       .ui-btn:focus {
         background: var(--btn-hover-bg);
@@ -220,123 +208,11 @@
       .ui-btn:focus span {
         color: var(--hover-btn-color);
       }
-
-      .ui-btn:hover span::before,
-      .ui-btn:focus span::before {
-        animation: chitchat linear both var(--btn-animation-duration);
-      }
-
-      @keyframes chitchat {
-        0% {
-          content: "#";
-        }
-
-        5% {
-          content: ".";
-        }
-
-        10% {
-          content: "^{";
-        }
-
-        15% {
-          content: "-!";
-        }
-
-        20% {
-          content: "#$_";
-        }
-
-        25% {
-          content: "№:0";
-        }
-
-        30% {
-          content: "#{+.";}35%{content: "@}-?";
-        }
-
-        40% {
-          content: "?{4@%";
-        }
-
-        45% {
-          content: "=.,^!";
-        }
-
-        50% {
-          content: "?2@%";
-        }
-
-        55% {
-          content: "\;1}]";
-        }
-
-        60% {
-          content: "?{%:%";
-          right: 0;
-        }
-
-        65% {
-          content: "|{f[4";
-          right: 0;
-        }
-
-        70% {
-          content: "{4%0%";
-          right: 0;
-        }
-
-        75% {
-          content: "'1_0<";
-          right: 0;
-        }
-
-        80% {
-          content: "{0%";
-          right: 0;
-        }
-
-        85% {
-          content: "]>'";
-          right: 0;
-        }
-
-        90% {
-          content: "4";
-          right: 0;
-        }
-
-        95% {
-          content: "2";
-          right: 0;
-        }
-
-        100% {
-          content: "";
-          right: 0;
-        }
-      }
     </style>
   </head>
   <body>
     <div class="wrap">
       <header>
-        <!-- <div>
-          <img
-            style="
-              width: 30px;
-              height: 30px;
-              border-radius: 5px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              color: white;
-              font-weight: 700;
-            "
-            src="Images/fav.png"
-            alt="logo_esako"
-          />
-        </div> -->
         <div
           style="
             width: 44px;
@@ -355,8 +231,8 @@
         <div class="brand">
           <h1>EsakoAPI — Testing</h1>
           <p>
-            Waxaad Halkan Ku Tijaabin Kartaa <br />
-            Sida Uu Shaqaynayo Api-ga Esako
+            Here you can test <br />
+            how EsakoAPI works.
           </p>
         </div>
         <a href="/doc" target="_blank">
@@ -391,14 +267,14 @@
               </select>
             </div>
             <div class="col">
-              <label for="apikey">API Key (haddii loo baahdo)</label>
+              <label for="apikey">API Key (if required)</label>
               <input id="apikey" type="text" placeholder="API Key (optional)" />
             </div>
           </div>
 
           <div style="height: 12px"></div>
 
-          <label for="body">JSON Body (POST/PUT) Hada Looma Baahna</label>
+          <label for="body">JSON Body (POST/PUT) - Not Required Now</label>
           <textarea id="body" placeholder='{"key":"value"}'></textarea>
 
           <div style="height: 12px"></div>
@@ -423,13 +299,12 @@
           <details>
             <summary style="cursor: pointer">Instructions</summary>
             <div style="margin-top: 8px; color: var(--muted); font-size: 13px">
-              1. Gali endpoint-ka EsakoAPI (tusaale:
+              1. Enter an EsakoAPI endpoint (example:
               <code>https://esakoapi.org/api/geel/180</code>).<br />
-              2. Haddii endpoint-ku u baahan yahay API key, geli qaybta API Key
-              (ama header Authorization).<br />
-              3. Haddii aad isticmaalayso POST ama PUT, geli JSON body sax
-              ah.<br />
-              4. Guji "Send Request" si aad u aragto response-ka hoos.
+              2. If the endpoint requires an API key, enter it in the API Key
+              field (or under Authorization header).<br />
+              3. If using POST or PUT, enter valid JSON data.<br />
+              4. Click "Send Request" to view the response below.
             </div>
           </details>
         </div>
@@ -439,9 +314,7 @@
             <div class="small">Response</div>
             <div class="small" id="status">—</div>
           </div>
-          <div id="resp" class="response">
-            Natiijada waxay ka muuqan doontaa halkan...
-          </div>
+          <div id="resp" class="response">The response will appear here...</div>
           <div style="height: 12px"></div>
           <div class="small">Headers (Response)</div>
           <pre
@@ -455,14 +328,14 @@
       </div>
 
       <footer>
-        Hadii aad doonayso inaad mashruucan wax ku darsto ama aad nagala qay
-        qaadato booqo github-ka
+        If you wish to contribute to this project or collaborate with us, visit
+        our
         <a href="https://github.com/jumhuur/E-sakoAPI" target="_blank"
           >GitHub</a
         >
+        page.
       </footer>
     </div>
-
     <script>
       const endpoint = document.getElementById("endpoint");
       const method = document.getElementById("method");

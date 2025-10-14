@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="so">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EsakoAPI - API Docs</title>
+    <title>EsakoAPI - API Documentation</title>
     <style>
       :root {
         --primary: #6366f1;
@@ -105,6 +105,7 @@
       }
       th {
         background: #0f172a;
+        color: #f8fafc;
       }
       footer {
         margin-top: 24px;
@@ -134,280 +135,186 @@
         </div>
         <div class="brand">
           <h1>EsakoAPI — API Documentation</h1>
-          <p>Dukumentiga rasmiga ah ee API-ga EsakoAPI</p>
+          <p>The official API documentation for EsakoAPI</p>
         </div>
       </header>
 
       <div class="section">
-        <h2>1. Hordhac</h2>
+        <h2>1. Introduction</h2>
         <p>
-          EsakoAPI waa API bilaash ah (free API) oo aadan u baahnayn API key si
-          aad u isticmaasho. Waxaa loogu talagalay in lagu xisaabiyo sakada
-          noocyadeeda kala duwan sida waafaqsan shareecada Islaamka.
+          EsakoAPI is a free API that does not require an API key. It is
+          designed to calculate various types of Zakat in accordance with
+          Islamic Shariah.
         </p>
       </div>
 
       <div class="section">
-        <h2>2. URL Base</h2>
+        <h2>2. Base URL</h2>
         <pre>https://esakoapi.org/api/</pre>
       </div>
 
-      <!-- <div class="section">
-        <h2>3. Authentication</h2>
-        <p>
-          Endpoints qaarkood waxay u baahan yihiin <code>API Key</code> si loo
-          galo. API key-ga waxaa lagu diraa header-ka
-          <code>Authorization</code>:
-        </p>
-        <pre>Authorization: Bearer YOUR_API_KEY</pre>
-      </div> -->
-
       <div class="section">
         <h2>3. Endpoints</h2>
-
-        <h3>01- Lacag :</h3>
-        <p>
-          Marka aad xisaabinayso Lacag waxaad adeegsanaysaa <br />
-          sidan hoose adoo is raacinaya shayga aad xisaabinayso iyo xadiga.
-        </p>
+        <h3>01 - Money:</h3>
+        <p>To calculate Zakat on money, use the following format:</p>
         <pre>https://esakoapi.org/api/lacag/9899</pre>
         <h4>Response Example</h4>
         <pre>
-        { 
-            "code": 200, 
-            "jawaab": 247.475, 
-            "Shuruudo": [ 
-                        "Waa Inay Tahay Lacagtu Dollar 'Usd'", 
-                        "Waa Inaad Sanad Haysay", "Waxaa Lagugu Xisaabiyay Sakadan Qiimaha Fidada Oo Maraysa 1.6685" 
-                        ], 
-            "Qiyaas": "$", "Taariikh": "Tuesday 14-October-2025", 
-            "Wakhti": "09:22 AM" 
-        
-        }</pre
+{
+  "code": 200,
+  "response": 247.475,
+  "conditions": [
+    "The amount must be in US dollars (USD).",
+    "You must have possessed it for one full year.",
+    "Zakat calculated using current silver price of 1.6685."
+  ],
+  "unit": "$",
+  "date": "Tuesday 14-October-2025",
+  "time": "09:22 AM"
+}</pre
         >
 
-        <!-- dahab -->
-        <h3>02- Dahab :</h3>
-        <p>
-          Marka aad xisaabinayso waxaad adeegsanaysaa <br />
-          sidan hoose .
-        </p>
-        <p>
-          Waxaana Lagaaga Baahan yahay Sadex shay <br />
-          path: oo ah <code>/dahab</code> nooca dahabka:
-          <code>/24</code> noocyadu waxa kale oo ay noqon karaan 22,21,20,18,16
-          <br />
-          kadib adeegso <code>,</code> ugu danbayn Qor xadiga:
-          <code>/145</code> sidan hoose oo kale
-        </p>
-        <pre>https://esakoapi.org/api/dahab/24,145</pre>
+        <h3>02 - Gold:</h3>
+        <p>To calculate Zakat on gold, use the following pattern:</p>
+        <pre>https://esakoapi.org/api/gold/24,145</pre>
         <h4>Response Example</h4>
         <pre>
-        {  
-            "code": 200, 
-            "jawaab": 3.625, 
-            "Shuruudo": [ 
-            "Waa Inuu Yahay Saafi 100%", "Waa Inaad Sanad Haysay", 
-            "Lacag Hadaad Ku Bixinayso Waa 482.5836$" 
-            ], 
-            "Qiyaas": "Giraam", 
-            "Taariikh": "Tuesday 14-October-2025", 
-            "Wakhti": "09:22 AM" 
-        }</pre
+{
+  "code": 200,
+  "response": 3.625,
+  "conditions": [
+    "It must be 100% pure gold.",
+    "You must have possessed it for one full year.",
+    "If paying in cash, the amount is 482.5836$."
+  ],
+  "unit": "Gram",
+  "date": "Tuesday 14-October-2025",
+  "time": "09:22 AM"
+}</pre
         >
 
-        <!-- fido -->
-        <h3>03- Fido(Dahabka cad ama Qalin) :</h3>
-        <p>
-          Marka aad xisaabinayso waxaad adeegsanaysaa <br />
-          sidan hoose .
-        </p>
-        <p>
-          Waxaana Lagaaga Baahan yahay laba shay <br />
-          path: oo ah <code>/fido</code> xadiga: <code>/920</code> sidan hoose
-          oo kale
-        </p>
-        <pre>https://esakoapi.org/api/fido/920</pre>
+        <h3>03 - Silver (Fido):</h3>
+        <p>To calculate Zakat on silver (white gold), use:</p>
+        <pre>https://esakoapi.org/api/silver/920</pre>
         <h4>Response Example</h4>
         <pre>
-        { 
-            "code": 200, 
-            "jawaab": 23, 
-            "Shuruudo": [ 
-                "Waa Inay Tahay Fido Saafi Ah 100%", "Waa Inaad Sanad Haysay", 
-                "Lacag Hadaad ku bixinayso waxay noqonaysaa 38.3761$" 
-                ], 
-            "Qiyaas": "Giraam", 
-            "Taariikh": "Tuesday 14-October-2025", 
-            "Wakhti": "09:22 AM"
-        }</pre
+{
+  "code": 200,
+  "response": 23,
+  "conditions": [
+    "It must be 100% pure silver.",
+    "You must have possessed it for one full year.",
+    "If paying in cash, the amount is 38.3761$."
+  ],
+  "unit": "Gram",
+  "date": "Tuesday 14-October-2025",
+  "time": "09:22 AM"
+}</pre
         >
 
-        <!-- Geel -->
-        <h3>04- Geel :</h3>
-        <p>
-          Marka aad xisaabinayso waxaad adeegsanaysaa <br />
-          sidan hoose .
-        </p>
-        <p>
-          Waxaana Lagaaga Baahan yahay laba shay <br />
-          path: oo ah <code>/geel</code> xadiga: <code>/920</code> sidan hoose
-          oo kale
-        </p>
-        <pre>https://esakoapi.org/api/geel/920</pre>
+        <h3>04 - Camels:</h3>
+        <p>To calculate Zakat on camels, use:</p>
+        <pre>https://esakoapi.org/api/camels/920</pre>
         <h4>Response Example</h4>
         <pre>
-        { 
-            "code": 200, 
-            "jawaab": 19, 
-            "Shuruudo": [ 
-                "Waa In 16 Halaad Ay 3 Sano Yihiin", 
-                "Waa In 3 Halaad Laba Jir Yihiin", 
-                "Waa Inay Dhedig Yihiin"
-                ], 
-            "Qiyaas": "neef", 
-            "Taariikh": 
-            "Tuesday 14-October-2025", 
-            "Wakhti": "09:22 AM" 
-        }</pre
+{
+  "code": 200,
+  "response": 19,
+  "conditions": [
+    "16 camels must be 3 years old.",
+    "3 camels must be 2 years old.",
+    "They must all be female."
+  ],
+  "unit": "Head",
+  "date": "Tuesday 14-October-2025",
+  "time": "09:22 AM"
+}</pre
         >
 
-        <!-- adhi -->
-        <h3>05- Adhi :</h3>
-        <p>
-          Marka aad xisaabinayso waxaad adeegsanaysaa <br />
-          sidan hoose .
-        </p>
-        <p>
-          Waxaana Lagaaga Baahan yahay laba shay <br />
-          path: oo ah <code>/adhi</code> xadiga: <code>/920</code> sidan hoose
-          oo kale
-        </p>
-        <pre>https://esakoapi.org/api/adhi/920</pre>
+        <h3>05 - Sheep/Goats:</h3>
+        <pre>https://esakoapi.org/api/sheep/920</pre>
         <h4>Response Example</h4>
         <pre>
-        { 
-            "code": 200, 
-            "jawaab": 9, 
-            "Shuruudo": [ 
-                "Haday Ido Yihiin Waa In Sanad U Buuxsamay", 
-                "Haday Riyo Yihiin Waa In Ay Gaadheen 2 Sano" 
-                ], 
-            "Qiyaas": "neef", 
-            "Taariikh": "Tuesday 14-October-2025", 
-            "Wakhti": "09:22 AM"
-        }</pre
+{
+  "code": 200,
+  "response": 9,
+  "conditions": [
+    "If sheep, they must be 1 year old.",
+    "If goats, they must be 2 years old."
+  ],
+  "unit": "Head",
+  "date": "Tuesday 14-October-2025",
+  "time": "09:22 AM"
+}</pre
         >
 
-        <!-- lo -->
-        <h3>06- Lo'a :</h3>
-        <p>
-          Marka aad xisaabinayso waxaad adeegsanaysaa <br />
-          sidan hoose .
-        </p>
-        <p>
-          Waxaana Lagaaga Baahan yahay laba shay <br />
-          path: oo ah <code>/lo</code> xadiga: <code>/56</code> sidan hoose oo
-          kale
-        </p>
-        <pre>https://esakoapi.org/api/lo/56</pre>
+        <h3>06 - Cattle:</h3>
+        <pre>https://esakoapi.org/api/cattle/56</pre>
         <h4>Response Example</h4>
         <pre>
-        { 
-            "code": 200, 
-            "jawaab": 1, 
-            "Shuruudo": [ 
-                "Waa Inuu Galay Sanadkii 3Aad (Musina)", 
-                "Inuu Dhedig Noqdo Ayaa Fiican Labna Waad Ku Bixin Kartaa", 
-                "waa inuu yahay neef Lo'a ah " ], 
-            "Qiyaas": "neef", 
-            "Taariikh": "Tuesday 14-October-2025", 
-            "Wakhti": "09:22 AM"
-        }</pre
+{
+  "code": 200,
+  "response": 1,
+  "conditions": [
+    "Must have entered its third year (matured).",
+    "Preferably female, but male is acceptable.",
+    "Must be of cattle species."
+  ],
+  "unit": "Head",
+  "date": "Tuesday 14-October-2025",
+  "time": "09:22 AM"
+}</pre
         >
 
-        <!-- Dalag -->
-        <h3>06- Dalag :</h3>
-        <p>
-          dalag yada marka la eego sida ay u baxeen waa sadex nooc sida kutubta
-          fiqigana ku taal Marka La Xisaabinayo waa in lagu xisaabtamo nooca la
-          xisaabinayo waana sidan hoose qaabka aad y xisaabin karto
-          <br />
+        <h3>07 - Crops:</h3>
+        <p>To calculate Zakat on crops, use:</p>
 
-          01 . Nooc Ku Baxay Biyihii Dabiciga ahaa ilaahay Keenay wax Qarash
-          Ahna Aanu Galin waraabitood noocan waxaan u soo qaadanay lanbarka-ka 1
-          sidaas darteed waxaad adeegsan doontaa
-          <code>?nooc=1</code> hadii aad xisaabinayso sakada lagu leeyahay
-          noocan 1aad Tusaale
-        </p>
-        <hr />
-        <pre>https://esakoapi.org/api/dalag/9920?nooc=1</pre>
+        <h4>There are three crop types based on</h4>
         <p>
-          02. Nooca Labaad Kuwo ku Baxay Biyo Kharash Galay Sida in Loo IIbiyay
-          Biyihii noocana waxaan u soo qaadanay Lanbarka 2 sidaas darteed hadii
-          aad noocan xisaabinayso waxaad adeegsan doontaa sidan
-          <code>?nooc=2</code> Tusaale
+          - Type 1: Naturally rain-fed crops, without human irrigation costs.
+          Use <code>?Type=1</code>
         </p>
-        <hr />
-        <pre>https://esakoapi.org/api/dalag/9920?nooc=2</pre>
         <p>
-          03. Nooca Sadexaad Kuwo ku Baxay Biyo Kharash Galay Sida in Loo
-          IIbiyay Biyihii iyo Biyo roob oo aan kharash galin oo isku jira
-          noocana waxaan u soo qaadanay Lanbarka 3 sidaas darteed hadii aad
-          noocan xisaabinayso waxaad adeegsan doontaa sidan <code>?nooc=3</code>
+          - Type 2: Crops irrigated with paid water (e.g., purchased or
+          artificial irrigation). Use <code>?Type=2</code>
         </p>
-        <hr />
-        <pre>https://esakoapi.org/api/dalag/9920?nooc=3</pre>
-
         <p>
-          Waxaana Lagaaga Baahan yahay laba Sadex shay <br />
-          path: oo ah <code>/dalag</code> xadiga: <code>/920</code>
-          <br />
-          Iyo Query sidan ah oo cadaynaya nooca : <code>?nooc=3</code>
-          sidan hoose oo kale
+          - Type 3: Crops irrigated with both rain and paid water combined. Use
+          <code>?Type=3</code>
         </p>
-        <pre>https://esakoapi.org/api/dalag/920?nooc=2</pre>
+        <p>Default Type is <code>Type=1</code></p>
+        <pre>https://esakoapi.org/api/crops/920?Type=2</pre>
         <h4>Response Example</h4>
         <pre>
-        { 
-            "code": 200, 
-            "jawaab": 46, 
-            "Shuruudo": [ 
-                "Dalag Lagu Waraabiyay Biyo Lacag Lagu Bixiyay", 
-                "Waa In La Goostay Oo La Kaydsan Karro Sida Hadhuudh, Bariis, Ama Galley" 
-                ], 
-            "Qiyaas": "Kg", 
-            "Taariikh": "Tuesday 14-October-2025", 
-            "Wakhti": "09:22 AM" 
-        }</pre
+{
+  "code": 200,
+  "response": 46,
+  "conditions": [
+    "Crops irrigated using paid water.",
+    "Must be harvestable and storable, such as wheat, rice, or maize."
+  ],
+  "unit": "Kg",
+  "date": "Tuesday 14-October-2025",
+  "time": "09:22 AM"
+}</pre
         >
 
-        <!-- rikaas -->
-        <!-- lo -->
-        <h3>08- Rikaas :</h3>
-        <p>
-          Marka aad xisaabinayso waxaad adeegsanaysaa <br />
-          sidan hoose .
-        </p>
-        <p>
-          Waxaana Lagaaga Baahan yahay laba shay <br />
-          path: oo ah <code>/rikaas</code> xadiga: <code>/122</code> sidan hoose
-          oo kale
-        </p>
+        <h3>08 - Buried Treasure (Rikaas):</h3>
         <pre>https://esakoapi.org/api/rikaas/122</pre>
         <h4>Response Example</h4>
         <pre>
-        { 
-            "code": 200, 
-            "jawaab": 24.4, 
-            "Shuruudo": [ 
-                "Waa Inay Tahay Rikaas", 
-                "Waa Inuu Yahaya Wax Dadkii Inaga Horeeyay Aaseen Ayna Ka Muuqayto Calaamadahodii", 
-                "Lacag Hadaad ku bixinayso waxay noqonaysaa 3248.2867$" ], 
-            "Qiyaas": "Giraam", 
-            "Taariikh": "Tuesday 14-October-2025", 
-            "Wakhti": "09:22 AM"
-        }</pre
+{
+  "code": 200,
+  "response": 24.4,
+  "conditions": [
+    "It must be classified as Rikaas (buried treasure).",
+    "It should be something ancient with visible historical traces.",
+    "If paying in cash, the amount is 3248.2867$."
+  ],
+  "unit": "Gram",
+  "date": "Tuesday 14-October-2025",
+  "time": "09:22 AM"
+}</pre
         >
       </div>
 
@@ -417,40 +324,38 @@
           <thead>
             <tr>
               <th>Code</th>
-              <th>Sharaxaad</th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>200</td>
-              <td>OK — Request waa guuleystay</td>
+              <td>OK — Request was successful</td>
             </tr>
             <tr>
               <td>467</td>
-              <td>URL Qaladan — marka URL-ka meel ka qadantahay</td>
+              <td>Invalid URL — when the requested URL is incorrect</td>
             </tr>
             <tr>
               <td>464</td>
-              <td>
-                ValueError — markaad adeegsato qoraal meel loo baahnaa lanbar
-              </td>
+              <td>Value Error — when a string is used instead of a number</td>
             </tr>
             <tr>
               <td>404</td>
-              <td>Not Found — Endpoint ama resource lama helin</td>
+              <td>Not Found — Endpoint or resource not found</td>
             </tr>
             <tr>
               <td>500</td>
-              <td>Server Error — Cillad gudaha ah</td>
+              <td>Server Error — Internal error occurred</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <footer>
-        © 2025 EsakoAPI — Repo-ga Mashruucan Halkan Ka Eeg
+        © 2025 EsakoAPI — View the project repository on
         <a href="https://github.com/jumhuur/E-sakoAPI" target="_blank"
-          >github Link</a
+          >GitHub</a
         >
       </footer>
     </div>

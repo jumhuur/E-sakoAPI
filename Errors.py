@@ -1,30 +1,32 @@
-from Nisaabyo import Sako , selfinfo
-URL_DOC = "https://esakoapi.org/docs"
+from Nisaabyo import Sako, selfinfo
+
+URL_DOC = "https://esakoapi.org/doc"
+
 Errors_Code_messages = {
-    # blobal
-    404: "Ma jiro URL-Kani",
+    # global
+    404: "This URL does not exist.",
+
     # Errors
-    460:"Fadlan Markale isku day".title(),
-    461 :"Qaab Tiro Ahaan Ah U qor Xadiga aad Xisaabinayso".title(),
-    462:"Lama Ogola Waxa Aad Dooratay".title(),
-    463: "Nooca Aad dooratay kama mid ah noocyada Dahabka".title(),
-    464: "Fadlan adeegso Tiro Kaliya".title(),
-    465: "Fadlan Adeegso Tiro Ka kooban laba Lanbar".title(),
-    466: "Sako Laguma laha xadiga aad qortay Ee Ka tirsan nooca dahabka aad dooratay".title(),
-    467: f"Waxaa Qaldan URL-KA Halkan Ka Akhriso Faah Faahinta {URL_DOC}".title(),
-    468: f"Qaabka aad u dalbatay in loo xisaabiyo dalagan wa qalada ha noqdo qaabku mid ah 1,2,3 waxii faah faahin ah ka akriso {URL_DOC}".title(),
+    460: "Please try again later.",
+    461: "Please enter a valid numeric amount.",
+    462: "The option you selected is not allowed.",
+    463: "The selected type is not among the recognized gold types.",
+    464: "Please use numbers only.",
+    465: "Please use a number that contains at least two digits.",
+    466: "Zakat is not applicable to the amount you entered for this gold type.",
+    467: f"Invalid URL. Read more details here: {URL_DOC}",
+    468: f"The calculation type you requested is invalid. Accepted types are 1, 2, or 3. Read more details here: {URL_DOC}",
 
-
-    # warbixin
-    320: "dahabka aad xisabinaysaa sako(nisaab) ma gaadhin waxa uu ku gaadhaa sako(nisaab) 85-g".title(),
-    321: F"Qiimaha Fidada sako ma gaadhin Fidada waxay sako ku gaadhaa {round(Sako.Nisaab_Fidada, 4)} Giraam".title(),
-    322: f"Xadiga Adhiga aad Qoratay Sako Ma gaadhin Adhigu wax uu ku sako gaadhaa {Sako.Nisaab_adhi} Neef".title(),
-    323: F"Qiimaha Rikaaska sako ma gaadhin rikaasku waxu  sako ku gaadhaa {round(Sako.Nisaab_Rikaas, 4)} Giraam".title(),
-    324: f"Sako Ma gaadhin Xadiga looda aad qoratay Looda waxay ku sako Gaadhaa {Sako.Nisaab_lo} Neef".title(),
-    325: F"Qiimaha lacagtu sako ma gaadhin lacagtu waxay sako ku gaadhaa {round(selfinfo.Nisaab_lacag_d, 4)}$ marka lagu xisaabiyo Dahab ama {round(selfinfo.Nisaab_Lacag_f, 4)}$ marka lagu xisaabiyo Fido".title(),
-    326: f"Sako laguma laha xadiga aad qortay Geelu Waxa uu Ku sako Gaadhaa {Sako.Nisaab_Geel} Neef".title(),
-    327: f"Sako laguma laha xadiga aad qortay dalagu  Waxa uu Ku sako Gaadhaa {Sako.Nisaab_Midhaha} kg".title()
+    # Info messages
+    320: "The amount of gold you entered has not reached the Zakat threshold (Nisaab). The Nisaab for gold is 85 grams.",
+    321: f"The amount of silver has not reached the Zakat threshold. The Nisaab for silver is {round(Sako.Nisaab_Fidada, 4)} grams.",
+    322: f"The number of sheep you entered has not reached the Zakat threshold. The Nisaab for sheep is {Sako.Nisaab_adhi} heads.",
+    323: f"The amount of jewelry has not reached the Zakat threshold. The Nisaab for jewelry is {round(Sako.Nisaab_Rikaas, 4)} grams.",
+    324: f"The number of cows you entered has not reached the Zakat threshold. The Nisaab for cows is {Sako.Nisaab_lo} heads.",
+    325: f"The amount of money has not reached the Zakat threshold. The Nisaab for money is {round(selfinfo.Nisaab_lacag_d, 4)} USD (based on gold) or {round(selfinfo.Nisaab_Lacag_f, 4)} USD (based on silver).",
+    326: f"The number of camels you entered has not reached the Zakat threshold. The Nisaab for camels is {Sako.Nisaab_Geel} heads.",
+    327: f"The amount of crops you entered has not reached the Zakat threshold. The Nisaab for crops is {Sako.Nisaab_Midhaha} kg."
 }
 
-def Errors(code,succsess=False):
-    return {"code": code, "Fariin": Errors_Code_messages.get(code), "ok": succsess}
+def Errors(code, success=False):
+    return {"code": code, "message": Errors_Code_messages.get(code), "ok": success}

@@ -4,7 +4,6 @@ from Nisaabyo import Sako
 from jawaabo import jawaab
 import re
 
-
 def Geel(xadi:int):
     nisaab = {
         1:10,
@@ -24,76 +23,76 @@ def Geel(xadi:int):
         return JSONResponse(status_code=326, content=Errors(326))
     if xadi > Sako.Nisaab_Geel and xadi < nisaab[1]:
         jw = 1
-        shuruudo = ["Waxa La bixinayaa waa Adhi".title(), 
-                    "Ido waa in sanad u dhaamday".title(),
-                    "riyo waa in laba sano u dhaamdeen".title(), 
-                    "lab iyo dhedig waa isku mid".title()
+        shuruudo = ["The payment will be livestock (sheep)".title(), 
+                    "Sheep must be at least one year old".title(),
+                    "Goats must be at least two years old".title(), 
+                    "Male and female animals are treated equally".title()
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"Neef" ))
     if xadi >=  nisaab[1] and xadi < nisaab[2]:
         jw = 2
-        shuruudo = ["Waxa La bixinayaa waa Adhi".title(), 
-                    "Ido waa in sanad u dhaamday".title(),
-                    "riyo waa in laba sano u dhaamdeen".title(), 
-                    "lab iyo dhedig waa isku mid".title()
+        shuruudo = ["The payment will be livestock (sheep)".title(), 
+                    "Sheep must be at least one year old".title(),
+                    "Goats must be at least two years old".title(), 
+                    "Male and female animals are treated equally".title()
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"Neef"))
     if xadi >=  nisaab[2] and xadi < nisaab[3]:
         jw = 3
-        shuruudo = ["Waxa La bixinayaa waa Adhi".title(), 
-                    "Ido waa in sanad u dhaamday".title(),
-                    "riyo waa in laba sano u dhaamdeen".title(), 
-                    "lab iyo dhedig waa isku mid".title()
+        shuruudo = ["The payment will be livestock (sheep)".title(), 
+                    "Sheep must be at least one year old".title(),
+                    "Goats must be at least two years old".title(), 
+                    "Male and female animals are treated equally".title()
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"Neef"))
     elif xadi >=  nisaab[3] and xadi < nisaab[4]:
         jw = 4
-        shuruudo = ["Waxa La bixinayaa waa Adhi".title(), 
-                    "Ido waa in sanad u dhaamday".title(),
-                    "riyo waa in laba sano u dhaamdeen".title(), 
-                    "lab iyo dhedig waa isku mid".title()
+        shuruudo = ["The payment will be livestock (sheep)".title(), 
+                    "Sheep must be at least one year old".title(),
+                    "Goats must be at least two years old".title(), 
+                    "Male and female animals are treated equally".title()
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"Neef" ))
     if xadi >=  nisaab[4] and xadi < nisaab[5]:
         jw = 1
-        shuruudo = ["Waxa La bixinayaa waa Geel".title(), 
-                    "Waa inuu Galay sanadkii 2aad".title(),
-                    "waa inuu yahay dhedig".title(), 
+        shuruudo = ["The payment will be a camel".title(), 
+                    "It must have entered its second year".title(),
+                    "It must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"Neef" ))
     if xadi >=  nisaab[5] and xadi < nisaab[6]:
         jw = 1
-        shuruudo = ["Waxa La bixinayaa waa Geel".title(), 
-                    "Waa inuu Galay sanadkii 3aad".title(),
-                    "waa inuu yahay dhedig".title(), 
+        shuruudo = ["The payment will be a camel".title(), 
+                    "It must have entered its third year".title(),
+                    "It must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"Neef" ))
     if xadi >=  nisaab[6] and xadi < nisaab[7]:
         jw = 1
-        shuruudo = ["Waxa La bixinayaa waa Geel".title(), 
-                    "Waa inuu Galay sanadkii 4aad".title(),
-                    "waa inuu yahay dhedig".title(), 
+        shuruudo = ["The payment will be a camel".title(), 
+                    "It must have entered its fourth year".title(),
+                    "It must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"Neef" ))
     if xadi >=  nisaab[6] and xadi < nisaab[7]:
         jw = 2
-        shuruudo = ["Waa Inay Geel Yihiin".title(), 
-                    "waa inay galeen sanadkii 2aad".title(),
-                    "waa inay dhedig yihiin".title(), 
+        shuruudo = ["They must be camels".title(), 
+                    "They must have entered their second year".title(),
+                    "They must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"Neef" ))
     if xadi >=  nisaab[7] and xadi < nisaab[8]:
         jw = 2
-        shuruudo = ["Waa Inay Geel Yihiin".title(), 
-                    "waa inay galeen sanadkii 4aad".title(),
-                    "waa inay dhedig yihiin".title(), 
+        shuruudo = ["They must be camels".title(), 
+                    "They must have entered their fourth year".title(),
+                    "They must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"Neef" ))
     if xadi >=  nisaab[8] and xadi < nisaab[9]:
         jw = 3
-        shuruudo = ["Waa Inay Geel Yihiin".title(), 
-                    "waa inay galeen sanadkii 5aad".title(),
-                    "waa inay dhedig yihiin".title(), 
+        shuruudo = ["They must be camels".title(), 
+                    "They must have entered their fifth year".title(),
+                    "They must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"Neef" ))
     elif xadi > nisaab[9]:
@@ -124,20 +123,20 @@ def Geel(xadi:int):
                             ugu_fiican = stash
             if ugu_fiican["xiqa"] > 0 and  ugu_fiican["labuun"] > 0:
                 jw = ugu_fiican["Sako"]
-                shuruudo = [f"Waa in {ugu_fiican["xiqa"]} halaad ay 3 sano yihiin".title(), 
-                f"waa in {ugu_fiican['labuun']} Halaad laba jir yihiin".title(),
-                "waa inay dhedig yihiin".title(), 
+                shuruudo = [f"{ugu_fiican["xiqa"]} camels must be three years old".title(), 
+                f"{ugu_fiican['labuun']} camels must be two years old".title(),
+                "They must be female".title(), 
                 ]
                 return jawaab(jw, shuruudo, "neef") 
             elif ugu_fiican["xiqa"] > 0 and ugu_fiican["labuun"] < 1:
                 jw = ugu_fiican["Sako"]
-                shuruudo = [f"Waa in {ugu_fiican["xiqa"]} halaad ay 3 sano yihiin".title(), 
-                "waa inay dhedig yihiin".title(), 
+                shuruudo = [f"{ugu_fiican["xiqa"]} camels must be three years old".title(), 
+                "They must be female".title(), 
                 ]
                 return jawaab(jw, shuruudo, "neef")
             elif ugu_fiican["xiqa"] < 1 and ugu_fiican["labuun"] > 0:
                 jw = ugu_fiican["Sako"]
-                shuruudo = [f"Waa in {ugu_fiican["labuun"]} halaad ay 2 sano yihiin".title(), 
-                "waa inay dhedig yihiin".title(), 
+                shuruudo = [f"{ugu_fiican["labuun"]} camels must be two years old".title(), 
+                "They must be female".title(), 
                 ]
-                return jawaab(jw, shuruudo, "neef") 
+                return jawaab(jw, shuruudo, "neef")

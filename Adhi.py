@@ -1,77 +1,88 @@
 from Errors import Errors
-from Nisaabyo import Sako ,selfinfo
+from Nisaabyo import Sako, selfinfo
 from jawaabo import jawaab
 from fastapi.responses import JSONResponse
 
 import re
 
-def Adhi(xadi):
+def Adhi(quantity):
+    # Zakat thresholds for sheep
     nisaab = {
-    1:120,
-    2:200,
-    3:300,
-    4:400
+        1: 120,
+        2: 200,
+        3: 300,
+        4: 400
     }
+
+    # Validate that the input is numeric
     reg_exp = r"^\d+$"
-    if not re.match(reg_exp, str(xadi)):
+    if not re.match(reg_exp, str(quantity)):
         return JSONResponse(
             status_code=200,
             content=Errors(464)
         )
-    if int(xadi) < Sako.Nisaab_adhi:
+
+    # Check if the quantity meets the minimum Zakat threshold
+    if int(quantity) < Sako.Nisaab_adhi:
         return JSONResponse(
             status_code=322,
             content=Errors(322)
         )
-    if int(xadi) >= Sako.Nisaab_adhi and int(xadi) <= nisaab[1]:
+
+    # Determine Zakat due based on quantity ranges
+    if int(quantity) >= Sako.Nisaab_adhi and int(quantity) <= nisaab[1]:
         jw = 1
-        shuruudo = [
-            "Haduu yahay Ido waa in sanad u buuxsamay".title(),
-            "Haduu Yahay Riyo waa in uu gaadhay 2 sano ".title(),
+        requirements = [
+            "If they are sheep, they must be one year old.",
+            "If they are Goats, they must be at least 2 years old."
         ]
         return JSONResponse(
             status_code=200,
-            content=jawaab(jw, shuruudo, "neef")
+            content=jawaab(jw, requirements, "heads")
         )
-  
-    if int(xadi) > nisaab[1] and int(xadi) <= nisaab[2]:
+
+    if int(quantity) > nisaab[1] and int(quantity) <= nisaab[2]:
         jw = 2
-        shuruudo = [
-            "Haday Ido yihiin waa in sanad u buuxsamay".title(),
-            "Haday Riyo Yihiin waa in ay gaadheen 2 sano".title(),
+        requirements = [
+            "If they are sheep, they must be one year old.",
+            "If they are Goats, they must be at least 2 years old."
         ]
         return JSONResponse(
             status_code=200,
-            content=jawaab(jw, shuruudo, "neef")
+            content=jawaab(jw, requirements, "heads")
         )
-    if int(xadi) > nisaab[2] and int(xadi) <= nisaab[3]:
+
+    if int(quantity) > nisaab[2] and int(quantity) <= nisaab[3]:
         jw = 3
-        shuruudo = [
-            "Haday Ido yihiin waa in sanad u buuxsamay".title(),
-            "Haday Riyo Yihiin waa in ay gaadheen 2 sano".title(),
+        requirements = [
+            "If they are sheep, they must be one year old.",
+            "If they are Goats, they must be at least 2 years old."
         ]
         return JSONResponse(
             status_code=200,
-            content=jawaab(jw, shuruudo, "neef")
+            content=jawaab(jw, requirements, "heads")
         )
-    if int(xadi) > nisaab[3] and int(xadi) < nisaab[4]:
+
+    if int(quantity) > nisaab[3] and int(quantity) < nisaab[4]:
         jw = 4
-        shuruudo = [
-            "Haday Ido yihiin waa in sanad u buuxsamay".title(),
-            "Haday Riyo Yihiin waa in ay gaadheen 2 sano".title(),
+        requirements = [
+            "If they are sheep, they must be one year old.",
+            "If they are Goats, they must be at least 2 years old."
         ]
         return JSONResponse(
             status_code=200,
-            content=jawaab(jw, shuruudo, "neef")
+            content=jawaab(jw, requirements, "heads")
         )
-    if int(xadi) >= nisaab[4]:
-        jw = int(xadi) // 100
-        shuruudo = [
-            "Haday Ido yihiin waa in sanad u buuxsamay".title(),
-            "Haday Riyo Yihiin waa in ay gaadheen 2 sano".title(),
+
+    if int(quantity) >= nisaab[4]:
+        jw = int(quantity) // 100
+        requirements = [
+            "If they are sheep, they must be one year old.",
+            "If they are Goats, they must be at least 2 years old."
         ]
         return JSONResponse(
             status_code=200,
-            content=jawaab(jw, shuruudo, "neef")
+            content=jawaab(jw, requirements, "heads")
         )
+
 

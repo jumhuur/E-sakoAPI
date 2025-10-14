@@ -45,7 +45,7 @@ async def not_found(request: Request, exc):
     )
 
 
-@app.get("/api/dahab/{nooc},{xadiga}")
+@app.get("/api/gold/{nooc},{xadiga}")
 async def xisaab(nooc:int,xadiga:float):
     if nooc and xadiga:
         return  xisaab_Dahab(nooc,xadiga)
@@ -54,7 +54,7 @@ async def xisaab(nooc:int,xadiga:float):
             content= Errors(467)
         )
 
-@app.get("/api/lacag/{xadi}")
+@app.get("/api/money/{xadi}")
 async def lacag(xadi:int):
     if xadi:
         return Lacag(xadi)
@@ -66,7 +66,7 @@ async def lacag(xadi:int):
 
 
 
-@app.get("/api/fido/{xadi}")
+@app.get("/api/silver/{xadi}")
 async def Fido_sako(xadi:int):
     if xadi:
         return Fido(xadi)
@@ -87,7 +87,7 @@ async def Rikaas_xisaab(xadi:int):
             content= Errors(467)
         )
 
-@app.get("/api/geel/{xadi}")
+@app.get("/api/camels/{xadi}")
 async def xisaab_geel(xadi:int):
     if xadi:
         return Geel(xadi)
@@ -97,7 +97,7 @@ async def xisaab_geel(xadi:int):
             content= Errors(467)
         )
 
-@app.get("/api/lo/{xadi}")
+@app.get("/api/cattle/{xadi}")
 async def xisaab_lo(xadi):
     if xadi:
         return Loa(xadi)
@@ -109,7 +109,7 @@ async def xisaab_lo(xadi):
 
 
 
-@app.get("/api/adhi/{xadi}")
+@app.get("/api/sheep/{xadi}")
 async def xisaab_adhi(xadi):
     if xadi:
         return Adhi(xadi)
@@ -120,10 +120,10 @@ async def xisaab_adhi(xadi):
         )
 
 
-@app.get("/api/dalag/{xadi}")
-async def xisaab_dalag(xadi,nooc=1):
+@app.get("/api/crops/{xadi}")
+async def xisaab_dalag(xadi,Type=1):
     if xadi:
-        return Dalag(xadi,nooc)
+        return Dalag(xadi,Type)
     else:
         return JSONResponse(
             status_code=467,
