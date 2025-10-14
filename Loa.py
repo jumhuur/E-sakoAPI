@@ -18,7 +18,7 @@ def Loa(xadi):
                 "Female is preferred, but male is also acceptable".title(),
                 "It must be a cow".title()
             ]
-            return jawaab(jw, shuruudo, "neef")
+            return jawaab(jw, shuruudo, "heads")
 
         elif int(xadi) > nisaab[1] and int(xadi) < nisaab[2]:
             jw = 1
@@ -27,7 +27,7 @@ def Loa(xadi):
                 "Female is preferred, but male is also acceptable".title(),
                 "It must be a cow".title()
             ]
-            return jawaab(jw, shuruudo, "neef")
+            return jawaab(jw, shuruudo, "heads")
 
         elif int(xadi) > nisaab[1]:
             best_option = None
@@ -65,7 +65,7 @@ def Loa(xadi):
                     f"{best_option['Musina']} cows must be at least two years old".title(),
                     "They must be cows, male or female both are acceptable".title()
                 ]
-                return jawaab(jw, shuruudo, "neef")
+                return jawaab(jw, shuruudo, "heads")
 
             elif best_option["Tabiic"] > 0 and best_option["Musina"] < 1:
                 jw = best_option["Tabiic"]
@@ -73,7 +73,7 @@ def Loa(xadi):
                     f"{best_option['Tabiic']} cows must be at least one year old".title(),
                     "They must be cows, male or female both are acceptable".title()
                 ]
-                return jawaab(jw, shuruudo, "neef")
+                return jawaab(jw, shuruudo, "heads")
 
             elif best_option["Tabiic"] < 1 and best_option["Musina"] > 0:
                 jw = best_option["Musina"]
@@ -81,7 +81,7 @@ def Loa(xadi):
                     f"{best_option['Musina']} cows must be at least two years old".title(),
                     "They must be cows, male or female both are acceptable".title()
                 ]
-                return jawaab(jw, shuruudo, "neef")
+                return jawaab(jw, shuruudo, "heads")
         else:
             return Errors(324)
     else:
