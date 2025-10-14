@@ -61,7 +61,7 @@ def Loa(xadi):
                 shuruudo = [
                     f"waa in sanad u dhamaaday {fiican["Tabiic"]} neef".title(),
                     f"waa in laba sano u dhamaadeen {fiican["Musina"]} neef",
-                    "Waa inay Geel yihiin lab iyo dhadig labada waa lagu bixin karaa"
+                    "Waa inay lo'a yihiin lab iyo dhadig labada waa lagu bixin karaa"
                 ]
                 return jawaab(jw,shuruudo, "neef")
             elif fiican["Tabiic"] > 0 and fiican["Musina"] < 1:

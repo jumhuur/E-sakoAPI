@@ -7,7 +7,7 @@ def Lacag(xadi:int):
     reg = r"^\d+$"
     if not re.match(reg, str(xadi)):
         return JSONResponse(status_code=464, content=Errors(464))
-    if xadi < selfinfo.Nisaab_lacag_d or xadi < selfinfo.Nisaab_Lacag_f:
+    if xadi < selfinfo.Nisaab_lacag_d and xadi < selfinfo.Nisaab_Lacag_f:
         return JSONResponse(status_code=325, content=Errors(325, True))
     if xadi >= selfinfo.Nisaab_lacag_d:
         jw = round(xadi / Sako.Dahab_40, 4)

@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.responses import JSONResponse, HTMLResponse , FileResponse
 from fastapi.staticfiles import StaticFiles
 from Dahab import xisaab_Dahab
 from Lacag import Lacag
@@ -43,10 +43,6 @@ async def not_found(request: Request, exc):
         status_code=404,
         content=Errors(467,False)
     )
-
-# @app.get("/")
-# def home():
-#     return {"code" : 200, "Fariin": "ku soo dhawaaw E-sako API"}
 
 
 @app.get("/api/dahab/{nooc},{xadiga}")
@@ -135,5 +131,11 @@ async def xisaab_dalag(xadi,nooc=1):
         )
 
 
+@app.get("/")
+def Home():
+    return FileResponse("static/index.html")
 
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
+@app.get("/doc")
+def Docs_page():
+    return FileResponse("static/docs.html")
+
