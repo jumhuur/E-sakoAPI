@@ -20,7 +20,7 @@ The API provides **fast and reliable responses** based on the Qur’an and Sunna
 
 ---
 
-## 🔍 Test the API
+## 🔍 Documentation
 
 Visit: [https://esakoapi.org](https://esakoapi.org)
 
@@ -33,7 +33,7 @@ Visit: [https://esakoapi.org](https://esakoapi.org)
 **Endpoint:**
 
 ```bash
-https://esakoapi.org/api/gold/24,145
+https://esakoapi.org/api/gold/145?Type=24
 ```
 
 **Description:**
@@ -43,6 +43,8 @@ The prefix *https://esakoapi.org/api/* is always required.
 | Type of Calculation | Gold Karat Type           | Weight (in grams)               |
 | ------------------- | ------------------------- | ------------------------------- |
 | gold = `string`     | 24,21,22,20,18,16 = `int` | amount of gold in grams = `int` |
+
+the default Type is 24
 
 **Sample Response:**
 
@@ -340,6 +342,11 @@ except requests.exceptions.RequestException as e:
     print("Error:", e)
 ```
 
+## 🤝 Contribute
+
+This is an open-source project licensed under **MIT**.  
+Contributions are welcome!
+
 ---
 
 ## ⚠️ Note
@@ -348,11 +355,6 @@ This project is still under testing.
 If you find any **legal, textual, or technical errors**, feel free to report them.
 
 ---
-
-## 🤝 Contribute
-
-This is an open-source project licensed under **MIT**.  
-Contributions are welcome!
 
 📧 **Email:** jumhuur123@hotmail.com  
 📞 **Phone:** +25263464519

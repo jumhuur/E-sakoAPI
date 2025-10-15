@@ -4,6 +4,3 @@ class skawaat(BaseModel):
     call_counts:int
     last_call:str
 
-
-class calc_sakaat(BaseModel):
-    pass

@@ -4,13 +4,21 @@ import re
 from Errors import Errors
 from jawaabo import jawaab
 
-
-def saafi(nooc: int, xadiga: int) -> int:
+def saafi(nooc: int,xadiga: int) -> int: 
+    """
+    istikhlaas ayaa loo yaqaanaa hawsha function waxana ay ka dhigantahay 
+    in la soo saaro noocyada kala duwan ee dahabka mid walba inta uu ka yahay saafi 
+    Tusaale nooca 24 waa safi 100% laakiin 22,21,20,18,16 dhamaantood noocyadan maaha saafi 
+    sidaas darteed si loo xisaabiyo sakada ka baxaysa waa in la ogaado xadiga la xisaabinya ee ka tirsan
+    tusaale ahaan nooca 22-ka ah inta uu saafi ka yahay sidan hoose oo kale 
+    145-giraam oo dahab ah nooca 22-ka intee dahab saafi ah 145-kaas marka la eego 
+    shaqadaas ayaa halkan lagu qabanaya
+    """
     result = (xadiga * nooc) / Sako.Noocyo["24"]
     return result
 
 
-def xisaab_Dahab(nooc: int, xadiga: float):
+def xisaab_Dahab(xadiga: float, nooc: int):
     reg = r"^\d{2}$"
     if not re.match(reg, str(nooc)):
         return JSONResponse(status_code=465, content=Errors(465))

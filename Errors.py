@@ -4,16 +4,16 @@ URL_DOC = "https://esakoapi.org/doc"
 
 Errors_Code_messages = {
     # global
-    404: "This URL does not exist.",
+    404: "This URL does not exist Read more details here: {URL_DOC}.",
 
     # Errors
     460: "Please try again later.",
     461: "Please enter a valid numeric amount.",
     462: "The option you selected is not allowed.",
-    463: "The selected type is not among the recognized gold types.",
-    464: "Please use numbers only.",
+    463: "The selected type is not among the recognized gold types Read more details here: {URL_DOC}.",
+    464: "Please use numbers only Read more details here: {URL_DOC} .",
     465: "Please use a number that contains at least two digits.",
-    466: "Zakat is not applicable to the amount you entered for this gold type.",
+    466: "Zakat is not applicable to the amount you entered for this gold type Read more details here: {URL_DOC}.",
     467: f"Invalid URL. Read more details here: {URL_DOC}",
     468: f"The calculation type you requested is invalid. Accepted types are 1, 2, or 3. Read more details here: {URL_DOC}",
 

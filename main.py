@@ -45,10 +45,10 @@ async def not_found(request: Request, exc):
     )
 
 
-@app.get("/api/gold/{nooc},{xadiga}")
-async def xisaab(nooc:int,xadiga:float):
-    if nooc and xadiga:
-        return  xisaab_Dahab(nooc,xadiga)
+@app.get("/api/gold/{xadiga}")
+async def xisaab(xadiga:float,Type:int=24,):
+    if Type and xadiga:
+        return  xisaab_Dahab(xadiga,Type)
     raise JSONResponse(
             status_code=467,
             content= Errors(467)
