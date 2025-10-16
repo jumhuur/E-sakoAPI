@@ -3,8 +3,12 @@ from dotenv import load_dotenv
 import os
 import json
 from datetime import datetime
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
 
 load_dotenv()
+
+dateTime  = datetime.now()
 
 class Sako():
     # Noocyada Dahabka
@@ -73,7 +77,43 @@ class Sako():
             self.Nisaab_Lacag_f:int = self.Qiimah_fidada_1G * Sako.Nisaab_Fidada # waa nisaabka lacagta marka fido lagu xisaabiyo
         else:
             raise RuntimeError("Ma Helin Wali Qiime Saxa !")
+
+    @staticmethod
+    def data_collection(xadiga,nooc=0):
+        data = {
+            "Xadig": xadiga,
+            "nooca": nooc,
+            "date": dateTime.strftime("%A %d-%B-%Y"),
+            "time": dateTime.strftime("%I:%M %p")
+        }
+
+        with open("files/reports/data_collection.json", "r") as perv_file:
+            prev_data = json.load(perv_file)
+        prev_data.append(data)
+        with open("files/reports/data_collection.json", "w") as file:
+            json.dump(prev_data,file, indent=4)
     
+    # def greate_result_file(item,amount,Type,Result, conditions,unit):
+    #     pdf = canvas.Canvas("files/reports/result.pdf", pagesize=A4)
+
+    #     pdf.setTitle("Your Zakaat Result")  # Cinwaan
+    #     pdf.setFont("Helvetica-Bold", 18)
+    #     pdf.drawString(100, 790, f"You callculate : {amount}-{unit} of {item}  Type:{Type} ")
+    #     pdf.setFont("Helvetica", 12)
+    #     pdf.drawString(100, 770, f"Result is {Result} {unit}")
+    #     pdf.line(100, 760, 500, 760)
+    #     pdf.drawString(100,735 , "Sakah conditions")
+    #     y = 715
+    #     for numb , condition in enumerate(conditions, start=1):
+    #         pdf.setFont("Helvetica", 12)
+    #         text = f"{numb} .{condition}"
+    #         pdf.drawString(100, y, text)
+    #         y -= 20 
+    #     pdf.drawString(100, 655, f"Date : {dateTime.strftime("%A %d-%B-%Y")}")
+    #     pdf.drawString(100, 635, f"Time : {dateTime.strftime("%I:%M %p")}")
+    #     pdf.drawString(100, 600, "Esakoapi.org")
+
+    #     pdf.save()
+
 
 selfinfo = Sako()
-# print(selfinfo.Qiimah_fidada_1G)

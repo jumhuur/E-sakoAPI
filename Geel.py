@@ -5,6 +5,7 @@ from jawaabo import jawaab
 import re
 
 def Geel(xadi:int):
+    Sako.data_collection(xadi)
     nisaab = {
         1:10,
         2:15,

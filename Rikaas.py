@@ -5,6 +5,7 @@ from jawaabo import jawaab
 import re
 
 def Rikaas(amount: int):
+    Sako.data_collection(amount)
     reg_exp = r"^\d+$"
     if not re.match(reg_exp, str(amount)):
         return JSONResponse(status_code=464, content=Errors(464))

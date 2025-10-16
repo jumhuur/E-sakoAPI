@@ -4,6 +4,7 @@ from jawaabo import jawaab
 import re
 
 def Loa(xadi):
+    Sako.data_collection(xadi)
     nisaab = {
         1: 40,
         2: 60,

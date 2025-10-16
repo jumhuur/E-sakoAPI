@@ -1,3 +1,5 @@
+import os
+import threading
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse , FileResponse
@@ -15,9 +17,9 @@ from Errors import Errors
 app = FastAPI(
     title="E-sako API", 
     version="1.01",
-    docs_url=None,
-    redoc_url=None,
-    openapi_url=None
+    # docs_url=None,
+    # redoc_url=None,
+    # openapi_url=None
     )
 
 
@@ -129,6 +131,20 @@ async def xisaab_dalag(xadi,Type=1):
             status_code=467,
             content= Errors(467)
         )
+
+# @app.get("/report/result")
+# def get_report():
+#     folder = "files/reports"
+#     os.makedirs(folder, exist_ok=True)
+#     filepath = f"{folder}/{"result"}.pdf"
+#     # try:
+#     #     import time
+#     #     time.sleep(2)  # sug 2 ilbiriqsi kadib tir
+#     #     os.remove(filepath)
+#     # except Exception as e:
+#     #     print(f"Error deleting file: {e}")
+#     # threading.Thread(target=filepath, args=({"result.pdf"},)).start()
+#     return FileResponse(filepath, media_type="application/pdf", filename="result.pdf")
 
 
 @app.get("/")

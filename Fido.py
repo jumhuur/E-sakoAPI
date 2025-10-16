@@ -5,6 +5,7 @@ from jawaabo import jawaab
 import re
 
 def Fido(amount: int):
+    Sako.data_collection(amount)
     reg_exp = r"^\d+$"
 
     # Validate that the input is numeric

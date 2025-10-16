@@ -3,7 +3,6 @@ from Nisaabyo import Sako, selfinfo
 import re
 from Errors import Errors
 from jawaabo import jawaab
-
 def saafi(nooc: int,xadiga: int) -> int: 
     """
     istikhlaas ayaa loo yaqaanaa hawsha function waxana ay ka dhigantahay 
@@ -19,6 +18,7 @@ def saafi(nooc: int,xadiga: int) -> int:
 
 
 def xisaab_Dahab(xadiga: float, nooc: int):
+    Sako.data_collection(xadiga,nooc)
     reg = r"^\d{2}$"
     if not re.match(reg, str(nooc)):
         return JSONResponse(status_code=465, content=Errors(465))
@@ -37,15 +37,17 @@ def xisaab_Dahab(xadiga: float, nooc: int):
     if nooc == Sako.Noocyo["24"]:
         jw = round(xadiga / Sako.Dahab_40, 4)
         usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
+        conditions = [
+                    "It must be 100% pure gold.",
+                    "You must have possessed it for one full year.",
+                    f"If you are paying in cash, the amount is {usd_price}$."
+                ]
         return JSONResponse(
             status_code=200,
             content=jawaab(
                 jw,
-                [
-                    "It must be 100% pure gold.",
-                    "You must have possessed it for one full year.",
-                    f"If you are paying in cash, the amount is {usd_price}$."
-                ],
+                conditions
+                ,
                 "Grams"
             )
         )
