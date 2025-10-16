@@ -227,21 +227,21 @@ The prefix *https://esakoapi.org/api/* is always required.
 
 ---
 
-### 6. Cattle Zakat
+### 6. cows Zakat
 
 **Endpoint:**
 
 ```bash
-https://esakoapi.org/api/cattle/35
+https://esakoapi.org/api/cows/35
 ```
 
 **Description:**
 
 The prefix *https://esakoapi.org/api/* is always required.
 
-| Type of Calculation | Quantity of Cattle          |
+| Type of Calculation | Quantity of cows            |
 | ------------------- | --------------------------- |
-| cattle = `string`   | 35 number of cattle = `int` |
+| cows = `string`     | 35 number of cattle = `int` |
 
 **Sample Response:**
 

@@ -99,7 +99,7 @@ async def xisaab_geel(xadi:int):
             content= Errors(467)
         )
 
-@app.get("/api/cattle/{xadi}")
+@app.get("/api/cows/{xadi}")
 async def xisaab_lo(xadi):
     if xadi:
         return Loa(xadi)
