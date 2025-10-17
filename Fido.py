@@ -17,7 +17,7 @@ def Fido(amount: int):
         return JSONResponse(status_code=465, content=Errors(465))
 
     # Check if the amount meets the minimum Zakat threshold for silver
-    if amount < Sako.Nisaab_Fidada:
+    if int(amount) < Sako.Nisaab_Fidada:
         return JSONResponse(status_code=321, content=Errors(321, True))
 
     # Zakat calculation

@@ -128,16 +128,16 @@ def Geel(xadi:int):
                 f"{ugu_fiican['labuun']} camels must be two years old".title(),
                 "They must be female".title(), 
                 ]
-                return jawaab(jw, shuruudo, "heads") 
+                return JSONResponse(status_code=200,content=jawaab(jw, shuruudo, "heads")) 
             elif ugu_fiican["xiqa"] > 0 and ugu_fiican["labuun"] < 1:
                 jw = ugu_fiican["Sako"]
                 shuruudo = [f"{ugu_fiican["xiqa"]} camels must be three years old".title(), 
                 "They must be female".title(), 
                 ]
-                return jawaab(jw, shuruudo, "heads")
+                return JSONResponse(status_code=200,content=jawaab(jw, shuruudo, "heads"))
             elif ugu_fiican["xiqa"] < 1 and ugu_fiican["labuun"] > 0:
                 jw = ugu_fiican["Sako"]
                 shuruudo = [f"{ugu_fiican["labuun"]} camels must be two years old".title(), 
                 "They must be female".title(), 
                 ]
-                return jawaab(jw, shuruudo, "heads")
+                return JSONResponse(status_code=200,content=jawaab(jw, shuruudo, "heads"))

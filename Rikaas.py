@@ -10,7 +10,7 @@ def Rikaas(amount: int):
     if not re.match(reg_exp, str(amount)):
         return JSONResponse(status_code=464, content=Errors(464))
 
-    if amount < Sako.Nisaab_Rikaas:
+    if int(amount) < Sako.Nisaab_Rikaas:
         return JSONResponse(status_code=323, content=Errors(323, True))
 
     # Zakat calculation

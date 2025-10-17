@@ -11,12 +11,12 @@ def Lacag(amount: int):
         return JSONResponse(status_code=464, content=Errors(464))
     
     # Check if amount meets either of the Zakat thresholds (gold or silver)
-    if amount < selfinfo.Nisaab_lacag_d and amount < selfinfo.Nisaab_Lacag_f:
+    if int(amount) < selfinfo.Nisaab_lacag_d and int(amount) < selfinfo.Nisaab_Lacag_f:
         return JSONResponse(status_code=325, content=Errors(325, True))
     
-    # If amount meets gold threshold
-    if amount >= selfinfo.Nisaab_lacag_d:
-        jw = round(amount / Sako.Dahab_40, 4)
+    # If int(amount) meets gold threshold
+    if int(amount) >= selfinfo.Nisaab_lacag_d:
+        jw = round(int(amount) / Sako.Dahab_40, 4)
         requirements = [
             "The amount must be in US dollars 'USD'.",
             "You must have possessed it for one full year.",
@@ -25,8 +25,8 @@ def Lacag(amount: int):
         return JSONResponse(status_code=200, content=jawaab(jw, requirements, "$"))
     
     # If amount meets silver threshold
-    if amount >= selfinfo.Nisaab_Lacag_f:
-        jw = round(amount / Sako.Dahab_40, 4)
+    if int(amount) >= selfinfo.Nisaab_Lacag_f:
+        jw = round(int(amount) / Sako.Dahab_40, 4)
         requirements = [
             "The amount must be in US dollars 'USD'.",
             "You must have possessed it for one full year.",

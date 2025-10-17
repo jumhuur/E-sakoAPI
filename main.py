@@ -13,13 +13,14 @@ from Loa import Loa
 from Adhi import Adhi
 from Dalag import Dalag
 from Errors import Errors
+from Gold_silver_price import gold_silver_price
 #app
 app = FastAPI(
     title="E-sako API", 
     version="1.01",
-    # docs_url=None,
-    # redoc_url=None,
-    # openapi_url=None
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None
     )
 
 
@@ -131,6 +132,13 @@ async def xisaab_dalag(xadi,Type=1):
             status_code=467,
             content= Errors(467)
         )
+
+
+@app.get("/api/price")
+async def Price():
+    if True:
+        return gold_silver_price()
+
 
 # @app.get("/report/result")
 # def get_report():
