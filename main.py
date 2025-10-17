@@ -18,9 +18,9 @@ from Gold_silver_price import gold_silver_price
 app = FastAPI(
     title="E-sako API", 
     version="1.01",
-    docs_url=None,
-    redoc_url=None,
-    openapi_url=None
+    # docs_url=None,
+    # redoc_url=None,
+    # openapi_url=None
     )
 
 
