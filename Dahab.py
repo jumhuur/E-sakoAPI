@@ -17,9 +17,12 @@ def saafi(nooc: int,xadiga: int) -> int:
     return result
 
 
-def xisaab_Dahab(xadiga: float, nooc: int):
+def xisaab_Dahab(xadiga:int, nooc: int):
     Sako.data_collection(xadiga,nooc)
     reg = r"^\d{2}$"
+    reg_exp = r"^\d+$"
+    if not re.match(reg_exp, str(xadiga)):
+        return JSONResponse(status_code=461, content=Errors(461))
     if not re.match(reg, str(nooc)):
         return JSONResponse(status_code=465, content=Errors(465))
     grams = []
@@ -29,13 +32,13 @@ def xisaab_Dahab(xadiga: float, nooc: int):
     if nooc not in grams:
         return JSONResponse(status_code=463, content=Errors(463))
 
-    if type(xadiga) != float:
-        return JSONResponse(status_code=461, content=Errors(461))
-    if xadiga < Sako.Nisaab_dahab:
+    # if type(xadiga) != int:
+    #     return JSONResponse(status_code=461, content=Errors(461))
+    if int(xadiga) < Sako.Nisaab_dahab:
         return JSONResponse(status_code=320, content=Errors(320, True))
         # The actual calculation starts here
     if nooc == Sako.Noocyo["24"]:
-        jw = round(xadiga / Sako.Dahab_40, 4)
+        jw = round(int(xadiga) / Sako.Dahab_40, 4)
         usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
         conditions = [
                     "It must be 100% pure gold.",
@@ -53,7 +56,7 @@ def xisaab_Dahab(xadiga: float, nooc: int):
         )
 
     if nooc == Sako.Noocyo["22"]:
-        d_saafi = saafi(nooc, xadiga)
+        d_saafi = saafi(nooc, int(xadiga))
         if d_saafi >= Sako.Nisaab_dahab:
             jw = round(d_saafi / Sako.Dahab_40, 4)
             usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
@@ -73,7 +76,7 @@ def xisaab_Dahab(xadiga: float, nooc: int):
             return Errors(466, True)
 
     if nooc == Sako.Noocyo["21"]:
-        d_saafi = saafi(nooc, xadiga)
+        d_saafi = saafi(nooc, int(xadiga))
         if d_saafi >= Sako.Nisaab_dahab:
             jw = round(d_saafi / Sako.Dahab_40, 4)
             usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
@@ -93,7 +96,7 @@ def xisaab_Dahab(xadiga: float, nooc: int):
             return Errors(466, True)
 
     if nooc == Sako.Noocyo["20"]:
-        d_saafi = saafi(nooc, xadiga)
+        d_saafi = saafi(nooc, int(xadiga))
         if d_saafi >= Sako.Nisaab_dahab:
             jw = round(d_saafi / Sako.Dahab_40, 4)
             usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
@@ -113,7 +116,7 @@ def xisaab_Dahab(xadiga: float, nooc: int):
             return Errors(466, True)
 
     if nooc == Sako.Noocyo["18"]:
-        d_saafi = saafi(nooc, xadiga)
+        d_saafi = saafi(nooc, int(xadiga))
         if d_saafi >= Sako.Nisaab_dahab:
             jw = round(d_saafi / Sako.Dahab_40, 4)
             usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
@@ -133,7 +136,7 @@ def xisaab_Dahab(xadiga: float, nooc: int):
             return Errors(466, True)
 
     if nooc == Sako.Noocyo["16"]:
-        d_saafi = saafi(nooc, xadiga)
+        d_saafi = saafi(nooc, int(xadiga))
         if d_saafi >= Sako.Nisaab_dahab:
             jw = round(d_saafi / Sako.Dahab_40, 4)
             usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)

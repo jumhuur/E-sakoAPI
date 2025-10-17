@@ -48,7 +48,7 @@ async def not_found(request: Request, exc):
 
 
 @app.get("/api/gold/{xadiga}")
-async def xisaab(xadiga:float,Type:int=24,):
+async def xisaab(xadiga,Type:int=24,):
     if Type and xadiga:
         return  xisaab_Dahab(xadiga,Type)
     raise JSONResponse(
@@ -57,7 +57,7 @@ async def xisaab(xadiga:float,Type:int=24,):
         )
 
 @app.get("/api/money/{xadi}")
-async def lacag(xadi:int):
+async def lacag(xadi):
     if xadi:
         return Lacag(xadi)
     else:
@@ -69,7 +69,7 @@ async def lacag(xadi:int):
 
 
 @app.get("/api/silver/{xadi}")
-async def Fido_sako(xadi:int):
+async def Fido_sako(xadi):
     if xadi:
         return Fido(xadi)
     else:
@@ -80,7 +80,7 @@ async def Fido_sako(xadi:int):
 
 
 @app.get("/api/rikaas/{xadi}")
-async def Rikaas_xisaab(xadi:int):
+async def Rikaas_xisaab(xadi):
     if xadi:
         return Rikaas(xadi)
     else:
@@ -90,7 +90,7 @@ async def Rikaas_xisaab(xadi:int):
         )
 
 @app.get("/api/camels/{xadi}")
-async def xisaab_geel(xadi:int):
+async def xisaab_geel(xadi):
     if xadi:
         return Geel(xadi)
     else:

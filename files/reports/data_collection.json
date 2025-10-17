@@ -1,50 +1,830 @@
 [
-  {
-    "Xadig": 999,
-    "nooca": 0,
-    "date": "Thursday 16-October-2025",
-    "time": "07:19 PM"
-  },
-  {
-    "Xadig": 999,
-    "nooca": 0,
-    "date": "Thursday 16-October-2025",
-    "time": "07:20 PM"
-  },
-  {
-    "Xadig": 999,
-    "nooca": 0,
-    "date": "Thursday 16-October-2025",
-    "time": "07:20 PM"
-  },
-  {
-    "Xadig": "90",
-    "nooca": 0,
-    "date": "Thursday 16-October-2025",
-    "time": "07:20 PM"
-  },
-  {
-    "Xadig": "900",
-    "nooca": "3",
-    "date": "Thursday 16-October-2025",
-    "time": "07:20 PM"
-  },
-  {
-    "Xadig": "900",
-    "nooca": "3",
-    "date": "Thursday 16-October-2025",
-    "time": "07:20 PM"
-  },
-  {
-    "Xadig": "900",
-    "nooca": "3",
-    "date": "Thursday 16-October-2025",
-    "time": "07:20 PM"
-  },
-  {
-    "Xadig": 900.0,
-    "nooca": 16,
-    "date": "Thursday 16-October-2025",
-    "time": "07:23 PM"
-  }
+    {
+        "Xadig": 999,
+        "nooca": 0,
+        "date": "Thursday 16-October-2025",
+        "time": "07:19 PM"
+    },
+    {
+        "Xadig": 999,
+        "nooca": 0,
+        "date": "Thursday 16-October-2025",
+        "time": "07:20 PM"
+    },
+    {
+        "Xadig": 999,
+        "nooca": 0,
+        "date": "Thursday 16-October-2025",
+        "time": "07:20 PM"
+    },
+    {
+        "Xadig": "90",
+        "nooca": 0,
+        "date": "Thursday 16-October-2025",
+        "time": "07:20 PM"
+    },
+    {
+        "Xadig": "900",
+        "nooca": "3",
+        "date": "Thursday 16-October-2025",
+        "time": "07:20 PM"
+    },
+    {
+        "Xadig": "900",
+        "nooca": "3",
+        "date": "Thursday 16-October-2025",
+        "time": "07:20 PM"
+    },
+    {
+        "Xadig": "900",
+        "nooca": "3",
+        "date": "Thursday 16-October-2025",
+        "time": "07:20 PM"
+    },
+    {
+        "Xadig": 900.0,
+        "nooca": 16,
+        "date": "Thursday 16-October-2025",
+        "time": "07:23 PM"
+    },
+    {
+        "Xadig": 120,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:02 AM"
+    },
+    {
+        "Xadig": 120,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:06 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:09 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:11 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:13 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:20 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:21 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:24 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:25 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:28 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:28 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:31 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:31 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:33 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:35 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:41 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:41 AM"
+    },
+    {
+        "Xadig": 145.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:43 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:44 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:45 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:46 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:46 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:46 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:46 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:46 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:48 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:48 AM"
+    },
+    {
+        "Xadig": 441,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:57 AM"
+    },
+    {
+        "Xadig": 441,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "10:58 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:01 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:04 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:05 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:05 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:05 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:05 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:05 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:05 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:06 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:06 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:06 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:07 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:07 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:08 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:08 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:08 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:08 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:08 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:09 AM"
+    },
+    {
+        "Xadig": "asdsada",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:09 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:18 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:18 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:18 AM"
+    },
+    {
+        "Xadig": 124.0,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:19 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:19 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:19 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:21 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:21 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:21 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 66,
+        "date": "Friday 17-October-2025",
+        "time": "11:22 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:27 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:27 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:27 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:29 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:29 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:29 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:30 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:30 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 66,
+        "date": "Friday 17-October-2025",
+        "time": "11:30 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:30 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:30 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:30 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:30 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:30 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:30 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:32 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:32 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:32 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:32 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:32 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:32 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:32 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:36 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:36 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 0,
+        "date": "Friday 17-October-2025",
+        "time": "11:37 AM"
+    },
+    {
+        "Xadig": "105Type=22",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:38 AM"
+    },
+    {
+        "Xadig": "105Type=22",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:38 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 22,
+        "date": "Friday 17-October-2025",
+        "time": "11:38 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 22,
+        "date": "Friday 17-October-2025",
+        "time": "11:39 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 22,
+        "date": "Friday 17-October-2025",
+        "time": "11:40 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:40 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:40 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 66,
+        "date": "Friday 17-October-2025",
+        "time": "11:40 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:42 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:42 AM"
+    },
+    {
+        "Xadig": 100,
+        "nooca": 66,
+        "date": "Friday 17-October-2025",
+        "time": "11:42 AM"
+    },
+    {
+        "Xadig": 124,
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:44 AM"
+    },
+    {
+        "Xadig": "asdsa",
+        "nooca": 24,
+        "date": "Friday 17-October-2025",
+        "time": "11:44 AM"
+    },
+    {
+        "Xadig": 100,
+        "nooca": 66,
+        "date": "Friday 17-October-2025",
+        "time": "11:44 AM"
+    },
+    {
+        "Xadig": "105",
+        "nooca": 22,
+        "date": "Friday 17-October-2025",
+        "time": "11:48 AM"
+    }
 ]

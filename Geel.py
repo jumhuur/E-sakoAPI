@@ -20,9 +20,9 @@ def Geel(xadi:int):
     reg_exp = r"^\d+$"
     if not re.match(reg_exp, str(xadi)):
         return JSONResponse(status_code=464, content=Errors(464))
-    if xadi < Sako.Nisaab_Geel:
+    if int(xadi) < Sako.Nisaab_Geel:
         return JSONResponse(status_code=326, content=Errors(326))
-    if xadi > Sako.Nisaab_Geel and xadi < nisaab[1]:
+    if int(xadi) > Sako.Nisaab_Geel and int(xadi) < nisaab[1]:
         jw = 1
         shuruudo = ["The payment will be livestock (sheep)".title(), 
                     "Sheep must be at least one year old".title(),
@@ -30,7 +30,7 @@ def Geel(xadi:int):
                     "Male and female animals are treated equally".title()
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"heads" ))
-    if xadi >=  nisaab[1] and xadi < nisaab[2]:
+    if int(xadi) >=  nisaab[1] and int(xadi) < nisaab[2]:
         jw = 2
         shuruudo = ["The payment will be livestock (sheep)".title(), 
                     "Sheep must be at least one year old".title(),
@@ -38,7 +38,7 @@ def Geel(xadi:int):
                     "Male and female animals are treated equally".title()
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"heads"))
-    if xadi >=  nisaab[2] and xadi < nisaab[3]:
+    if int(xadi) >=  nisaab[2] and int(xadi) < nisaab[3]:
         jw = 3
         shuruudo = ["The payment will be livestock (sheep)".title(), 
                     "Sheep must be at least one year old".title(),
@@ -46,7 +46,7 @@ def Geel(xadi:int):
                     "Male and female animals are treated equally".title()
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"heads"))
-    elif xadi >=  nisaab[3] and xadi < nisaab[4]:
+    elif int(xadi) >=  nisaab[3] and int(xadi) < nisaab[4]:
         jw = 4
         shuruudo = ["The payment will be livestock (sheep)".title(), 
                     "Sheep must be at least one year old".title(),
@@ -54,58 +54,58 @@ def Geel(xadi:int):
                     "Male and female animals are treated equally".title()
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"heads" ))
-    if xadi >=  nisaab[4] and xadi < nisaab[5]:
+    if int(xadi) >=  nisaab[4] and int(xadi) < nisaab[5]:
         jw = 1
         shuruudo = ["The payment will be a camel".title(), 
                     "It must have entered its second year".title(),
                     "It must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"heads" ))
-    if xadi >=  nisaab[5] and xadi < nisaab[6]:
+    if int(xadi) >=  nisaab[5] and int(xadi) < nisaab[6]:
         jw = 1
         shuruudo = ["The payment will be a camel".title(), 
                     "It must have entered its third year".title(),
                     "It must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"heads" ))
-    if xadi >=  nisaab[6] and xadi < nisaab[7]:
+    if int(xadi) >=  nisaab[6] and int(xadi) < nisaab[7]:
         jw = 1
         shuruudo = ["The payment will be a camel".title(), 
                     "It must have entered its fourth year".title(),
                     "It must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"heads" ))
-    if xadi >=  nisaab[6] and xadi < nisaab[7]:
+    if int(xadi) >=  nisaab[6] and int(xadi) < nisaab[7]:
         jw = 2
         shuruudo = ["They must be camels".title(), 
                     "They must have entered their second year".title(),
                     "They must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"heads" ))
-    if xadi >=  nisaab[7] and xadi < nisaab[8]:
+    if int(xadi) >=  nisaab[7] and int(xadi) < nisaab[8]:
         jw = 2
         shuruudo = ["They must be camels".title(), 
                     "They must have entered their fourth year".title(),
                     "They must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"heads" ))
-    if xadi >=  nisaab[8] and xadi < nisaab[9]:
+    if int(xadi) >=  nisaab[8] and int(xadi) < nisaab[9]:
         jw = 3
         shuruudo = ["They must be camels".title(), 
                     "They must have entered their fifth year".title(),
                     "They must be female".title(), 
                     ]
         return JSONResponse(status_code=200, content=jawaab(jw, shuruudo,"heads" ))
-    elif xadi > nisaab[9]:
+    elif int(xadi) > nisaab[9]:
             ugu_fiican = None
-            khamsiin = xadi // 50
-            arbaciin = xadi // 40
+            khamsiin = int(xadi) // 50
+            arbaciin = int(xadi) // 40
             for xiqa in range(khamsiin + 1):
                 for labuun in range(arbaciin +1):
                     la_daboolay = 50*xiqa + 40*labuun
-                    if la_daboolay > xadi:
+                    if la_daboolay > int(xadi):
                         continue
-                    Hadhaa = xadi - la_daboolay
+                    Hadhaa = int(xadi) - la_daboolay
                     stash = {
                         "xiqa":xiqa,
                         "labuun":labuun,
