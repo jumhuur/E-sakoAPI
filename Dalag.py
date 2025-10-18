@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 from Nisaabyo import Sako, selfinfo
 from jawaabo import jawaab
 
+
 def Dalag(quantity: int, option: int):
     Sako.data_collection(quantity,option)
     rates = {1: 1/10, 2: 1/20, 3: 3/40}  # 10%, 5%, 7.5%
@@ -13,6 +14,8 @@ def Dalag(quantity: int, option: int):
     if not re.match(reg_exp, str(quantity)):
         return JSONResponse(status_code=464, content=Errors(464))
 
+    if not re.match(reg_exp, str(option)):
+        return JSONResponse(status_code=464, content=Errors(464))
 
     if int(option) not in valid_options:
         return JSONResponse(status_code=468, content=Errors(468))

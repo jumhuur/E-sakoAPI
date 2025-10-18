@@ -19,7 +19,6 @@ Time_format = f"{date.strftime("%I:%M %p")}"
 #         "invalid":invalida_amount
 #     }
 
-    
 def test_valid_amount_and_nisab():
     amount = 55
     response = Geel(amount)
