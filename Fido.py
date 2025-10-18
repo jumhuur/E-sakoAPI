@@ -8,15 +8,12 @@ def Fido(amount: int):
     Sako.data_collection(amount)
     reg_exp = r"^\d+$"
 
-    # Validate that the input is numeric
     if not re.match(reg_exp, str(amount)):
         return JSONResponse(status_code=464, content=Errors(464))
 
-    # Validate that the input is an integer
     if type(amount) != int:
         return JSONResponse(status_code=465, content=Errors(465))
 
-    # Check if the amount meets the minimum Zakat threshold for silver
     if int(amount) < Sako.Nisaab_Fidada:
         return JSONResponse(status_code=321, content=Errors(321, True))
 

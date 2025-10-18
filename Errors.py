@@ -21,7 +21,7 @@ Errors_Code_messages = {
     320: "The amount of gold you entered has not reached the Zakat threshold (Nisaab). The Nisaab for gold is 85 grams.",
     321: f"The amount of silver has not reached the Zakat threshold. The Nisaab for silver is {round(Sako.Nisaab_Fidada, 4)} grams.",
     322: f"The number of sheep you entered has not reached the Zakat threshold. The Nisaab for sheep is {Sako.Nisaab_adhi} heads.",
-    323: f"The amount of jewelry has not reached the Zakat threshold. The Nisaab for jewelry is {round(Sako.Nisaab_Rikaas, 4)} grams.",
+    323: f"The amount of rikaas has not reached the Zakat threshold. The Nisaab for rikaas is {round(Sako.Nisaab_Rikaas, 4)} grams.",
     324: f"The number of cows you entered has not reached the Zakat threshold. The Nisaab for cows is {Sako.Nisaab_lo} heads.",
     325: f"The amount of money has not reached the Zakat threshold. The Nisaab for money is {round(selfinfo.Nisaab_lacag_d, 4)} USD (based on gold) or {round(selfinfo.Nisaab_Lacag_f, 4)} USD (based on silver).",
     326: f"The number of camels you entered has not reached the Zakat threshold. The Nisaab for camels is {Sako.Nisaab_Geel} heads.",

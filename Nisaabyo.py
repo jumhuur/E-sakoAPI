@@ -67,27 +67,23 @@ class Sako():
         
     @property
     def gold_price(self):
-        Dahab_data = requests.get(os.getenv("URL_DAHAB"))
+        Dahab_data = requests.get(os.getenv("URL_DAHAB"), headers={"Cache-Control": "no-cache", "Pragma": "no-cache"} )
         if Dahab_data.status_code == 200:
-            byte_data = list(Dahab_data)[0]
-            json_string = byte_data.decode('utf-8')
-            info = json.loads(json_string)
-            self.qiimaha_ounce = info["price"]
-            self.nooca = info["symbol"]
-            self.Wakhtiga_update_ka = info["updatedAt"]
+            response = Dahab_data.json()
+            self.qiimaha_ounce = response["price"]
+            self.nooca = response["symbol"]
+            self.Wakhtiga_update_ka = response["updatedAt"]
             return self.qiimaha_ounce
         else:
             raise RuntimeError("Ma Helin Wali Qiime Saxa !")
 
     @property
     def silver_price(self):
-        Fido_data = requests.get(os.getenv("URL_FIDO"))
+        Fido_data = requests.get(os.getenv("URL_FIDO"), headers={"Cache-Control": "no-cache", "Pragma": "no-cache"})
         if Fido_data.status_code == 200:
+            response = Fido_data.json()
             # silver
-            byte_fido = list(Fido_data)[0]
-            json_string_f = byte_fido.decode('utf-8')
-            fido_info = json.loads(json_string_f)
-            self.qiimaha_ounce_fido = fido_info["price"]
+            self.qiimaha_ounce_fido = response["price"]
             return self.qiimaha_ounce_fido
         else:
             raise RuntimeError("Ma Helin Wali Qiime Saxa !")

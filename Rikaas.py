@@ -23,4 +23,4 @@ def Rikaas(amount: int):
         f"If paying in cash, the amount is {money}$."
     ]
 
-    return jawaab(jw, requirements, "Grams")
+    return JSONResponse(status_code=200,content=jawaab(jw, requirements, "Grams"))

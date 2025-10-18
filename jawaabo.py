@@ -1,5 +1,8 @@
 from datetime import datetime
-date = datetime.now()
+import pytz
+
+local_time = pytz.timezone("Africa/Mogadishu")
+date = datetime.now(local_time)
 Date_format = f"{date.strftime("%A %d-%B-%Y")}"
 Time_format = f"{date.strftime("%I:%M %p")}"
 def jawaab(jawaab:int, shuruudo:list, nooc, code=200, date=Date_format, time=Time_format):
