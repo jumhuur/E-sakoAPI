@@ -1,3 +1,4 @@
+from random import randint
 import requests
 from dotenv import load_dotenv
 import os
@@ -7,8 +8,6 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 
 load_dotenv()
-
-dateTime  = datetime.now()
 
 class Sako():
     # Noocyada Dahabka
@@ -79,7 +78,9 @@ class Sako():
 
     @property
     def silver_price(self):
-        Fido_data = requests.get(os.getenv("URL_FIDO"), headers={"Cache-Control": "no-cache", "Pragma": "no-cache"})
+        URL = os.getenv("URL_FIDO")
+        new_url = f"{URL}?_={randint(1,999999)}"
+        Fido_data = requests.get(URL, headers={"Cache-Control": "no-cache", "Pragma": "no-cache"})
         if Fido_data.status_code == 200:
             response = Fido_data.json()
             # silver
@@ -92,6 +93,7 @@ class Sako():
 
     @staticmethod
     def data_collection(xadiga,nooc=0):
+        dateTime  = datetime.now()
         data = {
             "Xadig": xadiga,
             "nooca": nooc,
