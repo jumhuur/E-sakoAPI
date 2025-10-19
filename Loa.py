@@ -1,6 +1,7 @@
 from Errors import Errors
 from Nisaabyo import Sako , selfinfo
 from jawaabo import jawaab
+from fastapi.responses import JSONResponse
 import re
 
 def Loa(xadi):
@@ -12,7 +13,7 @@ def Loa(xadi):
 
     reg_exp = r"^\d+$"
     if not re.match(reg_exp, str(xadi)):
-        return Errors(464)
+        return JSONResponse(status_code=464, content=Errors(464))
     if int(xadi) > Sako.Nisaab_lo and int(xadi) < nisaab[1]:
         jw = 1
         shuruudo = [
@@ -20,18 +21,18 @@ def Loa(xadi):
             "Female is preferred, but male is also acceptable".title(),
             "It must be a cow".title()
         ]
-        return jawaab(jw, shuruudo, "heads")
+        return JSONResponse(status_code=200, content=jawaab(jw, shuruudo, "heads"))
 
-    elif int(xadi) > nisaab[1] and int(xadi) < nisaab[2]:
+    if int(xadi) >= nisaab[1] and int(xadi) < nisaab[2]:
         jw = 1
         shuruudo = [
             "It must have entered its third year (Musina or similar)".title(),
             "Female is preferred, but male is also acceptable".title(),
             "It must be a cow".title()
         ]
-        return jawaab(jw, shuruudo, "heads")
+        return JSONResponse(status_code=200, content=jawaab(jw, shuruudo, "heads"))
 
-    elif int(xadi) > nisaab[1]:
+    if int(xadi) >= nisaab[1]:
         best_option = None
         tabiic_count = int(xadi) // 30
         musina_count = int(xadi) // 40
@@ -67,22 +68,22 @@ def Loa(xadi):
                 f"{best_option['Musina']} cows must be at least two years old".title(),
                 "They must be cows, male or female both are acceptable".title()
             ]
-            return jawaab(jw, shuruudo, "heads")
+            return JSONResponse(status_code=200, content=jawaab(jw, shuruudo, "heads"))
 
-        elif best_option["Tabiic"] > 0 and best_option["Musina"] < 1:
+        if best_option["Tabiic"] > 0 and best_option["Musina"] < 1:
             jw = best_option["Tabiic"]
             shuruudo = [
                 f"{best_option['Tabiic']} cows must be at least one year old".title(),
                 "They must be cows, male or female both are acceptable".title()
             ]
-            return jawaab(jw, shuruudo, "heads")
+            return JSONResponse(status_code=200, content=jawaab(jw, shuruudo, "heads"))
 
-        elif best_option["Tabiic"] < 1 and best_option["Musina"] > 0:
+        if best_option["Tabiic"] < 1 and best_option["Musina"] > 0:
             jw = best_option["Musina"]
             shuruudo = [
                 f"{best_option['Musina']} cows must be at least two years old".title(),
                 "They must be cows, male or female both are acceptable".title()
             ]
-            return jawaab(jw, shuruudo, "heads")
+            return JSONResponse(status_code=200, content=jawaab(jw, shuruudo, "heads"))
     else:
-        return Errors(324)
+        return JSONResponse(status_code=324, content=Errors(324))
