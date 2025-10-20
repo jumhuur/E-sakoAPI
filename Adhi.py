@@ -19,7 +19,7 @@ def Adhi(quantity):
     reg_exp = r"^\d+$"
     if not re.match(reg_exp, str(quantity)):
         return JSONResponse(
-            status_code=200,
+            status_code=464,
             content=Errors(464)
         )
 

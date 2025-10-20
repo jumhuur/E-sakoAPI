@@ -44,10 +44,10 @@ class Sako():
     x_kharaskha = 0.05;
     isku_jir = 0.075;
     Nocyada_dahabka = [24,22,21,20,18,16]
-    def __init__(self):
+    def __init__(self,go_price=0,si_price=0):
         # price 
-        self.qiimaha_ounce = gold_price()
-        self.qiimaha_ounce_fido = silver_price()
+        self.qiimaha_ounce = go_price
+        self.qiimaha_ounce_fido = si_price
 
         # clac Types
         self.qiimaha_dahab_24 = self.qiimaha_ounce / Sako.one_ounce
@@ -99,7 +99,7 @@ class Sako():
     #     pdf.save()
 
 
-selfinfo = Sako()
+selfinfo = Sako(gold_price(), silver_price())
 # print(selfinfo.qiimaha_ounce)
 # print(selfinfo.qiimaha_ounce_fido)
 # print("*" * 25)
