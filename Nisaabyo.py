@@ -1,11 +1,8 @@
-from random import randint
-import requests
 from dotenv import load_dotenv
-import os
 import json
 from datetime import datetime
 from reportlab.lib.pagesizes import A4
-from reportlab.pdfgen import canvas
+from Price import gold_price,silver_price
 
 load_dotenv()
 
@@ -49,8 +46,8 @@ class Sako():
     Nocyada_dahabka = [24,22,21,20,18,16]
     def __init__(self):
         # price 
-        self.qiimaha_ounce = self.gold_price
-        self.qiimaha_ounce_fido = self.silver_price
+        self.qiimaha_ounce = gold_price()
+        self.qiimaha_ounce_fido = silver_price()
 
         # clac Types
         self.qiimaha_dahab_24 = self.qiimaha_ounce / Sako.one_ounce
@@ -62,34 +59,6 @@ class Sako():
         # silver
         self.Qiimah_fidada_1G = self.qiimaha_ounce_fido / Sako.one_ounce
         self.Nisaab_Lacag_f:int = self.Qiimah_fidada_1G * Sako.Nisaab_Fidada # waa nisaabka lacagta marka fido lagu xisaabiyo
-
-        
-    @property
-    def gold_price(self):
-        Dahab_data = requests.get(os.getenv("URL_DAHAB"), headers={"Cache-Control": "no-cache", "Pragma": "no-cache"} )
-        if Dahab_data.status_code == 200:
-            response = Dahab_data.json()
-            self.qiimaha_ounce = response["price"]
-            self.nooca = response["symbol"]
-            self.Wakhtiga_update_ka = response["updatedAt"]
-            return self.qiimaha_ounce
-        else:
-            raise RuntimeError("Ma Helin Wali Qiime Saxa !")
-
-    @property
-    def silver_price(self):
-        URL = os.getenv("URL_FIDO")
-        new_url = f"{URL}?_={randint(1,999999)}"
-        Fido_data = requests.get(URL, headers={"Cache-Control": "no-cache", "Pragma": "no-cache"})
-        if Fido_data.status_code == 200:
-            response = Fido_data.json()
-            # silver
-            self.qiimaha_ounce_fido = response["price"]
-            return self.qiimaha_ounce_fido
-        else:
-            raise RuntimeError("Ma Helin Wali Qiime Saxa !")
-
-
 
     @staticmethod
     def data_collection(xadiga,nooc=0):
@@ -131,8 +100,8 @@ class Sako():
 
 
 selfinfo = Sako()
-# print(selfinfo.gold_price)
-# print(selfinfo.silver_price)
+# print(selfinfo.qiimaha_ounce)
+# print(selfinfo.qiimaha_ounce_fido)
 # print("*" * 25)
 # print(Sako.silver_price)
 # print(Sako.gold_price)
