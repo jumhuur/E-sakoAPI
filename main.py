@@ -14,6 +14,9 @@ from Adhi import Adhi
 from Dalag import Dalag
 from Errors import Errors
 from Gold_silver_price import gold_silver_price
+from Price import gold_price,silver_price
+from Nisaabyo import Sako
+
 #app
 app = FastAPI(
     title="E-sako API", 
@@ -51,6 +54,8 @@ async def not_found(request: Request, exc):
 @app.get("/api/gold/{xadiga}")
 async def xisaab(xadiga,Type:int=24,):
     if Type and xadiga:
+        silver_price()
+        gold_price()
         return  xisaab_Dahab(xadiga,Type)
     raise JSONResponse(
             status_code=467,
@@ -60,6 +65,8 @@ async def xisaab(xadiga,Type:int=24,):
 @app.get("/api/money/{xadi}")
 async def lacag(xadi):
     if xadi:
+        silver_price()
+        gold_price()
         return Lacag(xadi)
     else:
         raise JSONResponse(
@@ -72,6 +79,8 @@ async def lacag(xadi):
 @app.get("/api/silver/{xadi}")
 async def Fido_sako(xadi):
     if xadi:
+        silver_price()
+        gold_price()
         return Fido(xadi)
     else:
         return JSONResponse(
