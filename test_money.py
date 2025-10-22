@@ -7,7 +7,7 @@ Date_format = f"{date.strftime("%A %d-%B-%Y")}"
 Time_format = f"{date.strftime("%I:%M %p")}"
 
 def test_mone_valid_cal():
-    amount = 12560
+    amount = "12560"
     response = Lacag(amount)
     expected = JSONResponse(status_code=200, content={
         "code": 200,
@@ -44,7 +44,7 @@ def test_invalid_amount():
 
 
 def test_amount_lessthan_nisaab_gold_and_silver():
-    amount = 100
+    amount = "100"
     response = Lacag(amount)
     expected = JSONResponse(status_code=325, content={
         "code": 325,
@@ -57,7 +57,7 @@ def test_amount_lessthan_nisaab_gold_and_silver():
 
 
 def test_amount_less_than_gold_nisab_and_greater_than_silver_nisab():
-    amount = 1000
+    amount = "1000"
     response = Lacag(amount)
     expected = JSONResponse(status_code=200, content={
         "code": 200,

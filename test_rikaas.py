@@ -8,7 +8,7 @@ from Nisaabyo import Sako
 
 
 def test_valid_rikas_calc():
-    amount = 155
+    amount = "155"
     response = Rikaas(amount)
     requirements = [
         "Must be pure Rikaas.",
@@ -34,7 +34,7 @@ def test_invalid_rikaas_amount():
 
 
 def test_rikaas_amount_less_then_nisaab():
-    amount = 2
+    amount = "2"
     response = Rikaas(amount)
     expected = JSONResponse(status_code=323, content={
         "code":323,

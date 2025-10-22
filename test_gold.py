@@ -9,7 +9,7 @@ Date_format = f"{date.strftime("%A %d-%B-%Y")}"
 Time_format = f"{date.strftime("%I:%M %p")}"
 
 def test_check_if_gold_calc():
-    amount = 124
+    amount = "124"
     Type = 24
     result = xisaab_Dahab(amount,Type)
     expected  = JSONResponse(status_code=200, content={
@@ -38,7 +38,7 @@ def test_check_if_gold_calc():
 
 def test_check_invalid_amount():
     amount = "asdsa"
-    Type = 24
+    Type = "24"
     Expected =JSONResponse(status_code=200, content={
         "code": 461,
         "message": "Please enter a valid numeric amount Read more details this URL: https://esakoapi.org/doc.",
@@ -49,9 +49,9 @@ def test_check_invalid_amount():
 
 
 def test_check_invalid_Type():
-    amount = 100
+    amount = "100"
     Types = {24,22,21,20,18,16}
-    Type = 66
+    Type = "66"
     Expected = JSONResponse(status_code=463, content={
         "code": 463,
         "message": "The selected type is not among the recognized gold types Read more details this URL: https://esakoapi.org/doc.",

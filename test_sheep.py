@@ -14,7 +14,7 @@ Time_format = f"{date.strftime("%I:%M %p")}"
 URL_DOC = "https://esakoapi.org/doc"
 
 def test_valid_amount_response():
-    amount = 56
+    amount = "56"
     response = Adhi(amount)
     requirements = [
     "If they are sheep, they must be one year old.",
@@ -50,7 +50,7 @@ def test_invalid_amount_response():
 
 
 def test_if_amount_greater_then_400_heead():
-    amount = 440
+    amount = "440"
     response = Adhi(amount)
     requirements = [
             "If they are sheep, they must be one year old.",
@@ -70,7 +70,7 @@ def test_if_amount_greater_then_400_heead():
 
 
 def test_if_amount_less_then_nisab():
-    amount = 20
+    amount = "20"
     response = Adhi(amount)
     expected = JSONResponse(status_code=322, content={
         "code": 322,

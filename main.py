@@ -1,9 +1,6 @@
-import os
-import threading
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, HTMLResponse , FileResponse
-from fastapi.staticfiles import StaticFiles
+from fastapi.responses import JSONResponse , FileResponse
 from Dahab import xisaab_Dahab
 from Lacag import Lacag
 from Fido import Fido

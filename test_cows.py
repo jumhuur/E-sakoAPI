@@ -14,7 +14,7 @@ URL_DOC = "https://esakoapi.org/doc"
 
 
 def test_vali_amount_less_then_60():
-    amount = 40
+    amount = "40"
     response = Loa(amount)
     requirements = [
             "It must have entered its third year (Musina or similar)".title(),
@@ -35,7 +35,7 @@ def test_vali_amount_less_then_60():
 
 
 def test_vali_amount_greater_then_60():
-    amount = 160   
+    amount = "160"  
     # waxaa jita cilada xaga tirada qaar sida 180 waxaa la doonayay in jawaabta noqoto 6 Tabiic
     # laakiin waxa uu ku jawaabayaa 3 tabiic + 2 misino oo isku noqonaya 5
     response = Loa(amount)
@@ -68,7 +68,7 @@ def test_invalid_amount():
 
 
 def test_if_amount_less_then_nisab():
-    amount = 4
+    amount = "4"
     response = Loa(amount)
     expected = JSONResponse(status_code=324, content={
         "code":324, 

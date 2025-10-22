@@ -12,8 +12,8 @@ Time_format = f"{date.strftime("%I:%M %p")}"
 URL_DOC = "https://esakoapi.org/doc"
 
 def test_valid_calc_crops_op_1():
-    amount = 990
-    option = 1
+    amount = "990"
+    option = "1"
     requirements = [
             "Must be rain-fed crops.",
             "Must be harvested and storable (e.g., wheat, rice, or maize)."
@@ -34,8 +34,8 @@ def test_valid_calc_crops_op_1():
 
 
 def test_valid_calc_crops_op_2():
-    amount = 990
-    option = 2
+    amount = "990"
+    option = "2"
     requirements = [
             "Must be irrigated crops cultivated with paid water.",
             "Must be harvested and storable (e.g., wheat, rice, or maize)."
@@ -55,8 +55,8 @@ def test_valid_calc_crops_op_2():
 
 
 def test_valid_calc_crops_op_3():
-    amount = 990
-    option = 3
+    amount = "990"
+    option = "3"
     requirements = [
             "Must be crops grown with a combination of rain and paid irrigation.",
             "Must be harvested and storable (e.g., wheat, rice, or maize)."
@@ -79,7 +79,7 @@ def test_valid_calc_crops_op_3():
 
 def test_invalid_amount_crops():
     amount = "invalid"
-    option = 3
+    option = "3"
     response = Dalag(amount, option)
     expected = JSONResponse(status_code=464, content={
         "code": 464,
@@ -91,7 +91,7 @@ def test_invalid_amount_crops():
     assert json.loads(response.body.decode("utf-8")) == json.loads(expected.body.decode("utf-8"))
 
 def test_if_option_is_str():
-    amount = 990
+    amount = "990"
     option = "invalid"
     response = Dalag(amount, option)
     expected = JSONResponse(status_code=464, content={
@@ -105,8 +105,8 @@ def test_if_option_is_str():
 
 
 def test_if_option_int_but_is_valid():
-    amount = 990
-    option = 22
+    amount = "990"
+    option = "22"
     response = Dalag(amount, option)
     expected = JSONResponse(status_code=468, content={
         "code": 468,
@@ -118,8 +118,8 @@ def test_if_option_int_but_is_valid():
     assert json.loads(response.body.decode("utf-8")) == json.loads(expected.body.decode("utf-8"))
 
 def test_crop_amount_less_then_crop_nisab_response():
-    amount = 200
-    option = 1
+    amount = "200"
+    option = "1"
     response = Dalag(amount, option)
     expected = JSONResponse(status_code=327, content=Errors(327))
 

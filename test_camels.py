@@ -20,7 +20,7 @@ Time_format = f"{date.strftime("%I:%M %p")}"
 #     }
 
 def test_valid_amount_and_nisab():
-    amount = 55
+    amount = "55"
     response = Geel(amount)
     expected = JSONResponse(status_code=200, content={
         "code": 200,
@@ -50,7 +50,7 @@ def test_invalid_amount():
 
 
 def test_if_nisab_greater_than_121_head():
-    amount = 160
+    amount = "160"
     response = Geel(amount)
     req = [f"4 camels must be two years old".title(), 
         "They must be female".title(), 
@@ -69,7 +69,7 @@ def test_if_nisab_greater_than_121_head():
 
 
 def test_amount_less_then_nisaab():
-    amount = 3
+    amount = "3"
     response = Geel(amount)
     expected = JSONResponse(status_code=326, content={
         "code": 326,

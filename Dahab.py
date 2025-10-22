@@ -1,8 +1,9 @@
 from fastapi.responses import JSONResponse
-from Nisaabyo import Sako, selfinfo
+from Nisaabyo import Sako
 import re
 from Errors import Errors
 from jawaabo import jawaab
+from  Gold_silver_price import Price_24_1g
 def saafi(nooc: int,xadiga: int) -> int: 
     """
     istikhlaas ayaa loo yaqaanaa hawsha function waxana ay ka dhigantahay 
@@ -18,6 +19,7 @@ def saafi(nooc: int,xadiga: int) -> int:
 
 
 def xisaab_Dahab(xadiga:int, nooc: int):
+    g_24, _, _,_, = Price_24_1g().values()
     Sako.data_collection(xadiga,nooc)
     reg = r"^\d{2}$"
     reg_exp = r"^\d+$"
@@ -39,7 +41,7 @@ def xisaab_Dahab(xadiga:int, nooc: int):
         # The actual calculation starts here
     if nooc == Sako.Noocyo["24"]:
         jw = round(int(xadiga) / Sako.Dahab_40, 4)
-        usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
+        usd_price = round(jw * g_24, 4)
         conditions = [
                     "It must be 100% pure gold.",
                     "You must have possessed it for one full year.",
@@ -59,7 +61,7 @@ def xisaab_Dahab(xadiga:int, nooc: int):
         d_saafi = saafi(nooc, int(xadiga))
         if d_saafi >= Sako.Nisaab_dahab:
             jw = round(d_saafi / Sako.Dahab_40, 4)
-            usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
+            usd_price = round(jw * g_24, 4)
             return JSONResponse(
                 status_code=200,
                 content=jawaab(
@@ -79,7 +81,7 @@ def xisaab_Dahab(xadiga:int, nooc: int):
         d_saafi = saafi(nooc, int(xadiga))
         if d_saafi >= Sako.Nisaab_dahab:
             jw = round(d_saafi / Sako.Dahab_40, 4)
-            usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
+            usd_price = round(jw * g_24, 4)
             return JSONResponse(
                 status_code=200,
                 content=jawaab(
@@ -99,7 +101,7 @@ def xisaab_Dahab(xadiga:int, nooc: int):
         d_saafi = saafi(nooc, int(xadiga))
         if d_saafi >= Sako.Nisaab_dahab:
             jw = round(d_saafi / Sako.Dahab_40, 4)
-            usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
+            usd_price = round(jw * g_24, 4)
             return JSONResponse(
                 status_code=200,
                 content=jawaab(
@@ -119,7 +121,7 @@ def xisaab_Dahab(xadiga:int, nooc: int):
         d_saafi = saafi(nooc, int(xadiga))
         if d_saafi >= Sako.Nisaab_dahab:
             jw = round(d_saafi / Sako.Dahab_40, 4)
-            usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
+            usd_price = round(jw * g_24, 4)
             return JSONResponse(
                 status_code=200,
                 content=jawaab(
@@ -139,7 +141,7 @@ def xisaab_Dahab(xadiga:int, nooc: int):
         d_saafi = saafi(nooc, int(xadiga))
         if d_saafi >= Sako.Nisaab_dahab:
             jw = round(d_saafi / Sako.Dahab_40, 4)
-            usd_price = round(jw * selfinfo.qiimaha_dahab_24, 4)
+            usd_price = round(jw * g_24, 4)
             return JSONResponse(
                 status_code=200,
                 content=jawaab(

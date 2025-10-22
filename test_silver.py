@@ -6,7 +6,7 @@ import json
 
 
 def test_Silver_sakat_calc():
-    amount = 999
+    amount = "999"
     requirements = [
         "Must be 100% pure silver.",
         "You must have possessed it for one full year.",
@@ -32,7 +32,7 @@ def test_invalid_silver_amount():
 
 
 def test_silver_amount_less_then_nisaab():
-    amount = 7
+    amount = "7"
     response = Fido(amount)
     expected = JSONResponse(status_code=321, content={
         "code": 321,
