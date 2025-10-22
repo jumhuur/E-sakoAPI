@@ -78,5 +78,3 @@ def test_if_amount_less_then_nisab():
 
     assert response.status_code == expected.status_code
     assert json.loads(response.body.decode("utf-8")) == json.loads(expected.body.decode("utf-8"))
-
-
