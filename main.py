@@ -36,7 +36,7 @@ app.add_middleware(
 
 
 @app.exception_handler(404)
-async def not_found(request: Request):
+async def not_found(request: Request, exc):
     return JSONResponse(
         status_code=404,
         content=Errors(467,False)

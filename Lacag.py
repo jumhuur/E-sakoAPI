@@ -16,7 +16,6 @@ def Lacag(amount: int):
     nisab_money_gold = round(gold_24 * Sako.Nisaab_dahab, 4)
     nisab_money_silver = round(silver_1G * Sako.Nisaab_Fidada,4)
     
-    
     Sako.data_collection(amount)
     reg = r"^\d+$"
     if not re.match(reg, str(amount)):
