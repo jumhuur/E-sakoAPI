@@ -2,9 +2,8 @@ from fastapi.responses import JSONResponse
 from Nisaabyo import Sako, selfinfo
 from Errors import Errors
 from jawaabo import jawaab
-from Gold_silver_price import gold_silver_price, Price_24_1g
+from Gold_silver_price import  Price_24_1g
 import re
-import json
 
 def Lacag(amount: int):
     response = Price_24_1g()
