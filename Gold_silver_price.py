@@ -8,9 +8,6 @@ def gold_silver_price():
 
 
 def Price_24_1g():
-    # response = gold_price()
-    # json_data = json.loads(response.body)
-    # XAU , XAG = json_data.values()
     XAU , XAG = gold_price(), silver_price()
     gold_24 = round(int(XAU) / Sako.one_ounce, 4)
     silver_1G = round(int(XAG) / Sako.one_ounce, 4)
