@@ -20,7 +20,7 @@ def saafi(nooc: int,xadiga: int) -> int:
 
 def xisaab_Dahab(xadiga:int, nooc: int):
     g_24, _, _,_, = Price_24_1g().values()
-    Sako.data_collection(xadiga,nooc)
+    Sako.data_collection(xadiga, nooc, sako="Dahab")
     reg = r"^\d{2}$"
     reg_exp = r"^\d+$"
     if not re.match(reg_exp, str(xadiga)):

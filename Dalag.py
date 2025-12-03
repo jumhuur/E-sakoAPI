@@ -6,7 +6,7 @@ from jawaabo import jawaab
 
 
 def Dalag(quantity: int, option: int):
-    Sako.data_collection(quantity,option)
+    Sako.data_collection(quantity, option, sako="Dalag")
     rates = {1: 1/10, 2: 1/20, 3: 3/40}  # 10%, 5%, 7.5%
     valid_options = {1, 2, 3}
     reg_exp = r"^\d+$"

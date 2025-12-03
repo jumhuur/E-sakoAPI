@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 import re
 
 def Adhi(quantity):
-    Sako.data_collection(quantity)
+    Sako.data_collection(quantity, sako="Adhi")
     # Zakat thresholds for sheep
     nisaab = {
         1: 120,

@@ -7,7 +7,7 @@ import re
 
 def Fido(amount: int):
     _,s_1, _, _, = Price_24_1g().values()
-    Sako.data_collection(amount)
+    Sako.data_collection(amount, sako="Fido")
     reg_exp = r"^\d+$"
 
     if not re.match(reg_exp, str(amount)):

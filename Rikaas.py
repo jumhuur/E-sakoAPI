@@ -7,7 +7,7 @@ import re
 
 def Rikaas(amount: int):
     g_24, _, _,_, = Price_24_1g().values()
-    Sako.data_collection(amount)
+    Sako.data_collection(amount, sako="Rikaas")
     reg_exp = r"^\d+$"
     if not re.match(reg_exp, str(amount)):
         return JSONResponse(status_code=464, content=Errors(464))

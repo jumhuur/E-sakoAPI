@@ -8,7 +8,7 @@ import re
 def Lacag(amount: int):
     response = Price_24_1g()
     _, _, nisab_g , nisab_s = response.values()
-    Sako.data_collection(amount)
+    Sako.data_collection(amount, sako="Lacag")
     reg = r"^\d+$"
     if not re.match(reg, str(amount)):
         return JSONResponse(status_code=464, content=Errors(464))

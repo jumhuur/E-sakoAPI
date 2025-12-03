@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 import re
 
 def Loa(xadi):
-    Sako.data_collection(xadi)
+    Sako.data_collection(xadi, sako="Lo")
     nisaab = {
         1: 40,
         2: 60,

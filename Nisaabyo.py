@@ -61,9 +61,10 @@ class Sako():
         self.Nisaab_Lacag_f:int = self.Qiimah_fidada_1G * Sako.Nisaab_Fidada # waa nisaabka lacagta marka fido lagu xisaabiyo
 
     @staticmethod
-    def data_collection(xadiga,nooc=0):
+    def data_collection(xadiga,nooc=0,sako="shay"):
         dateTime  = datetime.now()
         data = {
+            "Sako": sako,
             "Xadig": xadiga,
             "nooca": nooc,
             "date": dateTime.strftime("%A %d-%B-%Y"),
