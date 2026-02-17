@@ -1,390 +1,507 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EsakoAPI - Islamic Zakat API for Developers Documentation</title>
+    <title>EsakoAPI - Islamic Zakat API for Developers</title>
     <meta
       name="description"
-      content="EsakoAPI is a modern and accurate Zakat calculation API built with Python. Calculate Zakat for gold, livestock, crops, and more — trusted by developers and scholars."
+      content="EsakoAPI is a modern and accurate Zakat calculation API built with Python."
     />
-    <meta
-      name="keywords"
-      content="Zakat API, Esako API, Isalamic api, Islamic finance, Zakat calculator, Nisab calculator, Muslim finance tools, Zakah API, charity automation, Islamic tech"
-    />
-    <meta name="author" content="Hamza And Jumhuur" />
-    <meta
-      property="og:title"
-      content="EsakoAPI –  Islamic Zakat API for Developers"
-    />
-    <meta
-      property="og:description"
-      content="Automate your Zakat calculations with EsakoAPI — an accurate and developer-friendly Islamic API."
-    />
-    <meta property="og:url" content="https://esakoapi.org/" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="https://esakoapi.org/assets/og-image.jpg"
-    />
-    <meta property="og:EsakoAPI" content="EsakoAPI" />
-    <meta
-      name="twitter:card"
-      content="EsakoAPI – Islamic Zakat API for Developers"
-    />
-    <meta
-      name="twitter:title"
-      content="EsakoAPI – Islamic Zakat API for Developers"
-    />
-    <meta
-      name="twitter:description"
-      content="Modern Islamic API for Developers to calculate Zakat for gold, livestock, and crops."
-    />
-    <meta
-      name="twitter:image"
-      content="https://esakoapi.org/assets/og-image.jpg"
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#6366f1" />
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
     />
 
-    <!-- 🔹 Theme color for mobile browsers -->
-    <meta name="theme-color" content="#6366f1" />
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <style>
       :root {
         --primary: #6366f1;
+        --primary-dark: #4f46e5;
         --bg: #f8fafc;
         --card: #ffffff;
-        --muted: #6b7280;
-        --radius: 12px;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --radius: 16px;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow:
+          0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg:
+          0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+        --input-bg: #ffffff;
       }
 
       @media (prefers-color-scheme: dark) {
         :root {
           --primary: #818cf8;
+          --primary-dark: #6366f1;
           --bg: #0f172a;
           --card: #1e293b;
-          --muted: #94a3b8;
-          --radius: 12px;
+          --text-main: #f1f5f9;
+          --text-muted: #94a3b8;
+          --border: #334155;
+          --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+          --shadow:
+            0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+          --shadow-lg:
+            0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -2px rgb(0 0 0 / 0.2);
+          --input-bg: #020617;
         }
       }
 
       * {
         box-sizing: border-box;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-          Roboto, "Helvetica Neue", Arial;
-      }
-      body {
         margin: 0;
-        background: var(--bg);
-        color: #0f172a;
-        padding: 28px;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text-main);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Navbar */
+      .navbar {
+        width: 100%;
+        max-width: 1200px;
+        padding: 20px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .brand-logo {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--primary), #8b5cf6);
+        color: white;
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 100vh;
-      }
-      .wrap {
-        width: 100%;
-        max-width: 980px;
-      }
-      header {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 18px;
-      }
-      .brand {
-        display: flex;
-        flex-direction: column;
+        font-weight: 700;
+        font-size: 20px;
+        box-shadow: var(--shadow-sm);
       }
 
-      a {
+      .brand-text {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text-main);
+        letter-spacing: -0.5px;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 80px 20px 60px;
+        max-width: 800px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        font-weight: 800;
+        color: var(--text-main);
+        margin-bottom: 20px;
+        line-height: 1.1;
+        letter-spacing: -1px;
+      }
+
+      .hero h1 span {
+        color: var(--primary);
+        background: linear-gradient(135deg, var(--primary), #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: var(--text-muted);
+        margin-bottom: 40px;
+        line-height: 1.6;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
         text-decoration: none;
       }
-      .brand h1 {
-        margin: 0;
-        font-size: 18px;
-        color: var(--primary);
-      }
-      .brand p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 13px;
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.4);
       }
 
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 420px;
-        gap: 16px;
+      .btn-primary:active {
+        transform: translateY(1px);
       }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        background: var(--card);
+        color: var(--text-main);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .btn-outline:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: var(--bg);
+      }
+
+      /* API Tester Section */
+      .tester-container {
+        width: 100%;
+        max-width: 1100px;
+        padding: 0 20px 80px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 32px;
+      }
+
       .card {
         background: var(--card);
         border-radius: var(--radius);
-        padding: 16px;
-        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+        padding: 32px;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid rgba(226, 232, 240, 0.6);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .section-header {
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .section-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-main);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
       }
 
       label {
-        font-size: 13px;
-        color: var(--muted);
         display: block;
-        margin-bottom: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
-      input[type="text"],
-      input[type="url"],
+
+      input,
       select,
       textarea {
         width: 100%;
-        padding: 10px 12px;
-        border-radius: 10px;
-        border: 1px solid #e6e9ef;
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
         font-size: 14px;
+        background: var(--input-bg);
+        color: var(--text-main);
+        transition: all 0.2s;
+        font-family: inherit;
       }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+      }
+
       textarea {
-        min-height: 160px;
+        min-height: 140px;
         resize: vertical;
+        font-family:
+          "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas",
+          monospace;
+        line-height: 1.5;
       }
 
       .row {
         display: flex;
-        gap: 12px;
+        gap: 16px;
       }
-      .row .col {
+
+      .col {
         flex: 1;
       }
 
-      .btn {
-        background: var(--primary);
-        color: white;
-        padding: 10px 14px;
-        border: none;
-        border-radius: 10px;
-        font-weight: 600;
-        cursor: pointer;
-      }
-      .btn:active {
-        transform: translateY(1px);
-      }
-
-      .response {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
-          monospace;
-        background: #0b1220;
-        color: #dbeafe;
-        padding: 12px;
-        border-radius: 8px;
-        overflow: auto;
-        max-height: 420px;
-      }
-      .meta {
+      .actions {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-      }
-      .small {
-        font-size: 12px;
-        color: var(--muted);
+        gap: 12px;
+        margin-top: 8px;
       }
 
-      footer {
-        margin-top: 12px;
-        color: var(--muted);
+      /* Response Area */
+      .response-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-height: 0;
+      }
+
+      .response-area {
+        background: #0f172a;
+        color: #e2e8f0;
+        border-radius: 12px;
+        padding: 20px;
+        font-family:
+          "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas",
+          monospace;
         font-size: 13px;
-        text-align: center;
+        line-height: 1.6;
+        overflow: auto;
+        flex: 1;
+        min-height: 200px;
+        scrollbar-width: thin;
+        scrollbar-color: #334155 transparent;
       }
 
+      .response-area::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      .response-area::-webkit-scrollbar-thumb {
+        background-color: #334155;
+        border-radius: 4px;
+      }
+
+      .status-badge {
+        font-size: 12px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        background: #f1f5f9;
+        color: var(--text-muted);
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .status-badge::before {
+        content: "";
+        display: block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+        opacity: 0.7;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: auto;
+        border-top: 1px solid var(--border);
+        width: 100%;
+        padding: 32px 20px;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 14px;
+        background: var(--card);
+      }
+
+      footer a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive */
       @media (max-width: 900px) {
-        .grid {
+        .tester-container {
           grid-template-columns: 1fr;
         }
-        .response {
-          max-height: 260px;
+
+        .hero h1 {
+          font-size: 36px;
         }
-      }
-
-      .ui-btn {
-        --btn-default-bg: linear-gradient(135deg, var(--primary), #8b5cf6);
-        --btn-padding: 10px 15px;
-        --btn-hover-bg: linear-gradient(135deg, var(--primary), #8b5cf6);
-        --btn-transition: 0.3s;
-        --btn-letter-spacing: 0.1rem;
-        --btn-animation-duration: 1.2s;
-        --btn-shadow-color: rgba(0, 0, 0, 0.137);
-        --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
-        --hover-btn-color: #0f172a;
-        --default-btn-color: #fff;
-        --font-size: 16px;
-        --font-weight: 600;
-        --font-family: Menlo, Roboto Mono, monospace;
-      }
-
-      .ui-btn {
-        box-sizing: border-box;
-        padding: var(--btn-padding);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--default-btn-color);
-        font: var(--font-weight) var(--font-size) var(--font-family);
-        background: var(--btn-default-bg);
-        border: none;
-        cursor: pointer;
-        transition: var(--btn-transition);
-        overflow: hidden;
-        box-shadow: var(--btn-shadow);
-      }
-
-      .ui-btn span {
-        letter-spacing: var(--btn-letter-spacing);
-        transition: var(--btn-transition);
-        box-sizing: border-box;
-        position: relative;
-        background: inherit;
-      }
-
-      .ui-btn:hover,
-      .ui-btn:focus {
-        background: var(--btn-hover-bg);
-      }
-
-      .ui-btn:hover span,
-      .ui-btn:focus span {
-        color: var(--hover-btn-color);
       }
     </style>
   </head>
+
   <body>
-    <div class="wrap">
-      <header>
-        <div
-          style="
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-          "
-        >
-          E
-        </div>
-        <div class="brand">
-          <h1>EsakoAPI — Testing</h1>
-          <p>
-            Here you can test <br />
-            how EsakoAPI works.
-          </p>
-          <!-- <p>up to now Api calls is 45 call<br /></p> -->
-        </div>
-        <a href="/doc" target="_blank">
-          <button class="ui-btn">
-            <span> Read Docs </span>
-          </button>
-        </a>
-      </header>
+    <nav class="navbar">
+      <a href="#" class="brand">
+        <div class="brand-logo">E</div>
+        <span class="brand-text">EsakoAPI</span>
+      </a>
+      <a
+        href="https://github.com/jumhuur/E-sakoAPI"
+        target="_blank"
+        class="btn btn-outline"
+        style="padding: 10px 20px"
+      >
+        GitHub
+      </a>
+      <a href="/doc" class="btn btn-primary" style="margin-left: 10px">
+        Documentation
+      </a>
+    </nav>
 
-      <div class="grid">
-        <div class="card">
-          <div class="meta">
-            <div class="small">Request</div>
-            <div class="small">Ready</div>
-          </div>
+    <section class="hero">
+      <h1>Islamic Zakat API <br /><span>for Developers</span></h1>
+      <p>
+        A powerful, accurate, and easy-to-use API for calculating Zakat on gold,
+        livestock, crops, and more. Built for developers by developers.
+      </p>
+    </section>
 
-          <label for="endpoint">Endpoint (URL)</label>
+    <div class="tester-container">
+      <!-- Request Column -->
+      <div class="card">
+        <div class="section-header">
+          <span class="section-title">Test Request</span>
+        </div>
+
+        <div class="form-group">
+          <label for="endpoint">Endpoint URL</label>
           <input
             id="endpoint"
             type="url"
-            placeholder="https://esakoapi.org/api/camels/180"
-            value="https://esakoapi.org/api/camels/180"
+            value="https://esakoapi.org/api/info/"
+            placeholder="https://esakoapi.org/api/..."
           />
-
-          <div style="height: 12px"></div>
-
-          <div class="row">
-            <div class="col">
-              <label for="method">Method</label>
-              <select id="method">
-                <option>GET</option>
-              </select>
-            </div>
-            <div class="col">
-              <label for="apikey">API Key (if required)</label>
-              <input id="apikey" type="text" placeholder="API Key (optional)" />
-            </div>
-          </div>
-
-          <div style="height: 12px"></div>
-
-          <label for="body">JSON Body (POST/PUT) - Not Required Now</label>
-          <textarea id="body" placeholder='{"key":"value"}'></textarea>
-
-          <div style="height: 12px"></div>
-
-          <div style="display: flex; gap: 8px; align-items: center">
-            <button id="send" class="btn">Send Request</button>
-            <button
-              id="clear"
-              class="btn"
-              style="
-                background: #e6e9ef;
-                color: var(--primary);
-                font-weight: 700;
-              "
-            >
-              Clear Response
-            </button>
-          </div>
-
-          <div style="height: 12px"></div>
-
-          <details>
-            <summary style="cursor: pointer">Instructions</summary>
-            <div style="margin-top: 8px; color: var(--muted); font-size: 13px">
-              1. Enter an EsakoAPI endpoint (example:
-              <code>https://esakoapi.org/api/geel/180</code>).<br />
-              2. If the endpoint requires an API key, enter it in the API Key
-              field (or under Authorization header).<br />
-              3. If using POST or PUT, enter valid JSON data.<br />
-              4. Click "Send Request" to view the response below.
-            </div>
-          </details>
         </div>
 
-        <div class="card">
-          <div class="meta">
-            <div class="small">Response</div>
-            <div class="small" id="status">—</div>
+        <div class="row">
+          <div class="col form-group">
+            <label for="method">Method</label>
+            <select id="method">
+              <option value="GET">GET</option>
+              <option value="POST">POST</option>
+              <option value="PUT">PUT</option>
+              <option value="DELETE">DELETE</option>
+            </select>
           </div>
-          <div id="resp" class="response">The response will appear here...</div>
-          <div style="height: 12px"></div>
-          <div class="small">Headers (Response)</div>
-          <pre
-            id="headers"
-            class="response"
-            style="max-height: 140px; margin-top: 8px"
-          >
-—</pre
-          >
+          <div class="col form-group">
+            <label for="apikey">API Key</label>
+            <input id="apikey" type="text" placeholder="Optional" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="body">Request Body (JSON)</label>
+          <textarea id="body" placeholder='{ "amount": 100 }'></textarea>
+        </div>
+
+        <div class="actions">
+          <button id="send" class="btn btn-primary" style="flex: 1">
+            Send Request
+          </button>
+          <button id="clear" class="btn btn-outline" style="min-width: 100px">
+            Clear
+          </button>
+        </div>
+
+        <div
+          style="
+            margin-top: 24px;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+          "
+        >
+          <strong>Instructions:</strong><br />
+          1. Enter an EsakoAPI endpoint.<br />
+          2. Select the HTTP method.<br />
+          3. Click "Send Request" to view the results.
         </div>
       </div>
 
-      <footer>
-        If you wish to contribute to this project or collaborate with us, visit
-        our
-        <a href="https://github.com/jumhuur/E-sakoAPI" target="_blank"
-          >GitHub</a
-        >
-        page.
-      </footer>
+      <!-- Response Column -->
+      <div class="card response-container">
+        <div class="section-header">
+          <span class="section-title">Response</span>
+          <span id="status" class="status-badge">Ready</span>
+        </div>
+
+        <div id="resp" class="response-area">
+          Click "Send Request" to see the response here...
+        </div>
+
+        <div style="margin-top: auto">
+          <label
+            style="font-size: 12px; color: var(--text-muted); padding-left: 4px"
+            >Response Headers</label
+          >
+          <div
+            id="headers"
+            class="response-area"
+            style="
+              min-height: auto;
+              max-height: 120px;
+              margin-top: 6px;
+              background: #0b1120;
+            "
+          >
+            -
+          </div>
+        </div>
+      </div>
     </div>
+
+    <footer>
+      <p>
+        &copy; 2026 EsakoAPI. Open Source Project by
+        <a href="https://github.com/jumhuur" target="_blank">Jumhuur</a>.
+      </p>
+    </footer>
+
     <script type="module">
-      // import data from "/files/reports/data_collection.json";
-      // console.log(data);
       const endpoint = document.getElementById("endpoint");
       const method = document.getElementById("method");
       const apikey = document.getElementById("apikey");
@@ -395,22 +512,19 @@
       const headersEl = document.getElementById("headers");
       const status = document.getElementById("status");
 
-      function safeJson(text) {
-        try {
-          return JSON.stringify(JSON.parse(text), null, 2);
-        } catch (e) {
-          return text;
-        }
-      }
-
       send.addEventListener("click", async () => {
         resp.textContent = "Loading...";
         headersEl.textContent = "—";
         status.textContent = "Running...";
+        status.style.background = "#e0f2fe"; // blue
+        status.style.color = "#0369a1";
 
         const url = endpoint.value.trim();
         if (!url) {
-          resp.textContent = "Fadlan gali endpoint sax ah.";
+          resp.textContent = "Please enter a valid endpoint URL.";
+          status.textContent = "Invalid URL";
+          status.style.background = "#fee2e2";
+          status.style.color = "#991b1b";
           return;
         }
 
@@ -418,18 +532,22 @@
           method: method.value,
           headers: { Accept: "application/json" },
         };
-        if (apikey.value.trim())
-          opts.headers["Authorization"] = apikey.value.trim();
 
-        if (method.value === "POST" || method.value === "PUT") {
+        if (apikey.value.trim()) {
+          opts.headers["Authorization"] = apikey.value.trim();
+        }
+
+        if (["POST", "PUT"].includes(method.value)) {
           const txt = body.value.trim();
           if (txt) {
             try {
               opts.body = JSON.stringify(JSON.parse(txt));
               opts.headers["Content-Type"] = "application/json";
             } catch (e) {
-              resp.textContent = "JSON body ma saxna — hubi syntax-ka.";
-              status.textContent = "JSON error";
+              resp.textContent = "Invalid JSON body. Please check syntax.";
+              status.textContent = "JSON Error";
+              status.style.background = "#fee2e2";
+              status.style.color = "#991b1b";
               return;
             }
           }
@@ -438,9 +556,17 @@
         try {
           const r = await fetch(url, opts);
           const contentType = r.headers.get("content-type") || "";
-          status.textContent = r.status + " " + r.statusText;
 
-          // headers
+          status.textContent = `${r.status} ${r.statusText}`;
+          if (r.ok) {
+            status.style.background = "#dcfce7"; // green
+            status.style.color = "#15803d";
+          } else {
+            status.style.background = "#fee2e2"; // red
+            status.style.color = "#991b1b";
+          }
+
+          // Headers
           const hdrs = {};
           r.headers.forEach((v, k) => (hdrs[k] = v));
           headersEl.textContent = JSON.stringify(hdrs, null, 2);
@@ -454,14 +580,18 @@
           }
         } catch (err) {
           resp.textContent = "Error: " + err.message;
-          status.textContent = "Network/Error";
+          status.textContent = "Network Error";
+          status.style.background = "#fee2e2";
+          status.style.color = "#991b1b";
         }
       });
 
       clear.addEventListener("click", () => {
-        resp.textContent = "";
-        headersEl.textContent = "—";
-        status.textContent = "—";
+        resp.textContent = 'Click "Send Request" to see the response here...';
+        headersEl.textContent = "-";
+        status.textContent = "Ready";
+        status.style.background = "#f1f5f9";
+        status.style.color = "#64748b";
       });
     </script>
   </body>

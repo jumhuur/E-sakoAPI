@@ -1,209 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EsakoAPI - Islamic Zakat API for Developers Documentation</title>
-    <meta
-      name="description"
-      content="EsakoAPI is a modern and accurate Zakat calculation API built with Python. Calculate Zakat for gold, livestock, crops, and more — trusted by developers and scholars."
-    />
-    <meta
-      name="keywords"
-      content="Zakat API, Esako API, Isalamic api, Islamic finance, Zakat calculator, Nisab calculator, Muslim finance tools, Zakah API, charity automation, Islamic tech"
-    />
-    <meta name="author" content="Hamza And Jumhuur" />
-    <meta
-      property="og:title"
-      content="EsakoAPI –  Islamic Zakat API for Developers"
-    />
-    <meta
-      property="og:description"
-      content="Automate your Zakat calculations with EsakoAPI — an accurate and developer-friendly Islamic API."
-    />
-    <meta property="og:url" content="https://esakoapi.org/" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="https://esakoapi.org/assets/og-image.jpg"
-    />
-    <meta property="og:EsakoAPI" content="EsakoAPI" />
-    <meta
-      name="twitter:card"
-      content="EsakoAPI – Islamic Zakat API for Developers"
-    />
-    <meta
-      name="twitter:title"
-      content="EsakoAPI – Islamic Zakat API for Developers"
-    />
-    <meta
-      name="twitter:description"
-      content="Modern Islamic API for Developers to calculate Zakat for gold, livestock, and crops."
-    />
-    <meta
-      name="twitter:image"
-      content="https://esakoapi.org/assets/og-image.jpg"
-    />
 
-    <!-- 🔹 Theme color for mobile browsers -->
-    <meta name="theme-color" content="#6366f1" />
-    <style>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EsakoAPI - Documentation</title>
+  <meta name="description" content="Official documentation for EsakoAPI - The Islamic Zakat API." />
+  <meta name="theme-color" content="#6366f1" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --code-bg: #0f172a;
+      --code-text: #e2e8f0;
+      --inline-code-bg: #f1f5f9;
+    }
+
+    @media (prefers-color-scheme: dark) {
       :root {
-        --primary: #6366f1;
-        --bg: #f8fafc;
-        --card: #ffffff;
-        --muted: #6b7280;
-        --radius: 12px;
-        --text: #0f172a;
-        --code_bg: #e6e9ef;
+        --primary: #818cf8;
+        --primary-dark: #6366f1;
+        --bg: #0f172a;
+        --card: #1e293b;
+        --text-main: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border: #334155;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+        --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+        --code-bg: #020617;
+        --code-text: #e2e8f0;
+        --inline-code-bg: #334155;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), #8b5cf6);
+      color: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--bg);
+    }
+
+    /* Main Content */
+    .container {
+      width: 100%;
+      max-width: 900px;
+      padding: 40px 20px 80px;
+    }
+
+    .page-header {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+
+    .page-header p {
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+
+    /* Sections */
+    .section {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(226, 232, 240, 0.6);
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h2 span {
+      color: var(--primary);
+      font-size: 18px;
+      opacity: 0.8;
+      font-weight: 800;
+    }
+
+    .section h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin: 24px 0 12px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .section ul {
+      margin-bottom: 16px;
+      padding-left: 20px;
+      color: var(--text-muted);
+    }
+
+    .section li {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    /* Code Blocks */
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 20px;
+      border-radius: 12px;
+      overflow-x: auto;
+      font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+      font-size: 13px;
+      margin: 16px 0;
+      line-height: 1.6;
+      border: 1px solid #1e293b;
+    }
+
+    code.inline {
+      background: var(--inline-code-bg);
+      color: var(--primary);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+      font-weight: 600;
+    }
+
+    .endpoint-url {
+      background: var(--inline-code-bg);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-family: monospace;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      display: inline-block;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--bg);
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    td {
+      font-size: 14px;
+      color: var(--text-muted);
+      background: var(--card);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      width: 100%;
+      padding: 32px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      background: var(--card);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 28px;
       }
 
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --primary: #6366f1;
-          --bg: #0f172a;
-          --card: #1e293b;
-          --muted: #ccd4e0;
-          --text: #f8fafc;
-          --radius: 12px;
-          --code_bg: #0f172a;
-        }
-      }
-      * {
-        box-sizing: border-box;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-          Roboto, "Helvetica Neue", Arial;
-      }
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        padding: 28px;
-        display: flex;
-        justify-content: center;
-        min-height: 100vh;
-      }
-      p {
-        line-height: 2;
-      }
-      .wrap {
-        width: 100%;
-        max-width: 900px;
-      }
-      header {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 20px;
-      }
-      .brand h1 {
-        margin: 0;
-        font-size: 22px;
-        color: var(--primary);
-      }
-      .brand p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 14px;
-      }
       .section {
-        background: var(--card);
-        border-radius: var(--radius);
         padding: 20px;
-        margin-bottom: 16px;
-        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
       }
-      h2 {
-        font-size: 18px;
-        color: var(--primary);
-        margin-top: 0;
-      }
-      h3 {
-        font-size: 16px;
-        margin-bottom: 6px;
-      }
-      pre {
-        background: #0f172a;
-        color: #e2e8f0;
-        padding: 12px;
-        border-radius: 8px;
-        overflow: auto;
-      }
-      code {
-        background: var(--code_bg);
-        padding: 2px 4px;
-        border-radius: 6px;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-      }
-      th,
-      td {
-        border: 1px solid #e5e7eb;
-        padding: 8px;
-        text-align: left;
-        font-size: 14px;
-      }
-      th {
-        background: #0f172a;
-        color: #f8fafc;
-      }
-      footer {
-        margin-top: 24px;
-        text-align: center;
-        font-size: 13px;
-        color: var(--muted);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="wrap">
-      <header>
-        <div
-          style="
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-          "
-        >
-          E
-        </div>
-        <div class="brand">
-          <h1>EsakoAPI — API Documentation</h1>
-          <p>The official API documentation for EsakoAPI</p>
-        </div>
-      </header>
+    }
+  </style>
+</head>
 
-      <div class="section">
-        <h2>1. Introduction</h2>
-        <p>
-          EsakoAPI is a free API that does not require an API key. It is
-          designed to calculate various types of Zakat in accordance with
-          Islamic Shariah.
-        </p>
-      </div>
+<body>
 
-      <div class="section">
-        <h2>2. Base URL</h2>
-        <pre>https://esakoapi.org/api/</pre>
-      </div>
+  <nav class="navbar">
+    <a href="/" class="brand">
+      <div class="brand-logo">E</div>
+      <span class="brand-text">EsakoAPI</span>
+    </a>
+    <a href="/" class="btn-outline">
+      Back to Home
+    </a>
+  </nav>
 
-      <div class="section">
-        <h2>3. Endpoints</h2>
-        <h3>01 - Money:</h3>
-        <p>To calculate Zakat on money, use the following format:</p>
-        <pre>https://esakoapi.org/api/money/9899</pre>
-        <h4>Response Example</h4>
-        <pre>
-{
+  <div class="container">
+    <div class="page-header">
+      <h1>API Documentation</h1>
+      <p>Everything you need to integrate EsakoAPI into your applications.</p>
+    </div>
+
+    <div class="section">
+      <h2><span>01.</span> Introduction</h2>
+      <p>
+        EsakoAPI is a free, open-source API designed to simplify Zakat calculations in accordance with Islamic Shariah.
+        It requires <strong>no API key</strong> for basic usage, making it incredibly easy to get started.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2><span>02.</span> Base URL</h2>
+      <div class="endpoint-url">https://esakoapi.org/api/</div>
+    </div>
+
+    <div class="section">
+      <h2><span>03.</span> Endpoints</h2>
+
+      <h3>01 - Money (Cash/Bank)</h3>
+      <p>Calculate Zakat on monetary assets.</p>
+      <div class="endpoint-url">GET /money/{amount}</div>
+      <p>Example: <code class="inline">https://esakoapi.org/api/money/9899</code></p>
+
+      <h4>Response Example</h4>
+      <pre>{
   "code": 200,
   "response": 247.475,
   "conditions": [
@@ -214,24 +360,28 @@
   "unit": "$",
   "date": "Tuesday 14-October-2025",
   "time": "09:22 AM"
-}</pre
-        >
+}</pre>
 
-        <h3>02 - Gold:</h3>
-        <p>To calculate Zakat on gold, use the following pattern:</p>
-        <h4>There are many types of gold purity, the most common are:</h4>
-        <p>- Type 1: 24K Gold (Pure gold 100%). Use <code>?Type=24</code></p>
-        <p>- Type 2: 22K Gold. Use <code>?Type=22</code></p>
-        <p>- Type 3: 21K Gold. Use <code>?Type=21</code></p>
-        <p>- Type 4: 20K Gold. Use <code>?Type=20</code></p>
-        <p>- Type 5: 18K Gold. Use <code>?Type=18</code></p>
-        <p>- Type 6: 16K Gold. Use <code>?Type=16</code></p>
-        <p>Default Type is <code>Type=24</code></p>
-        <pre>https://esakoapi.org/api/gold/150?Type=22</pre>
+      <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
 
-        <h4>Response Example</h4>
-        <pre>
-{
+      <h3>02 - Gold</h3>
+      <p>Calculate Zakat on gold based on its purity (Karat).</p>
+      <div class="endpoint-url">GET /gold/{grams}?Type={karat}</div>
+
+      <p><strong>Supported Types (Karats):</strong></p>
+      <ul>
+        <li><strong>24</strong>: 24K Gold (Pure) - <em>Default</em></li>
+        <li><strong>22</strong>: 22K Gold</li>
+        <li><strong>21</strong>: 21K Gold</li>
+        <li><strong>20</strong>: 20K Gold</li>
+        <li><strong>18</strong>: 18K Gold</li>
+        <li><strong>16</strong>: 16K Gold</li>
+      </ul>
+
+      <p>Example: <code class="inline">https://esakoapi.org/api/gold/150?Type=22</code></p>
+
+      <h4>Response Example</h4>
+      <pre>{
   "code": 200,
   "response": 3.625,
   "conditions": [
@@ -240,176 +390,103 @@
     "If paying in cash, the amount is 482.5836$."
   ],
   "unit": "Gram",
-  "date": "Tuesday 14-October-2025",
-  "time": "09:22 AM"
-}</pre
-        >
+  "date": "Tuesday 14-October-2025"
+}</pre>
 
-        <h3>03 - Silver (Fido):</h3>
-        <p>To calculate Zakat on silver (white gold), use:</p>
-        <pre>https://esakoapi.org/api/silver/920</pre>
-        <h4>Response Example</h4>
-        <pre>
-{
+      <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
+
+      <h3>03 - Silver</h3>
+      <div class="endpoint-url">GET /silver/{grams}</div>
+      <p>Example: <code class="inline">https://esakoapi.org/api/silver/920</code></p>
+      <pre>{
   "code": 200,
   "response": 23,
-  "conditions": [
-    "It must be 100% pure silver.",
-    "You must have possessed it for one full year.",
-    "If paying in cash, the amount is 38.3761$."
-  ],
-  "unit": "Gram",
-  "date": "Tuesday 14-October-2025",
-  "time": "09:22 AM"
-}</pre
-        >
+  "unit": "Gram"
+}</pre>
 
-        <h3>04 - Camels:</h3>
-        <p>To calculate Zakat on camels, use:</p>
-        <pre>https://esakoapi.org/api/camels/920</pre>
-        <h4>Response Example</h4>
-        <pre>
-{
-  "code": 200,
-  "response": 19,
-  "conditions": [
-    "16 camels must be 3 years old.",
-    "3 camels must be 2 years old.",
-    "They must all be female."
-  ],
-  "unit": "Head",
-  "date": "Tuesday 14-October-2025",
-  "time": "09:22 AM"
-}</pre
-        >
+      <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
 
-        <h3>05 - Sheep/Goats:</h3>
-        <pre>https://esakoapi.org/api/sheep/920</pre>
-        <h4>Response Example</h4>
-        <pre>
-{
-  "code": 200,
-  "response": 9,
-  "conditions": [
-    "If sheep, they must be 1 year old.",
-    "If goats, they must be 2 years old."
-  ],
-  "unit": "Head",
-  "date": "Tuesday 14-October-2025",
-  "time": "09:22 AM"
-}</pre
-        >
+      <h3>04 - Livestock (Camels, Cows, Sheep)</h3>
+      <p>Calculate Zakat on livestock numbers.</p>
 
-        <h3>06 - Cows:</h3>
-        <pre>https://esakoapi.org/api/cows/56</pre>
-        <h4>Response Example</h4>
-        <pre>
-{
-  "code": 200,
-  "response": 1,
-  "conditions": [
-    "Must have entered its third year (matured).",
-    "Preferably female, but male is acceptable.",
-    "Must be of cattle species."
-  ],
-  "unit": "Head",
-  "date": "Tuesday 14-October-2025",
-  "time": "09:22 AM"
-}</pre
-        >
+      <div class="endpoint-url">GET /camels/{count}</div>
+      <div class="endpoint-url">GET /cows/{count}</div>
+      <div class="endpoint-url">GET /sheep/{count}</div>
 
-        <h3>07 - Crops:</h3>
-        <p>To calculate Zakat on crops, use:</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li>Camels: <code class="inline">/api/camels/120</code></li>
+        <li>Cows: <code class="inline">/api/cows/56</code></li>
+        <li>Sheep/Goats: <code class="inline">/api/sheep/400</code></li>
+      </ul>
 
-        <h4>There are three crop types based on</h4>
-        <p>
-          - Type 1: Naturally rain-fed crops, without human irrigation costs.
-          Use <code>?Type=1</code>
-        </p>
-        <p>
-          - Type 2: Crops irrigated with paid water (e.g., purchased or
-          artificial irrigation). Use <code>?Type=2</code>
-        </p>
-        <p>
-          - Type 3: Crops irrigated with both rain and paid water combined. Use
-          <code>?Type=3</code>
-        </p>
-        <p>Default Type is <code>Type=1</code></p>
-        <pre>https://esakoapi.org/api/crops/920?Type=2</pre>
-        <h4>Response Example</h4>
-        <pre>
-{
-  "code": 200,
-  "response": 46,
-  "conditions": [
-    "Crops irrigated using paid water.",
-    "Must be harvestable and storable, such as wheat, rice, or maize."
-  ],
-  "unit": "Kg",
-  "date": "Tuesday 14-October-2025",
-  "time": "09:22 AM"
-}</pre
-        >
+      <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
 
-        <h3>08 - Buried Treasure (Rikaas):</h3>
-        <pre>https://esakoapi.org/api/rikaas/122</pre>
-        <h4>Response Example</h4>
-        <pre>
-{
-  "code": 200,
-  "response": 24.4,
-  "conditions": [
-    "It must be classified as Rikaas (buried treasure).",
-    "It should be something ancient with visible historical traces.",
-    "If paying in cash, the amount is 3248.2867$."
-  ],
-  "unit": "Gram",
-  "date": "Tuesday 14-October-2025",
-  "time": "09:22 AM"
-}</pre
-        >
-      </div>
+      <h3>07 - Crops</h3>
+      <p>Calculate Zakat on agricultural produce based on irrigation method.</p>
+      <div class="endpoint-url">GET /crops/{kg}?Type={method}</div>
 
-      <div class="section">
-        <h2>4. Error Codes</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>200</td>
-              <td>OK — Request was successful</td>
-            </tr>
-            <tr>
-              <td>467</td>
-              <td>Invalid URL — when the requested URL is incorrect</td>
-            </tr>
-            <tr>
-              <td>464</td>
-              <td>Value Error — when a string is used instead of a number</td>
-            </tr>
-            <tr>
-              <td>404</td>
-              <td>Not Found — Endpoint or resource not found</td>
-            </tr>
-            <tr>
-              <td>500</td>
-              <td>Server Error — Internal error occurred</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <p><strong>Irrigation Types:</strong></p>
+      <ul>
+        <li><strong>1</strong>: Rain-fed (Natural) - <em>Default</em></li>
+        <li><strong>2</strong>: Artificial Irrigation (Costly water)</li>
+        <li><strong>3</strong>: Mixed (Rain + Artificial)</li>
+      </ul>
 
-      <footer>
-        © 2025 EsakoAPI — View the project repository on
-        <a href="https://github.com/jumhuur/E-sakoAPI" target="_blank"
-          >GitHub</a
-        >
-      </footer>
+      <p>Example: <code class="inline">https://esakoapi.org/api/crops/920?Type=2</code></p>
+
+      <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
+
+      <h3>08 - Buried Treasure (Rikaas)</h3>
+      <div class="endpoint-url">GET /rikaas/{grams}</div>
+      <p>Example: <code class="inline">https://esakoapi.org/api/rikaas/122</code></p>
     </div>
-  </body>
+
+    <div class="section">
+      <h2><span>04.</span> Error Codes</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 80px;">Code</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>200</strong></td>
+            <td>OK — Request was successful</td>
+          </tr>
+          <tr>
+            <td><strong>400</strong></td>
+            <td>Bad Request — Invalid parameters</td>
+          </tr>
+          <tr>
+            <td><strong>404</strong></td>
+            <td>Not Found — Endpoint or resource not found</td>
+          </tr>
+          <tr>
+            <td><strong>464</strong></td>
+            <td>Value Error — Non-numeric value provided where a number was expected</td>
+          </tr>
+          <tr>
+            <td><strong>467</strong></td>
+            <td>Invalid URL — Malformed request URL</td>
+          </tr>
+          <tr>
+            <td><strong>500</strong></td>
+            <td>Server Error — Internal server error</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 EsakoAPI. Open Source Project by <a href="https://github.com/jumhuur" target="_blank">Jumhuur</a>.
+    </p>
+  </footer>
+
+</body>
+
 </html>

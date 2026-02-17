@@ -10,6 +10,7 @@ from Loa import Loa
 from Adhi import Adhi
 from Dalag import Dalag
 from Errors import Errors
+from Info import Info
 from Gold_silver_price import gold_silver_price
 
 #app
@@ -130,6 +131,10 @@ async def xisaab_dalag(xadi,Type=1):
 async def Price():
     if True:
         return gold_silver_price()
+@app.get("/api/info")
+async def apiinfo():
+    if True:
+        return Info()
 
 
 # @app.get("/report/result")
