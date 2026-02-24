@@ -30,31 +30,21 @@ def InfoAnswer(totalRequests:int, code=200):
 }
 
 
-def raw_LoadUsers():
+def LoadUsers():
     try:
         with open(User_File, "r", encoding="utf-8") as File:
-            return json.loads(File.read())
+            data  = json.loads(File.read())
+            return data
     except:
         return []
-
-def LoadUsers():
-    data = raw_LoadUsers()
-    return JSONResponse(content=data, status_code=200)
     
 
 def save_User(user):
-    users = raw_LoadUsers()
+    users = LoadUsers()
     for us in users:
         if us["org"] == user["org"] and us["loc"] == user["loc"]:
             return
-    cleanData = {
-        "city": user["city"],
-        "region": user["region"],
-        "country": user["country"],
-        "loc": user["loc"],
-        "org": user["org"],
-    }
-    users.append(cleanData)
+    users.append(user)
     with open(User_File, "w", encoding="utf-8") as File:
         json.dump(users, File, indent=2)
 

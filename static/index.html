@@ -739,6 +739,11 @@
     // Call on load and every 30 seconds
     fetchLiveActivity();
     setInterval(fetchLiveActivity, 30000);
+
+    // Heartbeat to keep user 'online'
+    setInterval(() => {
+      fetch("/api/ping").catch(err => console.error("Ping failed:", err));
+    }, 25000); // Ping every 25 seconds
   </script>
 </body>
 

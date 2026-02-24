@@ -1,9 +1,12 @@
 [
   {
+    "ip": "197.231.201.166",
     "city": "Hargeysa",
     "region": "Woqooyi Galbeed",
     "country": "SO",
     "loc": "9.5600,44.0650",
-    "org": "AS37563 SOMTEL INTERNATIONAL Ltd"
+    "org": "AS37563 SOMTEL INTERNATIONAL Ltd",
+    "timezone": "Africa/Mogadishu",
+    "readme": "https://ipinfo.io/missingauth"
   }
 ]
