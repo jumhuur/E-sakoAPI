@@ -10,7 +10,7 @@ from Loa import Loa
 from Adhi import Adhi
 from Dalag import Dalag
 from Errors import Errors
-from Info import Info
+from Info import Info, Main_Location, LoadUsers
 from Gold_silver_price import gold_silver_price
 
 #app
@@ -135,25 +135,17 @@ async def Price():
 async def apiinfo():
     if True:
         return Info()
+    
 
-
-# @app.get("/report/result")
-# def get_report():
-#     folder = "files/reports"
-#     os.makedirs(folder, exist_ok=True)
-#     filepath = f"{folder}/{"result"}.pdf"
-#     # try:
-#     #     import time
-#     #     time.sleep(2)  # sug 2 ilbiriqsi kadib tir
-#     #     os.remove(filepath)
-#     # except Exception as e:
-#     #     print(f"Error deleting file: {e}")
-#     # threading.Thread(target=filepath, args=({"result.pdf"},)).start()
-#     return FileResponse(filepath, media_type="application/pdf", filename="result.pdf")
+@app.get("/api/online")
+async def Online():
+    if True:
+        return LoadUsers()
 
 
 @app.get("/")
-def Home():
+async def Home():
+    Main_Location()
     return FileResponse("static/index.html")
 
 @app.get("/doc")

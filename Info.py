@@ -4,13 +4,17 @@ from fastapi.responses import JSONResponse
 import json
 from datetime import datetime
 import pytz
+import requests
+
+User_File = "files/location/Userslocation.json"
+
 
 
 
 def InfoAnswer(totalRequests:int, code=200):
     local_time = pytz.timezone("Africa/Mogadishu")
     date = datetime.now(local_time)
-    Date_format = f"{date.strftime("%A %d-%B-%Y")}"
+    Date_format = f"{date.strftime("%A-%d-%B-%Y")}"
     Time_format = f"{date.strftime("%I:%M %p")}"
     return {
     "code": code,          # Error or status code
@@ -25,13 +29,66 @@ def InfoAnswer(totalRequests:int, code=200):
     "time": Time_format           # ("Wakhti")
 }
 
+
+def raw_LoadUsers():
+    try:
+        with open(User_File, "r", encoding="utf-8") as File:
+            return json.loads(File.read())
+    except:
+        return []
+
+def LoadUsers():
+    data = raw_LoadUsers()
+    return JSONResponse(content=data, status_code=200)
+    
+
+def save_User(user):
+    users = raw_LoadUsers()
+    for us in users:
+        if us["org"] == user["org"] and us["loc"] == user["loc"]:
+            return
+    cleanData = {
+        "city": user["city"],
+        "region": user["region"],
+        "country": user["country"],
+        "loc": user["loc"],
+        "org": user["org"],
+    }
+    users.append(cleanData)
+    with open(User_File, "w", encoding="utf-8") as File:
+        json.dump(users, File, indent=2)
+
 def Info():
     try:
         with open("files/reports/data_collection.json", "r", encoding="utf-8") as File:
             content = json.loads(File.read())
-            return InfoAnswer(len(content))
+            return JSONResponse(status_code=200, content=InfoAnswer(len(content)))
     except FileNotFoundError:
-        return "file not found"
+        return JSONResponse(status_code=403, content=Errors(code=403))
     except Exception as e:
-        print(f"Error: {e}")
+        return JSONResponse(status_code=403, content=Errors(code=403))
+
+
+def Locations():
+    URL = "https://ipinfo.io/json"
+    try:
+        response = requests.get(URL, timeout=5)
+        response.raise_for_status()
+        data  = response.json()
+        return data
+    except requests.exceptions.RequestException as e:
+        print("Error", e)
+
+
+
+
+def Main_Location():
+    Locations()
+    save_User(Locations())
+
+if __name__ == "__main__":
+    Main_Location()
+
+
+
 

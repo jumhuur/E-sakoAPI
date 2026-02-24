@@ -73,36 +73,7 @@ class Sako():
 
         with open("files/reports/data_collection.json", "r") as perv_file:
             prev_data = json.load(perv_file)
-        prev_data.append(data)
+            prev_data.append(data)
         with open("files/reports/data_collection.json", "w") as file:
             json.dump(prev_data,file, indent=4)
-    
-    # def greate_result_file(item,amount,Type,Result, conditions,unit):
-    #     pdf = canvas.Canvas("files/reports/result.pdf", pagesize=A4)
-
-    #     pdf.setTitle("Your Zakaat Result")  # Cinwaan
-    #     pdf.setFont("Helvetica-Bold", 18)
-    #     pdf.drawString(100, 790, f"You callculate : {amount}-{unit} of {item}  Type:{Type} ")
-    #     pdf.setFont("Helvetica", 12)
-    #     pdf.drawString(100, 770, f"Result is {Result} {unit}")
-    #     pdf.line(100, 760, 500, 760)
-    #     pdf.drawString(100,735 , "Sakah conditions")
-    #     y = 715
-    #     for numb , condition in enumerate(conditions, start=1):
-    #         pdf.setFont("Helvetica", 12)
-    #         text = f"{numb} .{condition}"
-    #         pdf.drawString(100, y, text)
-    #         y -= 20 
-    #     pdf.drawString(100, 655, f"Date : {dateTime.strftime("%A %d-%B-%Y")}")
-    #     pdf.drawString(100, 635, f"Time : {dateTime.strftime("%I:%M %p")}")
-    #     pdf.drawString(100, 600, "Esakoapi.org")
-
-    #     pdf.save()
-
-
 selfinfo = Sako(gold_price(), silver_price())
-# print(selfinfo.qiimaha_ounce)
-# print(selfinfo.qiimaha_ounce_fido)
-# print("*" * 25)
-# print(Sako.silver_price)
-# print(Sako.gold_price)

@@ -5,6 +5,7 @@ URL_DOC = "https://esakoapi.org/doc"
 Errors_Code_messages = {
     # global
     404: f"This URL does not exist Read more details here: {URL_DOC}.",
+    403: f"file not found",
     500: "Internal Server Error Read more details here: {URL_DOC}",
 
     # Errors
