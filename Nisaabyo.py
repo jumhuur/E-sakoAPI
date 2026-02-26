@@ -67,6 +67,7 @@ class Sako():
             "Sako": sako,
             "Xadig": xadiga,
             "nooca": nooc,
+            "Magaalo": "Magaalo",
             "date": dateTime.strftime("%A %d-%B-%Y"),
             "time": dateTime.strftime("%I:%M %p")
         }

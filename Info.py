@@ -1,4 +1,3 @@
-from jawaabo import jawaab
 from Errors import Errors
 from fastapi.responses import JSONResponse
 import json
@@ -7,9 +6,6 @@ import pytz
 import requests
 
 User_File = "files/location/Userslocation.json"
-
-
-
 
 def InfoAnswer(totalRequests:int, code=200):
     local_time = pytz.timezone("Africa/Mogadishu")
@@ -73,9 +69,15 @@ def Locations():
 
 
 def Main_Location():
-    Locations()
-    save_User(Locations())
-
+    Userdata  = Locations()
+    AllData = {
+        "city": Userdata["city"],
+        "country": Userdata["country"],
+        "loc":Userdata["loc"],
+        "org": Userdata["org"],
+        }
+    save_User(AllData)
+    return AllData
 if __name__ == "__main__":
     Main_Location()
 
