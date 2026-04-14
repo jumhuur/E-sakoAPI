@@ -10,7 +10,7 @@ from Loa import Loa
 from Adhi import Adhi
 from Dalag import Dalag
 from Errors import Errors
-from Info import Info, Main_Location, LoadUsers
+from Info import Info, Main_Location, LoadUsers,Locations
 from Gold_silver_price import gold_silver_price
 
 #app
@@ -141,6 +141,16 @@ async def apiinfo():
 async def Online():
     if True:
         return LoadUsers()
+    
+@app.get("/api/activeUser/{user}")
+async def activeUser(user=dict):
+    if user:
+        return Locations(user=dict)
+    else:
+        return JSONResponse(
+            status_code=467,
+            content= Errors(467)
+        )
 
 
 @app.get("/")

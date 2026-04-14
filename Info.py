@@ -13,16 +13,16 @@ def InfoAnswer(totalRequests:int, code=200):
     Date_format = f"{date.strftime("%A-%d-%B-%Y")}"
     Time_format = f"{date.strftime("%I:%M %p")}"
     return {
-    "code": code,          # Error or status code
-    "success": True,    # Response message or result
+    "code": code,         
+    "success": True,
     "message": "Request completed successfully",
     "data": {
     "createdBy": "Jumhuur",
     "statusCode": 200,
     "totalRequests": totalRequests 
   },
-    "date": Date_format,          # ("Taariikh")
-    "time": Time_format           # ("Wakhti")
+    "date": Date_format, 
+    "time": Time_format          
 }
 
 
@@ -70,6 +70,7 @@ def Locations():
 
 def Main_Location():
     Userdata  = Locations()
+    print(Userdata)
     AllData = {
         "city": Userdata["city"],
         "country": Userdata["country"],
@@ -77,9 +78,7 @@ def Main_Location():
         "org": Userdata["org"],
         }
     save_User(AllData)
-    return AllData
-if __name__ == "__main__":
-    Main_Location()
+    return Userdata
 
 
 
