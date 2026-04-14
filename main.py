@@ -141,21 +141,17 @@ async def apiinfo():
 async def Online():
     if True:
         return LoadUsers()
-    
-@app.get("/api/activeUser/{user}")
-async def activeUser(user=dict):
-    if user:
-        return Locations(user=dict)
-    else:
-        return JSONResponse(
-            status_code=467,
-            content= Errors(467)
-        )
+
 
 
 @app.get("/")
-async def Home():
-    Main_Location()
+async def Home(request: Request):
+    client_ip = request.headers.get("x-forwarded-for")
+    if client_ip:
+        client_ip = client_ip.split(",")[0].strip()
+    else:
+        client_ip = request.client.host
+    Main_Location(client_ip)
     return FileResponse("static/index.html")
 
 @app.get("/doc")

@@ -55,8 +55,8 @@ def Info():
         return JSONResponse(status_code=403, content=Errors(code=403))
 
 
-def Locations():
-    URL = "https://ipinfo.io/json"
+def Locations(client_ip: str = None):
+    URL = f"https://ipinfo.io/{client_ip}/json" if client_ip and client_ip not in ["127.0.0.1", "::1"] else "https://ipinfo.io/json"
     try:
         response = requests.get(URL, timeout=5)
         response.raise_for_status()
@@ -64,18 +64,19 @@ def Locations():
         return data
     except requests.exceptions.RequestException as e:
         print("Error", e)
+        return {}
 
 
 
 
-def Main_Location():
-    Userdata  = Locations()
+def Main_Location(client_ip: str = None):
+    Userdata  = Locations(client_ip)
     print(Userdata)
     AllData = {
-        "city": Userdata["city"],
-        "country": Userdata["country"],
-        "loc":Userdata["loc"],
-        "org": Userdata["org"],
+        "city": Userdata.get("city", "Unknown"),
+        "country": Userdata.get("country", "Unknown"),
+        "loc": Userdata.get("loc", "Unknown"),
+        "org": Userdata.get("org", "Unknown"),
         }
     save_User(AllData)
     return Userdata
