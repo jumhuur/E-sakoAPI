@@ -155,6 +155,12 @@ async def Home(request: Request):
     return FileResponse("static/index.html")
 
 @app.get("/doc")
-def Docs_page():
+def Docs_page(request: Request):
+    client_ip = request.headers.get("x-forwarded-for")
+    if client_ip:
+        client_ip = client_ip.split(",")[0].strip()
+    else:
+        client_ip = request.client.host
+    Main_Location(client_ip)
     return FileResponse("static/docs.html")
 

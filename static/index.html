@@ -390,12 +390,17 @@
     }
 
     .online-header {
+      height: 30px;
       display: flex;
       align-items: center;
       gap: 8px;
       white-space: nowrap;
       padding-right: 20px;
       border-right: 1px solid var(--border);
+      position: sticky;
+      left: 0;
+      background: var(--card);
+      z-index: 10;
     }
 
     .pulse {
@@ -439,6 +444,13 @@
       white-space: nowrap;
       border: 1px solid var(--border);
       transition: all 0.2s ease;
+    }
+
+    .user-item span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 5px;
     }
 
     .user-item:hover {
@@ -496,7 +508,7 @@
     <div class="online-card">
       <div class="online-header">
         <div class="pulse"></div>
-        <span style="font-weight: 700; font-size: 14px">Live Activity</span>
+        <span style="font-weight: 700; font-size: 14px">Live Activity <span id="live-count"></span></span>
       </div>
       <div class="user-list" id="online-user-list">
         <div class="user-item">
@@ -704,39 +716,6 @@
       status.style.color = "#64748b";
     });
 
-    // async function FetchUserLocation() {
-    //   try {
-    //     const response = await fetch("https://ipinfo.io/json");
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //       console.log(data);
-    //       return data;
-    //     }
-    //   } catch (Error) {
-    //     console.log({ message: Error.message });
-    //   }
-    // }
-    // // call api
-    // const Pythonapicall = async () => {
-    //   try {
-    //     const Userinfo = await FetchUserLocation();
-    //     console.log(Userinfo.city);
-    //     const req = await fetch(
-    //       `/api/api/activeUser/${JSON.parse(...Userinfo)}`,
-    //     );
-    //     if (req.ok) {
-    //       const res = await req.json();
-    //       return;
-    //     }
-    //   } catch (error) {
-    //     console.log({ message: error.message });
-    //   }
-    // };
-
-    // Pythonapicall();
-
-    // FetchUserLocation();
-
     async function fetchLiveActivity() {
       const userList = document.getElementById("online-user-list");
       try {
@@ -746,12 +725,17 @@
 
         const users = await response.json();
 
+        const countSpan = document.getElementById("live-count");
+        if (countSpan) {
+          countSpan.textContent = `(${users ? users.length : 0})`;
+        }
+
         if (!users || users.length === 0) {
           userList.innerHTML = `<div style="color: var(--text-muted); font-size: 13px; font-style: italic;">No active users right now</div>`;
           return;
         }
 
-        userList.innerHTML = users
+        userList.innerHTML = users.reverse()
           .map((user) => {
             const ip = user.ip || "0.0.0.0";
             const ipLastPart = ip.includes(".")
@@ -763,7 +747,7 @@
 
             return `
             <div class="user-item">
-              <span>User #${ipLastPart}${randomId}</span>
+              <span>User <img src="https://flagsapi.com/${user.country}/flat/16.png"></span>
               <span class="city-tag">${user.city || "Unknown"}</span>
             </div>
           `;

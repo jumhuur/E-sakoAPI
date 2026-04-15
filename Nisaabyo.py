@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 import json
 from datetime import datetime
 from reportlab.lib.pagesizes import A4
-from Price import gold_price,silver_price
+from Price import gold_price, silver_price
 
 load_dotenv()
 

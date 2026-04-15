@@ -71,7 +71,6 @@ def Locations(client_ip: str = None):
 
 def Main_Location(client_ip: str = None):
     Userdata  = Locations(client_ip)
-    print(Userdata)
     AllData = {
         "city": Userdata.get("city", "Unknown"),
         "country": Userdata.get("country", "Unknown"),
