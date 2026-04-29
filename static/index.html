@@ -520,42 +520,120 @@
 
       .online-card {
         background: var(--card);
-        border-radius: var(--radius);
-        padding: 16px 24px;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 22px;
+        box-shadow: var(--shadow-lg);
         display: flex;
-        align-items: center;
-        gap: 20px;
-        overflow-x: auto;
-        scrollbar-width: none;
+        flex-direction: column;
+        gap: 18px;
+        overflow: hidden;
+        position: relative;
       }
 
-      .online-card::-webkit-scrollbar {
-        display: none;
+      .online-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(135deg, rgba(16, 185, 129, 0.08), transparent 38%),
+          linear-gradient(315deg, rgba(99, 102, 241, 0.07), transparent 42%);
+        pointer-events: none;
       }
 
       .online-header {
-        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+      }
+
+      .online-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .online-title-text {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .online-title-text strong {
+        color: var(--text-main);
+        font-size: 15px;
+        line-height: 1.2;
+      }
+
+      .online-title-text span {
+        color: var(--text-muted);
+        font-size: 12px;
+        line-height: 1.3;
+      }
+
+      .live-count-badge {
+        color: #047857;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.24);
+        border-radius: 999px;
+        padding: 7px 12px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .online-actions {
         display: flex;
         align-items: center;
         gap: 8px;
-        white-space: nowrap;
-        padding-right: 20px;
-        border-right: 1px solid var(--border);
-        position: sticky;
-        left: 0;
-        background: var(--card);
-        z-index: 10;
+        margin-left: auto;
+      }
+
+      .online-scroll-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--text-main);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        font-size: 18px;
+        line-height: 1;
+        transition: all 0.2s ease;
+      }
+
+      .online-scroll-btn svg {
+        width: 17px;
+        height: 17px;
+        stroke-width: 2.25;
+      }
+
+      .online-scroll-btn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-1px);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .online-scroll-btn {
+          background: rgba(15, 23, 42, 0.48);
+        }
       }
 
       .pulse {
-        width: 8px;
-        height: 8px;
+        width: 11px;
+        height: 11px;
         background: #10b981;
         border-radius: 50%;
         box-shadow: 0 0 0 rgba(16, 185, 129, 0.4);
         animation: pulse 2s infinite;
+        flex: 0 0 auto;
       }
 
       @keyframes pulse {
@@ -575,33 +653,93 @@
       .user-list {
         display: flex;
         gap: 12px;
-        align-items: center;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 2px 2px 14px;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+      }
+
+      .user-list::-webkit-scrollbar {
+        display: none;
       }
 
       .user-item {
         display: flex;
         align-items: center;
-        gap: 8px;
-        background: var(--bg);
-        padding: 6px 14px;
-        border-radius: 20px;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.72);
+        padding: 12px;
+        border-radius: 8px;
         font-size: 13px;
         font-weight: 500;
-        white-space: nowrap;
-        border: 1px solid var(--border);
+        min-width: 260px;
+        flex: 0 0 260px;
+        border: 1px solid rgba(226, 232, 240, 0.85);
         transition: all 0.2s ease;
+        scroll-snap-align: start;
       }
 
-      .user-item span {
+      @media (prefers-color-scheme: dark) {
+        .user-item {
+          background: rgba(15, 23, 42, 0.42);
+          border-color: rgba(51, 65, 85, 0.8);
+        }
+      }
+
+      .user-avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        color: white;
+        background: linear-gradient(135deg, #0f766e, var(--primary));
+        font-size: 12px;
+        font-weight: 800;
+        flex: 0 0 auto;
+        text-transform: uppercase;
+      }
+
+      .user-details {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 0;
+      }
+
+      .user-location {
+        color: var(--text-main);
+        font-weight: 700;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .user-meta {
+        display: flex;
         align-items: center;
-        column-gap: 5px;
+        gap: 6px;
+        color: var(--text-muted);
+        font-size: 12px;
+        min-width: 0;
+      }
+
+      .user-meta img {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        flex: 0 0 auto;
       }
 
       .user-item:hover {
         border-color: var(--primary);
         transform: translateY(-1px);
+        box-shadow: var(--shadow-sm);
       }
 
       .city-tag {
@@ -611,6 +749,17 @@
         background: rgba(99, 102, 241, 0.1);
         padding: 2px 8px;
         border-radius: 6px;
+      }
+
+      .online-state {
+        color: var(--text-muted);
+        background: rgba(148, 163, 184, 0.12);
+        border: 1px dashed var(--border);
+        border-radius: 8px;
+        padding: 14px;
+        font-size: 13px;
+        min-width: 100%;
+        flex: 0 0 100%;
       }
 
       @media (max-width: 640px) {
@@ -623,14 +772,22 @@
         }
 
         .online-header {
-          border-right: none;
-          padding-right: 0;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .online-actions {
+          width: 100%;
+          justify-content: space-between;
         }
 
         .online-card {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 12px;
+          padding: 18px;
+        }
+
+        .user-item {
+          min-width: 245px;
+          flex-basis: 245px;
         }
       }
     </style>
@@ -666,31 +823,86 @@
     <section class="online-users">
       <div class="online-card">
         <div class="online-header">
-          <div class="pulse"></div>
-          <span style="font-weight: 700; font-size: 14px"
-            >Live Activity <span id="live-count"></span
-          ></span>
+          <div class="online-title">
+            <div class="pulse"></div>
+            <div class="online-title-text">
+              <strong>Live Activity</strong>
+              <span>Recent API visitors by location</span>
+            </div>
+          </div>
+          <div class="online-actions">
+            <span id="live-count" class="live-count-badge">Loading</span>
+            <button
+              class="online-scroll-btn"
+              type="button"
+              data-online-scroll="-1"
+              aria-label="Scroll users left"
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              class="online-scroll-btn"
+              type="button"
+              data-online-scroll="1"
+              aria-label="Scroll users right"
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </div>
         </div>
         <div class="user-list" id="online-user-list">
           <div class="user-item">
-            <span>User #4201</span>
-            <span class="city-tag">Hargeisa</span>
+            <div class="user-avatar">HG</div>
+            <div class="user-details">
+              <span class="user-location">Hargeisa</span>
+              <span class="user-meta">Somalia</span>
+            </div>
           </div>
           <div class="user-item">
-            <span>User #3182</span>
-            <span class="city-tag">Mogadishu</span>
+            <div class="user-avatar">MG</div>
+            <div class="user-details">
+              <span class="user-location">Mogadishu</span>
+              <span class="user-meta">Somalia</span>
+            </div>
           </div>
           <div class="user-item">
-            <span>User #9021</span>
-            <span class="city-tag">Garowe</span>
+            <div class="user-avatar">GR</div>
+            <div class="user-details">
+              <span class="user-location">Garowe</span>
+              <span class="user-meta">Somalia</span>
+            </div>
           </div>
           <div class="user-item">
-            <span>User #5564</span>
-            <span class="city-tag">Borama</span>
+            <div class="user-avatar">BR</div>
+            <div class="user-details">
+              <span class="user-location">Borama</span>
+              <span class="user-meta">Somalia</span>
+            </div>
           </div>
           <div class="user-item">
-            <span>User #1290</span>
-            <span class="city-tag">Kismayo</span>
+            <div class="user-avatar">KM</div>
+            <div class="user-details">
+              <span class="user-location">Kismayo</span>
+              <span class="user-meta">Somalia</span>
+            </div>
           </div>
         </div>
       </div>
@@ -719,7 +931,7 @@
                   <strong>Gold Price</strong>
                   <span>XAU per troy ounce</span>
                 </div>
-                <div class="metal-icon gold">Au</div>
+                <div class="metal-icon gold">AU</div>
               </div>
               <div id="gold-ounce" class="price-value loading">Loading...</div>
             </div>
@@ -736,7 +948,7 @@
                   <strong>Silver Price</strong>
                   <span>XAG per troy ounce</span>
                 </div>
-                <div class="metal-icon silver">Ag</div>
+                <div class="metal-icon silver">AG</div>
               </div>
               <div id="silver-ounce" class="price-value loading">
                 Loading...
@@ -779,7 +991,9 @@
       const priceUpdated = document.getElementById("price-updated");
       const priceCountdown = document.getElementById("price-countdown");
       const priceError = document.getElementById("price-error");
+      const onlineUserList = document.getElementById("online-user-list");
       let secondsUntilRefresh = PRICE_REFRESH_SECONDS;
+      let isOnlineCarouselPaused = false;
 
       const usdFormatter = new Intl.NumberFormat("en-US", {
         style: "currency",
@@ -828,6 +1042,53 @@
         });
       }
 
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, (char) => {
+          const entities = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          };
+          return entities[char];
+        });
+      }
+
+      function scrollOnlineUsers(direction = 1) {
+        if (!onlineUserList) return;
+        const firstUser = onlineUserList.querySelector(".user-item");
+        const cardWidth = firstUser ? firstUser.offsetWidth + 12 : 272;
+        const maxScroll =
+          onlineUserList.scrollWidth - onlineUserList.clientWidth;
+
+        if (maxScroll <= 0) return;
+
+        const nextLeft = onlineUserList.scrollLeft + cardWidth * direction;
+        const targetLeft =
+          nextLeft > maxScroll ? 0 : nextLeft < 0 ? maxScroll : nextLeft;
+
+        onlineUserList.scrollTo({
+          left: targetLeft,
+          behavior: "smooth",
+        });
+      }
+
+      document.querySelectorAll("[data-online-scroll]").forEach((button) => {
+        button.addEventListener("click", () => {
+          scrollOnlineUsers(Number(button.dataset.onlineScroll));
+        });
+      });
+
+      if (onlineUserList) {
+        onlineUserList.addEventListener("mouseenter", () => {
+          isOnlineCarouselPaused = true;
+        });
+        onlineUserList.addEventListener("mouseleave", () => {
+          isOnlineCarouselPaused = false;
+        });
+      }
+
       async function fetchMetalPrices() {
         setPriceStatus("Updating", "loading");
         showPriceError();
@@ -861,7 +1122,9 @@
       }
 
       async function fetchLiveActivity() {
-        const userList = document.getElementById("online-user-list");
+        const userList = onlineUserList;
+        if (!userList) return;
+
         try {
           const response = await fetch("/api/online");
           if (!response.ok)
@@ -871,42 +1134,65 @@
 
           const countSpan = document.getElementById("live-count");
           if (countSpan) {
-            countSpan.textContent = `(${users ? users.length : 0})`;
+            const totalUsers = users ? users.length : 0;
+            countSpan.textContent = `${totalUsers} online`;
           }
 
           if (!users || users.length === 0) {
-            userList.innerHTML = `<div style="color: var(--text-muted); font-size: 13px; font-style: italic;">No active users right now</div>`;
+            userList.innerHTML = `<div class="online-state">No active users right now</div>`;
             return;
           }
 
           userList.innerHTML = users
             .reverse()
+            .slice(0, 12)
             .map((user) => {
-              const ip = user.ip || "0.0.0.0";
-              const ipLastPart = ip.includes(".")
-                ? ip.split(".").slice(-1)[0]
-                : ip.includes(":")
-                  ? ip.split(":").slice(-1)[0]
-                  : "???";
-              const randomId = Math.floor(Math.random() * 1000);
+              const city = user.city || "Unknown";
+              const country = /^[A-Z]{2}$/i.test(user.country || "")
+                ? user.country.toUpperCase()
+                : "SO";
+              const org = user.org || "API visitor";
+              const initials = city
+                .split(/\s+/)
+                .filter(Boolean)
+                .slice(0, 2)
+                .map((part) => part[0])
+                .join("")
+                .padEnd(2, country[0] || "U")
+                .slice(0, 2);
 
               return `
             <div class="user-item">
-              <span>User <img src="https://flagsapi.com/${user.country}/flat/16.png"></span>
-              <span class="city-tag">${user.city || "Unknown"}</span>
+              <div class="user-avatar">${escapeHtml(initials)}</div>
+              <div class="user-details">
+                <span class="user-location">${escapeHtml(city)}</span>
+                <span class="user-meta">
+                  <img src="https://flagsapi.com/${country}/flat/16.png" alt="">
+                  ${escapeHtml(country)}
+                </span>
+              </div>
             </div>
           `;
             })
             .join("");
         } catch (err) {
           console.error("Live Activity Error:", err);
-          userList.innerHTML = `<div style="color: #ef4444; font-size: 12px;">Activity feed unavailable: ${err.message}</div>`;
+          const countSpan = document.getElementById("live-count");
+          if (countSpan) {
+            countSpan.textContent = "Unavailable";
+          }
+          userList.innerHTML = `<div class="online-state">Activity feed unavailable: ${escapeHtml(err.message)}</div>`;
         }
       }
 
       // Wicitaan markasta 60 seconds
       fetchLiveActivity();
       setInterval(fetchLiveActivity, 60000);
+      setInterval(() => {
+        if (!isOnlineCarouselPaused) {
+          scrollOnlineUsers(1);
+        }
+      }, 4500);
 
       fetchMetalPrices();
       setInterval(fetchMetalPrices, PRICE_REFRESH_SECONDS * 1000);
