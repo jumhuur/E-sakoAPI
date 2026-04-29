@@ -1,355 +1,589 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EsakoAPI - Documentation</title>
+    <meta
+      name="description"
+      content="Official documentation for EsakoAPI - The Islamic Zakat API."
+    />
+    <meta name="theme-color" content="#6366f1" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EsakoAPI - Documentation</title>
-  <meta name="description" content="Official documentation for EsakoAPI - The Islamic Zakat API." />
-  <meta name="theme-color" content="#6366f1" />
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --primary: #6366f1;
-      --primary-dark: #4f46e5;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --radius: 16px;
-      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-      --code-bg: #0f172a;
-      --code-text: #e2e8f0;
-      --inline-code-bg: #f1f5f9;
-    }
-
-    @media (prefers-color-scheme: dark) {
+    <style>
       :root {
-        --primary: #818cf8;
-        --primary-dark: #6366f1;
-        --bg: #0f172a;
-        --card: #1e293b;
-        --text-main: #f1f5f9;
-        --text-muted: #94a3b8;
-        --border: #334155;
-        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-        --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-        --code-bg: #020617;
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --radius: 16px;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow:
+          0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --code-bg: #0f172a;
         --code-text: #e2e8f0;
-        --inline-code-bg: #334155;
+        --inline-code-bg: #f1f5f9;
       }
-    }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-    }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --primary: #818cf8;
+          --primary-dark: #6366f1;
+          --bg: #0f172a;
+          --card: #1e293b;
+          --text-main: #f1f5f9;
+          --text-muted: #94a3b8;
+          --border: #334155;
+          --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+          --shadow:
+            0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+          --code-bg: #020617;
+          --code-text: #e2e8f0;
+          --inline-code-bg: #334155;
+        }
+      }
 
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+      }
 
-    /* Navbar */
-    .navbar {
-      width: 100%;
-      max-width: 1200px;
-      padding: 20px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+      body {
+        background-color: var(--bg);
+        color: var(--text-main);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
+      /* Navbar */
+      .navbar {
+        width: 100%;
+        max-width: 1200px;
+        padding: 20px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-    .brand-logo {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--primary), #8b5cf6);
-      color: white;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 20px;
-      box-shadow: var(--shadow-sm);
-    }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
 
-    .brand-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-main);
-      letter-spacing: -0.5px;
-    }
+      .brand-logo {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--primary), #8b5cf6);
+        color: white;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 20px;
+        box-shadow: var(--shadow-sm);
+      }
 
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 20px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 15px;
-      cursor: pointer;
-      transition: all 0.2s;
-      background: var(--card);
-      color: var(--text-main);
-      border: 1px solid var(--border);
-      text-decoration: none;
-      box-shadow: var(--shadow-sm);
-    }
+      .brand-text {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text-main);
+        letter-spacing: -0.5px;
+      }
 
-    .btn-outline:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: var(--bg);
-    }
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: var(--card);
+        color: var(--text-main);
+        border: 1px solid var(--border);
+        text-decoration: none;
+        box-shadow: var(--shadow-sm);
+      }
 
-    /* Main Content */
-    .container {
-      width: 100%;
-      max-width: 900px;
-      padding: 40px 20px 80px;
-    }
+      .btn-outline:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: var(--bg);
+      }
 
-    .page-header {
-      margin-bottom: 40px;
-      text-align: center;
-    }
+      /* Main Content */
+      .container {
+        width: 100%;
+        max-width: 900px;
+        padding: 40px 20px 80px;
+      }
 
-    .page-header h1 {
-      font-size: 36px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 12px;
-      letter-spacing: -1px;
-    }
+      .page-header {
+        margin-bottom: 40px;
+        text-align: center;
+      }
 
-    .page-header p {
-      font-size: 18px;
-      color: var(--text-muted);
-    }
-
-    /* Sections */
-    .section {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 32px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(226, 232, 240, 0.6);
-      margin-bottom: 24px;
-    }
-
-    .section h2 {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section h2 span {
-      color: var(--primary);
-      font-size: 18px;
-      opacity: 0.8;
-      font-weight: 800;
-    }
-
-    .section h3 {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--text-main);
-      margin: 24px 0 12px;
-    }
-
-    .section p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .section ul {
-      margin-bottom: 16px;
-      padding-left: 20px;
-      color: var(--text-muted);
-    }
-
-    .section li {
-      margin-bottom: 8px;
-      font-size: 15px;
-    }
-
-    /* Code Blocks */
-    pre {
-      background: var(--code-bg);
-      color: var(--code-text);
-      padding: 20px;
-      border-radius: 12px;
-      overflow-x: auto;
-      font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
-      font-size: 13px;
-      margin: 16px 0;
-      line-height: 1.6;
-      border: 1px solid #1e293b;
-    }
-
-    code.inline {
-      background: var(--inline-code-bg);
-      color: var(--primary);
-      padding: 2px 6px;
-      border-radius: 6px;
-      font-size: 0.9em;
-      font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
-      font-weight: 600;
-    }
-
-    .endpoint-url {
-      background: var(--inline-code-bg);
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-family: monospace;
-      color: var(--text-main);
-      border: 1px solid var(--border);
-      display: inline-block;
-      margin-bottom: 12px;
-      width: 100%;
-    }
-
-    /* Tables */
-    table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin-top: 16px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    th,
-    td {
-      padding: 14px 20px;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-
-    th {
-      background: var(--bg);
-      color: var(--text-main);
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    td {
-      font-size: 14px;
-      color: var(--text-muted);
-      background: var(--card);
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* Footer */
-    footer {
-      margin-top: auto;
-      border-top: 1px solid var(--border);
-      width: 100%;
-      padding: 32px 20px;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 14px;
-      background: var(--card);
-    }
-
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
       .page-header h1 {
-        font-size: 28px;
+        font-size: 36px;
+        font-weight: 800;
+        color: var(--text-main);
+        margin-bottom: 12px;
+        letter-spacing: -1px;
       }
 
+      .page-header p {
+        font-size: 18px;
+        color: var(--text-muted);
+      }
+
+      /* Sections */
       .section {
-        padding: 20px;
+        background: var(--card);
+        border-radius: 14px;
+        padding: 32px;
+        box-shadow: var(--shadow);
+        margin-bottom: 24px;
+        position: relative;
+        overflow: hidden;
       }
-    }
-  </style>
-</head>
 
-<body>
+      .section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(135deg, rgba(99, 102, 241, 0.06), transparent 34%),
+          linear-gradient(315deg, rgba(16, 185, 129, 0.04), transparent 42%);
+        pointer-events: none;
+      }
 
-  <nav class="navbar">
-    <a href="/" class="brand">
-      <div class="brand-logo">E</div>
-      <span class="brand-text">EsakoAPI</span>
-    </a>
-    <a href="/" class="btn-outline">
-      Back to Home
-    </a>
-  </nav>
+      .section > * {
+        position: relative;
+        z-index: 1;
+      }
 
-  <div class="container">
-    <div class="page-header">
-      <h1>API Documentation</h1>
-      <p>Everything you need to integrate EsakoAPI into your applications.</p>
-    </div>
+      .section h2 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--text-main);
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
 
-    <div class="section">
-      <h2><span>01.</span> Introduction</h2>
-      <p>
-        EsakoAPI is a free, open-source API designed to simplify Zakat calculations in accordance with Islamic Shariah.
-        It requires <strong>no API key</strong> for basic usage, making it incredibly easy to get started.
-      </p>
-    </div>
+      .section h2 span {
+        color: var(--primary);
+        font-size: 18px;
+        opacity: 0.8;
+        font-weight: 800;
+      }
 
-    <div class="section">
-      <h2><span>02.</span> Base URL</h2>
-      <div class="endpoint-url">https://esakoapi.org/api/</div>
-    </div>
+      .section h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-main);
+        margin: 24px 0 12px;
+      }
 
-    <div class="section">
-      <h2><span>03.</span> Endpoints</h2>
+      .section p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--text-muted);
+        margin-bottom: 16px;
+      }
 
-      <h3>01 - Money (Cash/Bank)</h3>
-      <p>Calculate Zakat on monetary assets.</p>
-      <div class="endpoint-url">GET /money/{amount}</div>
-      <p>Example: <code class="inline">https://esakoapi.org/api/money/9899</code></p>
+      .section ul {
+        margin-bottom: 16px;
+        padding-left: 20px;
+        color: var(--text-muted);
+      }
 
-      <h4>Response Example</h4>
-      <pre>{
+      .section li {
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+
+      /* Code Blocks */
+      pre {
+        background: var(--code-bg);
+        color: var(--code-text);
+        padding: 20px;
+        border-radius: 12px;
+        overflow-x: auto;
+        font-family:
+          "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas",
+          monospace;
+        font-size: 13px;
+        margin: 16px 0;
+        line-height: 1.6;
+        border: 1px solid #1e293b;
+      }
+
+      code.inline {
+        background: var(--inline-code-bg);
+        color: var(--primary);
+        padding: 2px 6px;
+        border-radius: 6px;
+        font-size: 0.9em;
+        font-family:
+          "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas",
+          monospace;
+        font-weight: 600;
+      }
+
+      .endpoint-url {
+        background: var(--code-bg);
+        color: var(--code-text);
+        padding: 12px 14px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        width: 100%;
+        min-width: 0;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .endpoint-method {
+        color: #bbf7d0;
+        background: rgba(16, 185, 129, 0.16);
+        border: 1px solid rgba(16, 185, 129, 0.26);
+        border-radius: 7px;
+        padding: 5px 8px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        flex: 0 0 auto;
+      }
+
+      .endpoint-text {
+        font-family:
+          "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas",
+          monospace;
+        font-size: 13px;
+        line-height: 1.5;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        flex: 1;
+      }
+
+      .endpoint-text::-webkit-scrollbar {
+        display: none;
+      }
+
+      .copy-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--code-text);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex: 0 0 auto;
+      }
+
+      .copy-btn:hover {
+        background: rgba(99, 102, 241, 0.2);
+        border-color: rgba(129, 140, 248, 0.45);
+        transform: translateY(-1px);
+      }
+
+      .copy-btn svg {
+        width: 17px;
+        height: 17px;
+        stroke-width: 2.2;
+      }
+
+      .copy-btn .check-icon {
+        display: none;
+      }
+
+      .copy-btn.copied {
+        color: #86efac;
+        border-color: rgba(134, 239, 172, 0.5);
+        background: rgba(34, 197, 94, 0.14);
+      }
+
+      .copy-btn.copied .copy-icon {
+        display: none;
+      }
+
+      .copy-btn.copied .check-icon {
+        display: block;
+      }
+
+      .endpoint-group {
+        display: grid;
+        gap: 10px;
+        margin: 14px 0 18px;
+      }
+
+      .subtle-divider {
+        border: 0;
+        border-top: 1px solid var(--border);
+        margin: 32px 0;
+      }
+
+      /* Tables */
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-top: 16px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        padding: 14px 20px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+
+      th {
+        background: var(--bg);
+        color: var(--text-main);
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      td {
+        font-size: 14px;
+        color: var(--text-muted);
+        background: var(--card);
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: auto;
+        border-top: 1px solid var(--border);
+        width: 100%;
+        padding: 32px 20px;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 14px;
+        background: var(--card);
+      }
+
+      footer a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .page-header h1 {
+          font-size: 28px;
+        }
+
+        .section {
+          padding: 20px;
+        }
+
+        .endpoint-url {
+          align-items: stretch;
+          gap: 10px;
+        }
+
+        .endpoint-method {
+          display: grid;
+          place-items: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <a href="/" class="brand">
+        <div class="brand-logo">E</div>
+        <span class="brand-text">EsakoAPI</span>
+      </a>
+      <a href="/" class="btn-outline"> Back to Home </a>
+    </nav>
+
+    <div class="container">
+      <div class="page-header">
+        <h1>API Documentation</h1>
+        <p>Everything you need to integrate EsakoAPI into your applications.</p>
+      </div>
+
+      <div class="section">
+        <h2><span>01.</span> Introduction</h2>
+        <p>
+          EsakoAPI is a free, open-source API designed to simplify Zakat
+          calculations in accordance with Islamic Shariah. It requires
+          <strong>no API key</strong> for basic usage, making it incredibly easy
+          to get started.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2><span>02.</span> Base URL</h2>
+        <div class="endpoint-url" data-copy-url="https://esakoapi.org/api/">
+          <span class="endpoint-method">BASE</span>
+          <span class="endpoint-text">https://esakoapi.org/api/</span>
+          <button class="copy-btn" type="button" aria-label="Copy base URL">
+            <svg
+              class="copy-icon"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+              <path
+                d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+              />
+            </svg>
+            <svg
+              class="check-icon"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2><span>03.</span> Endpoints</h2>
+
+        <h3>01 - Money (Cash/Bank)</h3>
+        <p>Calculate Zakat on monetary assets.</p>
+        <div class="endpoint-group">
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/money/{amount}"
+          >
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/money/{amount}</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy money endpoint"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/money/9899"
+          >
+            <span class="endpoint-method">EXAMPLE</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/money/9899</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy money example"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <h4>Response Example</h4>
+        <pre>
+{
   "code": 200,
   "response": 247.475,
   "conditions": [
@@ -360,28 +594,109 @@
   "unit": "$",
   "date": "Tuesday 14-October-2025",
   "time": "09:22 AM"
-}</pre>
+}</pre
+        >
 
-      <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
+        <hr class="subtle-divider" />
 
-      <h3>02 - Gold</h3>
-      <p>Calculate Zakat on gold based on its purity (Karat).</p>
-      <div class="endpoint-url">GET /gold/{grams}?Type={karat}</div>
+        <h3>02 - Gold</h3>
+        <p>Calculate Zakat on gold based on its purity (Karat).</p>
+        <div class="endpoint-group">
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/gold/{grams}?Type={karat}"
+          >
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/gold/{grams}?Type={karat}</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy gold endpoint"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/gold/150?Type=22"
+          >
+            <span class="endpoint-method">EXAMPLE</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/gold/150?Type=22</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy gold example"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+        </div>
 
-      <p><strong>Supported Types (Karats):</strong></p>
-      <ul>
-        <li><strong>24</strong>: 24K Gold (Pure) - <em>Default</em></li>
-        <li><strong>22</strong>: 22K Gold</li>
-        <li><strong>21</strong>: 21K Gold</li>
-        <li><strong>20</strong>: 20K Gold</li>
-        <li><strong>18</strong>: 18K Gold</li>
-        <li><strong>16</strong>: 16K Gold</li>
-      </ul>
+        <p><strong>Supported Types (Karats):</strong></p>
+        <ul>
+          <li><strong>24</strong>: 24K Gold (Pure) - <em>Default</em></li>
+          <li><strong>22</strong>: 22K Gold</li>
+          <li><strong>21</strong>: 21K Gold</li>
+          <li><strong>20</strong>: 20K Gold</li>
+          <li><strong>18</strong>: 18K Gold</li>
+          <li><strong>16</strong>: 16K Gold</li>
+        </ul>
 
-      <p>Example: <code class="inline">https://esakoapi.org/api/gold/150?Type=22</code></p>
-
-      <h4>Response Example</h4>
-      <pre>{
+        <h4>Response Example</h4>
+        <pre>
+{
   "code": 200,
   "response": 3.625,
   "conditions": [
@@ -391,102 +706,623 @@
   ],
   "unit": "Gram",
   "date": "Tuesday 14-October-2025"
-}</pre>
+}</pre
+        >
 
-      <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
+        <hr class="subtle-divider" />
 
-      <h3>03 - Silver</h3>
-      <div class="endpoint-url">GET /silver/{grams}</div>
-      <p>Example: <code class="inline">https://esakoapi.org/api/silver/920</code></p>
-      <pre>{
+        <h3>03 - Silver</h3>
+        <div class="endpoint-group">
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/silver/{grams}"
+          >
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/silver/{grams}</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy silver endpoint"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/silver/920"
+          >
+            <span class="endpoint-method">EXAMPLE</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/silver/920</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy silver example"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <pre>
+{
   "code": 200,
   "response": 23,
   "unit": "Gram"
-}</pre>
+}</pre
+        >
 
-      <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
+        <hr class="subtle-divider" />
 
-      <h3>04 - Livestock (Camels, Cows, Sheep)</h3>
-      <p>Calculate Zakat on livestock numbers.</p>
+        <h3>04 - Livestock (Camels, Cows, Sheep)</h3>
+        <p>Calculate Zakat on livestock numbers.</p>
 
-      <div class="endpoint-url">GET /camels/{count}</div>
-      <div class="endpoint-url">GET /cows/{count}</div>
-      <div class="endpoint-url">GET /sheep/{count}</div>
+        <div class="endpoint-group">
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/camels/{count}"
+          >
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/camels/{count}</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy camels endpoint"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/cows/{count}"
+          >
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/cows/{count}</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy cows endpoint"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/sheep/{count}"
+          >
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/sheep/{count}</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy sheep endpoint"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/camels/120"
+          >
+            <span class="endpoint-method">EXAMPLE</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/camels/120</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy camels example"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/cows/56"
+          >
+            <span class="endpoint-method">EXAMPLE</span>
+            <span class="endpoint-text">https://esakoapi.org/api/cows/56</span>
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy cows example"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/sheep/400"
+          >
+            <span class="endpoint-method">EXAMPLE</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/sheep/400</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy sheep example"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+        </div>
 
-      <p><strong>Examples:</strong></p>
-      <ul>
-        <li>Camels: <code class="inline">/api/camels/120</code></li>
-        <li>Cows: <code class="inline">/api/cows/56</code></li>
-        <li>Sheep/Goats: <code class="inline">/api/sheep/400</code></li>
-      </ul>
+        <hr class="subtle-divider" />
 
-      <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
+        <h3>07 - Crops</h3>
+        <p>
+          Calculate Zakat on agricultural produce based on irrigation method.
+        </p>
+        <div class="endpoint-group">
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/crops/{kg}?Type={method}"
+          >
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/crops/{kg}?Type={method}</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy crops endpoint"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/crops/920?Type=2"
+          >
+            <span class="endpoint-method">EXAMPLE</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/crops/920?Type=2</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy crops example"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+        </div>
 
-      <h3>07 - Crops</h3>
-      <p>Calculate Zakat on agricultural produce based on irrigation method.</p>
-      <div class="endpoint-url">GET /crops/{kg}?Type={method}</div>
+        <p><strong>Irrigation Types:</strong></p>
+        <ul>
+          <li><strong>1</strong>: Rain-fed (Natural) - <em>Default</em></li>
+          <li><strong>2</strong>: Artificial Irrigation (Costly water)</li>
+          <li><strong>3</strong>: Mixed (Rain + Artificial)</li>
+        </ul>
 
-      <p><strong>Irrigation Types:</strong></p>
-      <ul>
-        <li><strong>1</strong>: Rain-fed (Natural) - <em>Default</em></li>
-        <li><strong>2</strong>: Artificial Irrigation (Costly water)</li>
-        <li><strong>3</strong>: Mixed (Rain + Artificial)</li>
-      </ul>
+        <hr class="subtle-divider" />
 
-      <p>Example: <code class="inline">https://esakoapi.org/api/crops/920?Type=2</code></p>
+        <h3>08 - Buried Treasure (Rikaas)</h3>
+        <div class="endpoint-group">
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/rikaas/{grams}"
+          >
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/rikaas/{grams}</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy rikaas endpoint"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="endpoint-url"
+            data-copy-url="https://esakoapi.org/api/rikaas/122"
+          >
+            <span class="endpoint-method">EXAMPLE</span>
+            <span class="endpoint-text"
+              >https://esakoapi.org/api/rikaas/122</span
+            >
+            <button
+              class="copy-btn"
+              type="button"
+              aria-label="Copy rikaas example"
+            >
+              <svg
+                class="copy-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path
+                  d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                />
+              </svg>
+              <svg
+                class="check-icon"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
 
-      <hr style="border: 0; border-top: 1px solid var(--border); margin: 32px 0;">
-
-      <h3>08 - Buried Treasure (Rikaas)</h3>
-      <div class="endpoint-url">GET /rikaas/{grams}</div>
-      <p>Example: <code class="inline">https://esakoapi.org/api/rikaas/122</code></p>
+      <div class="section">
+        <h2><span>04.</span> Error Codes</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 80px">Code</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>200</strong></td>
+              <td>OK — Request was successful</td>
+            </tr>
+            <tr>
+              <td><strong>400</strong></td>
+              <td>Bad Request — Invalid parameters</td>
+            </tr>
+            <tr>
+              <td><strong>404</strong></td>
+              <td>Not Found — Endpoint or resource not found</td>
+            </tr>
+            <tr>
+              <td><strong>464</strong></td>
+              <td>
+                Value Error — Non-numeric value provided where a number was
+                expected
+              </td>
+            </tr>
+            <tr>
+              <td><strong>467</strong></td>
+              <td>Invalid URL — Malformed request URL</td>
+            </tr>
+            <tr>
+              <td><strong>500</strong></td>
+              <td>Server Error — Internal server error</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <div class="section">
-      <h2><span>04.</span> Error Codes</h2>
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 80px;">Code</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>200</strong></td>
-            <td>OK — Request was successful</td>
-          </tr>
-          <tr>
-            <td><strong>400</strong></td>
-            <td>Bad Request — Invalid parameters</td>
-          </tr>
-          <tr>
-            <td><strong>404</strong></td>
-            <td>Not Found — Endpoint or resource not found</td>
-          </tr>
-          <tr>
-            <td><strong>464</strong></td>
-            <td>Value Error — Non-numeric value provided where a number was expected</td>
-          </tr>
-          <tr>
-            <td><strong>467</strong></td>
-            <td>Invalid URL — Malformed request URL</td>
-          </tr>
-          <tr>
-            <td><strong>500</strong></td>
-            <td>Server Error — Internal server error</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <footer>
+      <p>
+        &copy; 2026 EsakoAPI. Open Source Project by
+        <a href="https://github.com/jumhuur" target="_blank">Jumhuur</a>.
+      </p>
+    </footer>
 
-  </div>
+    <script>
+      async function copyText(value) {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(value);
+          return;
+        }
 
-  <footer>
-    <p>&copy; 2026 EsakoAPI. Open Source Project by <a href="https://github.com/jumhuur" target="_blank">Jumhuur</a>.
-    </p>
-  </footer>
+        const textarea = document.createElement("textarea");
+        textarea.value = value;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+      }
 
-</body>
+      document.querySelectorAll(".endpoint-url").forEach((endpoint) => {
+        const button = endpoint.querySelector(".copy-btn");
+        if (!button) return;
 
+        button.addEventListener("click", async () => {
+          const value = endpoint.dataset.copyUrl || endpoint.textContent.trim();
+          const previousLabel = button.getAttribute("aria-label") || "Copy URL";
+
+          try {
+            await copyText(value);
+            button.classList.add("copied");
+            button.setAttribute("aria-label", "Copied");
+
+            window.setTimeout(() => {
+              button.classList.remove("copied");
+              button.setAttribute("aria-label", previousLabel);
+            }, 1600);
+          } catch (error) {
+            button.setAttribute("aria-label", "Copy failed");
+            window.setTimeout(() => {
+              button.setAttribute("aria-label", previousLabel);
+            }, 1600);
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
