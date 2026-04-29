@@ -34,8 +34,6 @@ def xisaab_Dahab(xadiga:int, nooc: int):
     if nooc not in grams:
         return JSONResponse(status_code=463, content=Errors(463))
 
-    # if type(xadiga) != int:
-    #     return JSONResponse(status_code=461, content=Errors(461))
     if int(xadiga) < Sako.Nisaab_dahab:
         return JSONResponse(status_code=320, content=Errors(320, True))
         # The actual calculation starts here

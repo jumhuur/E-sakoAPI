@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -181,14 +181,11 @@
       background: var(--bg);
     }
 
-    /* API Tester Section */
-    .tester-container {
+    /* Live Price Section */
+    .price-container {
       width: 100%;
       max-width: 1100px;
       padding: 0 20px 80px;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 32px;
     }
 
     .card {
@@ -200,6 +197,150 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+    }
+
+    .price-board {
+      gap: 24px;
+    }
+
+    .price-summary {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: 4px;
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .price-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px;
+      background:
+        linear-gradient(135deg, rgba(99, 102, 241, 0.08), transparent 42%),
+        var(--input-bg);
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .price-card.silver {
+      background:
+        linear-gradient(135deg, rgba(20, 184, 166, 0.1), transparent 44%),
+        var(--input-bg);
+    }
+
+    .metal-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .metal-name {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .metal-name strong {
+      color: var(--text-main);
+      font-size: 16px;
+    }
+
+    .metal-name span {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .metal-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #1f2937;
+      flex: 0 0 auto;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+
+    .metal-icon.gold {
+      background: linear-gradient(135deg, #facc15, #f59e0b);
+    }
+
+    .metal-icon.silver {
+      background: linear-gradient(135deg, #e2e8f0, #94a3b8);
+    }
+
+    .price-value {
+      color: var(--text-main);
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0;
+      margin-bottom: 10px;
+    }
+
+    .price-value.loading {
+      color: var(--text-muted);
+      font-size: 24px;
+    }
+
+    .price-meta {
+      color: var(--text-muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .price-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 8px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+
+    .price-refresh {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .refresh-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.12);
+    }
+
+    .price-error {
+      color: #b91c1c;
+      background: #fee2e2;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 13px;
+      display: none;
     }
 
     .section-header {
@@ -357,7 +498,7 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .tester-container {
+      .price-grid {
         grid-template-columns: 1fr;
       }
 
@@ -468,6 +609,14 @@
     }
 
     @media (max-width: 640px) {
+      .price-card {
+        padding: 18px;
+      }
+
+      .price-value {
+        font-size: 28px;
+      }
+
       .online-header {
         border-right: none;
         padding-right: 0;
@@ -535,86 +684,65 @@
     </div>
   </section>
 
-  <div class="tester-container">
-    <!-- Request Column -->
-    <div class="card">
+  <section class="price-container">
+    <div class="card price-board">
       <div class="section-header">
-        <span class="section-title">Test Request</span>
+        <span class="section-title">Live Gold & Silver Prices</span>
+        <span id="price-status" class="status-badge">Loading</span>
       </div>
 
-      <div class="form-group">
-        <label for="endpoint">Endpoint URL</label>
-        <input id="endpoint" type="url" value="https://esakoapi.org/api/info/"
-          placeholder="https://esakoapi.org/api/..." />
+      <p class="price-summary">
+        Real-time metal prices used by EsakoAPI for Zakat calculations. Values are loaded from
+        <strong>/api/price</strong> and refresh automatically every minute.
+      </p>
+
+      <div id="price-error" class="price-error"></div>
+
+      <div class="price-grid">
+        <article class="price-card">
+          <div>
+            <div class="metal-label">
+              <div class="metal-name">
+                <strong>Gold Price</strong>
+                <span>XAU per troy ounce</span>
+              </div>
+              <div class="metal-icon gold">Au</div>
+            </div>
+            <div id="gold-ounce" class="price-value loading">Loading...</div>
+          </div>
+          <div class="price-meta">
+            <span>Per gram</span>
+            <strong id="gold-gram">-</strong>
+          </div>
+        </article>
+
+        <article class="price-card silver">
+          <div>
+            <div class="metal-label">
+              <div class="metal-name">
+                <strong>Silver Price</strong>
+                <span>XAG per troy ounce</span>
+              </div>
+              <div class="metal-icon silver">Ag</div>
+            </div>
+            <div id="silver-ounce" class="price-value loading">Loading...</div>
+          </div>
+          <div class="price-meta">
+            <span>Per gram</span>
+            <strong id="silver-gram">-</strong>
+          </div>
+        </article>
       </div>
 
-      <div class="row">
-        <div class="col form-group">
-          <label for="method">Method</label>
-          <select id="method">
-            <option value="GET">GET</option>
-            <option value="POST">POST</option>
-            <option value="PUT">PUT</option>
-            <option value="DELETE">DELETE</option>
-          </select>
-        </div>
-        <div class="col form-group">
-          <label for="apikey">API Key</label>
-          <input id="apikey" type="text" placeholder="Optional" />
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="body">Request Body (JSON)</label>
-        <textarea id="body" placeholder='{ "amount": 100 }'></textarea>
-      </div>
-
-      <div class="actions">
-        <button id="send" class="btn btn-primary" style="flex: 1">
-          Send Request
-        </button>
-        <button id="clear" class="btn btn-outline" style="min-width: 100px">
-          Clear
-        </button>
-      </div>
-
-      <div style="
-            margin-top: 24px;
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.6;
-          ">
-        <strong>Instructions:</strong><br />
-        1. Enter an EsakoAPI endpoint.<br />
-        2. Select the HTTP method.<br />
-        3. Click "Send Request" to view the results.
+      <div class="price-toolbar">
+        <span class="price-refresh">
+          <span class="refresh-dot"></span>
+          <span>Next update in <strong id="price-countdown">60s</strong></span>
+        </span>
+        <span>Last updated: <strong id="price-updated">-</strong></span>
       </div>
     </div>
-
-    <!-- Response Column -->
-    <div class="card response-container">
-      <div class="section-header">
-        <span class="section-title">Response</span>
-        <span id="status" class="status-badge">Ready</span>
-      </div>
-
-      <div id="resp" class="response-area">
-        Click "Send Request" to see the response here...
-      </div>
-
-      <div style="margin-top: auto">
-        <label style="font-size: 12px; color: var(--text-muted); padding-left: 4px">Response Headers</label>
-        <div id="headers" class="response-area" style="
-              min-height: auto;
-              max-height: 120px;
-              margin-top: 6px;
-              background: #0b1120;
-            ">
-          -
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 
   <footer>
     <p>
@@ -624,97 +752,94 @@
   </footer>
 
   <script type="module">
-    const endpoint = document.getElementById("endpoint");
-    const method = document.getElementById("method");
-    const apikey = document.getElementById("apikey");
-    const body = document.getElementById("body");
-    const send = document.getElementById("send");
-    const clear = document.getElementById("clear");
-    const resp = document.getElementById("resp");
-    const headersEl = document.getElementById("headers");
-    const status = document.getElementById("status");
+    const TROY_OUNCE_GRAMS = 31.1035;
+    const PRICE_REFRESH_SECONDS = 60;
+    const goldOunce = document.getElementById("gold-ounce");
+    const goldGram = document.getElementById("gold-gram");
+    const silverOunce = document.getElementById("silver-ounce");
+    const silverGram = document.getElementById("silver-gram");
+    const priceStatus = document.getElementById("price-status");
+    const priceUpdated = document.getElementById("price-updated");
+    const priceCountdown = document.getElementById("price-countdown");
+    const priceError = document.getElementById("price-error");
+    let secondsUntilRefresh = PRICE_REFRESH_SECONDS;
 
-    send.addEventListener("click", async () => {
-      resp.textContent = "Loading...";
-      headersEl.textContent = "—";
-      status.textContent = "Running...";
-      status.style.background = "#e0f2fe"; // blue
-      status.style.color = "#0369a1";
+    const usdFormatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 2,
+    });
 
-      const url = endpoint.value.trim();
-      if (!url) {
-        resp.textContent = "Please enter a valid endpoint URL.";
-        status.textContent = "Invalid URL";
-        status.style.background = "#fee2e2";
-        status.style.color = "#991b1b";
-        return;
+    const gramFormatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 4,
+    });
+
+    function setPriceStatus(text, type = "ready") {
+      priceStatus.textContent = text;
+      if (type === "ok") {
+        priceStatus.style.background = "#dcfce7";
+        priceStatus.style.color = "#15803d";
+      } else if (type === "error") {
+        priceStatus.style.background = "#fee2e2";
+        priceStatus.style.color = "#991b1b";
+      } else {
+        priceStatus.style.background = "#e0f2fe";
+        priceStatus.style.color = "#0369a1";
       }
+    }
 
-      const opts = {
-        method: method.value,
-        headers: { Accept: "application/json" },
-      };
+    function showPriceError(message = "") {
+      priceError.textContent = message;
+      priceError.style.display = message ? "block" : "none";
+    }
 
-      if (apikey.value.trim()) {
-        opts.headers["Authorization"] = apikey.value.trim();
-      }
+    function updatePriceView(gold, silver) {
+      goldOunce.classList.remove("loading");
+      silverOunce.classList.remove("loading");
+      goldOunce.textContent = usdFormatter.format(gold);
+      silverOunce.textContent = usdFormatter.format(silver);
+      goldGram.textContent = gramFormatter.format(gold / TROY_OUNCE_GRAMS);
+      silverGram.textContent = gramFormatter.format(silver / TROY_OUNCE_GRAMS);
+      priceUpdated.textContent = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+    }
 
-      if (["POST", "PUT"].includes(method.value)) {
-        const txt = body.value.trim();
-        if (txt) {
-          try {
-            opts.body = JSON.stringify(JSON.parse(txt));
-            opts.headers["Content-Type"] = "application/json";
-          } catch (e) {
-            resp.textContent = "Invalid JSON body. Please check syntax.";
-            status.textContent = "JSON Error";
-            status.style.background = "#fee2e2";
-            status.style.color = "#991b1b";
-            return;
-          }
-        }
-      }
+    async function fetchMetalPrices() {
+      setPriceStatus("Updating", "loading");
+      showPriceError();
 
       try {
-        const r = await fetch(url, opts);
-        const contentType = r.headers.get("content-type") || "";
+        const response = await fetch("/api/price", {
+          headers: { Accept: "application/json" },
+          cache: "no-store",
+        });
 
-        status.textContent = `${r.status} ${r.statusText}`;
-        if (r.ok) {
-          status.style.background = "#dcfce7"; // green
-          status.style.color = "#15803d";
-        } else {
-          status.style.background = "#fee2e2"; // red
-          status.style.color = "#991b1b";
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status} ${response.statusText}`);
         }
 
-        // Headers
-        const hdrs = {};
-        r.headers.forEach((v, k) => (hdrs[k] = v));
-        headersEl.textContent = JSON.stringify(hdrs, null, 2);
+        const prices = await response.json();
+        const gold = Number(prices.XAU);
+        const silver = Number(prices.XAG);
 
-        if (contentType.includes("application/json")) {
-          const j = await r.json();
-          resp.textContent = JSON.stringify(j, null, 2);
-        } else {
-          const txt = await r.text();
-          resp.textContent = txt;
+        if (!Number.isFinite(gold) || !Number.isFinite(silver)) {
+          throw new Error("Unexpected price response from /api/price");
         }
+
+        updatePriceView(gold, silver);
+        secondsUntilRefresh = PRICE_REFRESH_SECONDS;
+        priceCountdown.textContent = `${secondsUntilRefresh}s`;
+        setPriceStatus("Live", "ok");
       } catch (err) {
-        resp.textContent = "Error: " + err.message;
-        status.textContent = "Network Error";
-        status.style.background = "#fee2e2";
-        status.style.color = "#991b1b";
+        setPriceStatus("Unavailable", "error");
+        showPriceError(`Price feed unavailable: ${err.message}`);
       }
-    });
-
-    clear.addEventListener("click", () => {
-      resp.textContent = 'Click "Send Request" to see the response here...';
-      headersEl.textContent = "-";
-      status.textContent = "Ready";
-      status.style.background = "#f1f5f9";
-      status.style.color = "#64748b";
-    });
+    }
 
     async function fetchLiveActivity() {
       const userList = document.getElementById("online-user-list");
@@ -762,6 +887,13 @@
     // Wicitaan markasta 60 seconds
     fetchLiveActivity();
     setInterval(fetchLiveActivity, 60000);
+
+    fetchMetalPrices();
+    setInterval(fetchMetalPrices, PRICE_REFRESH_SECONDS * 1000);
+    setInterval(() => {
+      secondsUntilRefresh = Math.max(secondsUntilRefresh - 1, 0);
+      priceCountdown.textContent = `${secondsUntilRefresh}s`;
+    }, 1000);
 
     // Heartbeat to keep user 'online'
     setInterval(() => {
