@@ -993,7 +993,7 @@
       const priceError = document.getElementById("price-error");
       const onlineUserList = document.getElementById("online-user-list");
       let secondsUntilRefresh = PRICE_REFRESH_SECONDS;
-      let isOnlineCarouselPaused = false;
+      let isOnlineCarouselPaused = true;
 
       const usdFormatter = new Intl.NumberFormat("en-US", {
         style: "currency",
@@ -1188,11 +1188,11 @@
       // Wicitaan markasta 60 seconds
       fetchLiveActivity();
       setInterval(fetchLiveActivity, 60000);
-      setInterval(() => {
-        if (!isOnlineCarouselPaused) {
-          scrollOnlineUsers(1);
-        }
-      }, 4500);
+      // setInterval(() => {
+      //   if (!isOnlineCarouselPaused) {
+      //     scrollOnlineUsers(1);
+      //   }
+      // }, 4500);
 
       fetchMetalPrices();
       setInterval(fetchMetalPrices, PRICE_REFRESH_SECONDS * 1000);
