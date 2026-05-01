@@ -1,7 +1,7 @@
-from fastapi.responses import JSONResponse
-from Fido import Fido
-from Nisaabyo import Sako
-from jawaabo import jawaab
+﻿from fastapi.responses import JSONResponse
+from app.calculators.silver import Fido
+from app.utils.nisab import Sako
+from app.utils.responses import jawaab
 import json
 
 

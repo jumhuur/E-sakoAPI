@@ -1,5 +1,6 @@
-/.pytest_cache
-/__pycache__
-/.env
-/env
-/files/reports
+.pytest_cache/
+__pycache__/
+*.py[cod]
+.env
+env/
+files/reports/

@@ -1,5 +1,5 @@
-import json
-from Lacag import Lacag
+﻿import json
+from app.calculators.money import Lacag
 from fastapi.responses import JSONResponse
 from datetime import datetime
 date = datetime.now()

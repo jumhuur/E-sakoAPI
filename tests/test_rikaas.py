@@ -1,9 +1,9 @@
-import json
+﻿import json
 from fastapi.responses import JSONResponse
-from Rikaas import Rikaas
+from app.calculators.rikaas import Rikaas
 from datetime import datetime
-from jawaabo import jawaab
-from Nisaabyo import Sako
+from app.utils.responses import jawaab
+from app.utils.nisab import Sako
 
 
 

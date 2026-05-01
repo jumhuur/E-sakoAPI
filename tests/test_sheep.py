@@ -1,7 +1,7 @@
-from fastapi.responses import JSONResponse
+﻿from fastapi.responses import JSONResponse
 from datetime import datetime
-from Adhi import Adhi
-from Nisaabyo import Sako
+from app.calculators.sheep import Adhi
+from app.utils.nisab import Sako
 import json
 import re
 import pytz

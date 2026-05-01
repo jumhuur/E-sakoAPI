@@ -1,4 +1,4 @@
-from Nisaabyo import Sako, selfinfo
+﻿from app.utils.nisab import Sako, selfinfo
 
 URL_DOC = "https://esakoapi.org/doc"
 

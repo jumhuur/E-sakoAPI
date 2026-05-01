@@ -1,9 +1,9 @@
-from fastapi.responses import JSONResponse
-from Nisaabyo import Sako
+﻿from fastapi.responses import JSONResponse
+from app.utils.nisab import Sako
 import re
-from Errors import Errors
-from jawaabo import jawaab
-from  Gold_silver_price import Price_24_1g
+from app.utils.errors import Errors
+from app.utils.responses import jawaab
+from app.services.metals import Price_24_1g
 def saafi(nooc: int,xadiga: int) -> int: 
     """
     istikhlaas ayaa loo yaqaanaa hawsha function waxana ay ka dhigantahay 

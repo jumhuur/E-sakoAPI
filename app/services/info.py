@@ -1,4 +1,4 @@
-from Errors import Errors
+﻿from app.utils.errors import Errors
 from fastapi.responses import JSONResponse
 import json
 from datetime import datetime

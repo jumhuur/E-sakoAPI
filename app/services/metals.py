@@ -1,7 +1,7 @@
-from fastapi.responses import JSONResponse
-from Price import gold_price,silver_price
+﻿from fastapi.responses import JSONResponse
+from app.services.price import gold_price,silver_price
 import json
-from Nisaabyo import Sako
+from app.utils.nisab import Sako
 
 def gold_silver_price():
     return JSONResponse(status_code=200, content={"XAU": gold_price(), "XAG":silver_price()})

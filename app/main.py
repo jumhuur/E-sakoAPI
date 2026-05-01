@@ -1,17 +1,17 @@
-from fastapi import FastAPI, Request
+﻿from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse , FileResponse
-from Dahab import xisaab_Dahab
-from Lacag import Lacag
-from Fido import Fido
-from Rikaas import Rikaas
-from Geel import Geel
-from Loa import Loa
-from Adhi import Adhi
-from Dalag import Dalag
-from Errors import Errors
-from Info import Info, Main_Location, LoadUsers,Locations
-from Gold_silver_price import gold_silver_price
+from app.calculators.gold import xisaab_Dahab
+from app.calculators.money import Lacag
+from app.calculators.silver import Fido
+from app.calculators.rikaas import Rikaas
+from app.calculators.camels import Geel
+from app.calculators.cows import Loa
+from app.calculators.sheep import Adhi
+from app.calculators.crops import Dalag
+from app.utils.errors import Errors
+from app.services.info import Info, Main_Location, LoadUsers,Locations
+from app.services.metals import gold_silver_price
 
 #app
 app = FastAPI(

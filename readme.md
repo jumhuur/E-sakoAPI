@@ -1,52 +1,90 @@
-# EsakoAPI
+﻿# EsakoAPI
 
-**EsakoAPI** is a free API that **does not require an API key** to use. It is designed to calculate **different types of Zakat** according to Islamic Shariah.
+EsakoAPI is a free, open-source Zakat calculation API built with Python and FastAPI. It does not require an API key for public use and is designed to help developers calculate common types of Zakat through simple HTTP endpoints.
 
-You can calculate Zakat on:
+The API currently supports Zakat calculations for:
 
-- **Gold**
-- **Money**
-- **Minerals (Rikas)**
-- **Silver**
-- **Crops**
+- Gold
+- Money
+- Silver
+- Crops
+- Rikaas, also known as buried treasure or minerals
+- Camels
+- Cows
+- Sheep and goats
 
-And also on livestock:
+EsakoAPI aims to provide fast, clear, and reliable responses based on Islamic Zakat rulings from the Qur'an and Sunnah. The project is still under active testing, so scholarly, textual, and technical reviews are welcome.
 
-- **Camels**
-- **Sheep/Goats**
-- **Cattle**
+## Documentation
 
-The API provides **fast and reliable responses** based on the Qur’an and Sunnah, using advanced algorithms that comply with Islamic Zakat rulings.
+Live documentation: [https://esakoapi.org/doc](https://esakoapi.org/doc)
 
----
+Base API URL:
 
-## 🔍 Documentation
-
-Visit: [https://esakoapi.org](https://esakoapi.org)
-
----
-
-## 📌 Endpoints and Examples
-
-### 1. Gold Zakat
-
-**Endpoint:**
-
-```bash
-https://esakoapi.org/api/gold/145?Type=24
+```text
+https://esakoapi.org/api
 ```
 
-**Description:**
+## Quick Start
 
-The prefix *https://esakoapi.org/api/* is always required.
+Use any HTTP client or programming language that can make GET requests.
 
-| Type of Calculation | Gold Karat Type           | Weight (in grams)               |
-| ------------------- | ------------------------- | ------------------------------- |
-| gold = `string`     | 24,21,22,20,18,16 = `int` | amount of gold in grams = `int` |
+```bash
+curl https://esakoapi.org/api/money/9920
+```
 
-the default Type is 24
+Example response:
 
-**Sample Response:**
+```json
+{
+  "code": 200,
+  "response": 248,
+  "requirements": [
+    "The amount must be in US dollars 'USD'.",
+    "You must have possessed it for one full year.",
+    "The Zakat has been calculated based on the gold price of 129.1985 USD per gram."
+  ],
+  "unit": "$",
+  "date": "Monday-13-October-2025",
+  "time": "10:33 AM"
+}
+```
+
+## Endpoints
+
+| Category | Method | Endpoint | Description |
+| --- | --- | --- | --- |
+| Gold | GET | `/api/gold/{grams}?Type={karat}` | Calculates Zakat on gold by weight and karat. |
+| Money | GET | `/api/money/{amount}` | Calculates Zakat on money in USD. |
+| Silver | GET | `/api/silver/{grams}` | Calculates Zakat on silver by weight. |
+| Rikaas | GET | `/api/rikaas/{amount}` | Calculates Zakat on rikaas/minerals. |
+| Crops | GET | `/api/crops/{kg}?Type={method}` | Calculates Zakat on crops by irrigation method. |
+| Camels | GET | `/api/camels/{count}` | Calculates livestock Zakat for camels. |
+| Cows | GET | `/api/cows/{count}` | Calculates livestock Zakat for cattle. |
+| Sheep/Goats | GET | `/api/sheep/{count}` | Calculates livestock Zakat for sheep or goats. |
+| Prices | GET | `/api/price` | Returns current gold and silver prices used by the API. |
+| Info | GET | `/api/info` | Returns API metadata and request count. |
+
+## Endpoint Examples
+
+### Gold Zakat
+
+```text
+GET https://esakoapi.org/api/gold/145?Type=24
+```
+
+Gold karat types supported:
+
+| Type | Meaning |
+| --- | --- |
+| `24` | 24K gold, pure gold. This is the default. |
+| `22` | 22K gold |
+| `21` | 21K gold |
+| `20` | 20K gold |
+| `18` | 18K gold |
+| `16` | 16K gold |
+
+Sample response:
 
 ```json
 {
@@ -55,278 +93,139 @@ the default Type is 24
   "requirements": [
     "It must be 100% pure gold.",
     "You must have possessed it for one full year.",
-    "If paying in cash, the amount is 468.3299$."
+    "If you are paying in cash, the amount is 468.3299$."
   ],
   "unit": "Grams",
-  "date": "Sunday 12-October-2025",
+  "date": "Sunday-12-October-2025",
   "time": "05:29 PM"
 }
 ```
 
-**Response Explanation:**
+### Money Zakat
 
-- **code: 200 → OK** → Everything is correct
-- **response: 3.625** → The amount of Zakat due in grams
-- **requirements** → Conditions of Zakat (e.g., purity, one-year possession, cash equivalent)
-- **unit** → The unit of measurement (since it’s gold, the unit is grams)
-- **date** and **time** → The response timestamp (gold prices may fluctuate daily)
-
----
-
-### 2. Money Zakat
-
-**Endpoint:**
-
-```bash
-https://esakoapi.org/api/money/9920
+```text
+GET https://esakoapi.org/api/money/9920
 ```
 
-**Description:**
+The amount is expected to be in USD.
 
-The prefix *https://esakoapi.org/api/* is always required.
+### Silver Zakat
 
-| Type of Calculation | Amount ($)                 |
-| ------------------- | -------------------------- |
-| money = `string`    | 9920 amount in USD = `int` |
+```text
+GET https://esakoapi.org/api/silver/9920
+```
 
-**Sample Response:**
+The amount is expected to be silver weight in grams.
+
+### Crops Zakat
+
+```text
+GET https://esakoapi.org/api/crops/9920?Type=1
+```
+
+Crop irrigation types:
+
+| Type | Meaning | Rate |
+| --- | --- | --- |
+| `1` | Rain-fed or naturally irrigated crops | 10% |
+| `2` | Crops irrigated with paid/artificial water | 5% |
+| `3` | Mixed rain-fed and paid/artificial irrigation | 7.5% |
+
+### Livestock Zakat
+
+```text
+GET https://esakoapi.org/api/camels/35
+GET https://esakoapi.org/api/cows/35
+GET https://esakoapi.org/api/sheep/62
+```
+
+Livestock responses include the amount due and the requirements for the animal to be given.
+
+### Rikaas Zakat
+
+```text
+GET https://esakoapi.org/api/rikaas/100
+```
+
+### Gold and Silver Prices
+
+```text
+GET https://esakoapi.org/api/price
+```
+
+Sample response:
+
+```json
+{
+  "XAU": 4018.399902,
+  "XAG": 50.008999
+}
+```
+
+## Response Format
+
+Most successful calculation responses follow this shape:
 
 ```json
 {
   "code": 200,
-  "response": 248,
-  "requirements": [
-    "The amount must be in US dollars (USD).",
-    "You must have possessed it for one full year.",
-    "The Zakat has been calculated based on the silver price, currently 1.6426."
-  ],
-  "unit": "$",
-  "date": "Monday 13-October-2025",
-  "time": "10:33 AM"
+  "response": 0,
+  "requirements": [],
+  "unit": "unit",
+  "date": "Day-Date-Month-Year",
+  "time": "HH:MM AM"
 }
 ```
 
----
+Common fields:
 
-### 3. Silver Zakat (also known as white gold)
+| Field | Description |
+| --- | --- |
+| `code` | API status or domain-specific code. |
+| `response` | The calculated Zakat amount. |
+| `requirements` | Conditions and notes for the calculation. |
+| `unit` | Unit of the returned amount, such as `$`, `Grams`, `Kg`, or `Heads`. |
+| `date` / `time` | Timestamp for the response. Price-based calculations can change over time. |
 
-**Endpoint:**
+## Error Codes
 
-```bash
-https://esakoapi.org/api/silver/9920
-```
+| Code | Meaning |
+| --- | --- |
+| `404` | The requested URL does not exist. |
+| `403` | Required file or resource was not found. |
+| `460` | Please try again later. |
+| `461` | Please enter a valid numeric amount. |
+| `462` | The selected option is not allowed. |
+| `463` | The selected gold type is not recognized. |
+| `464` | Please use numbers only. |
+| `465` | Please use a number that contains at least two digits. |
+| `466` | Zakat is not applicable to the entered gold amount/type. |
+| `467` | Invalid URL. |
+| `468` | Invalid crop calculation type. Accepted values are `1`, `2`, or `3`. |
 
-**Description:**
+## Usage Examples
 
-The prefix *https://esakoapi.org/api/* is always required.
-
-| Type of Calculation | Weight (grams)                         |
-| ------------------- | -------------------------------------- |
-| silver = `string`   | 9920 amount of silver in grams = `int` |
-
-**Sample Response:**
-
-```json
-{
-  "code": 200,
-  "response": 248,
-  "requirements": [
-    "Must be 100% pure silver.",
-    "You must have possessed it for one full year.",
-    "If paying in cash, the amount is 407.3679$."
-  ],
-  "unit": "Grams",
-  "date": "Monday 13-October-2025",
-  "time": "10:33 AM"
-}
-```
-
----
-
-### 4. Crops Zakat (e.g., wheat, corn, rice, etc.)
-
-**Endpoint:**
-
-```bash
-https://esakoapi.org/api/crops/9920?Type=1
-```
-
-**Description:**
-
-The prefix *https://esakoapi.org/api/* is always required.
-
-| Type of Calculation | Amount (KG)                              | Query   |
-| ------------------- | ---------------------------------------- | ------- |
-| crops = `string`    | 9920 amount of crop in kilograms = `int` | ?Type=1 |
-
-the default Type is 1
-
-**Understanding the Query:**
-
-There are **three crop types** based on their irrigation method:
-
-- **Type 1:** Naturally rain-fed crops, without human irrigation costs.  
-  Use `?nooc=1`
-
-- **Type 2:** Crops irrigated with paid water (e.g., purchased or artificial irrigation).  
-  Use `?nooc=2`
-
-- **Type 3:** Crops irrigated with both rain and paid water combined.  
-  Use `?nooc=3`
-
-**Sample Response:**
-
-```json
-{
-  "code": 200,
-  "response": 90,
-  "requirements": [
-    "Must be rain-fed crops.",
-    "Must be harvested and storable (e.g., wheat, rice, or maize)."
-  ],
-  "unit": "Kg",
-  "date": "Monday 13-October-2025",
-  "time": "10:33 AM"
-}
-```
-
----
-
-### 5. Camel Zakat
-
-**Endpoint:**
-
-```bash
-https://esakoapi.org/api/camels/35
-```
-
-**Description:**
-
-The prefix *https://esakoapi.org/api/* is always required.
-
-| Type of Calculation | Quantity of Camels          |
-| ------------------- | --------------------------- |
-| camels = `string`   | 35 number of camels = `int` |
-
-**Sample Response:**
-
-```json
-{
-  "code": 200,
-  "response": 1,
-  "requirements": [
-    "To be paid as a camel.",
-    "Must have entered its second year.",
-    "Must be female."
-  ],
-  "unit": "Heads",
-  "date": "Monday 13-October-2025",
-  "time": "10:33 AM"
-}
-```
-
----
-
-### 6. cows Zakat
-
-**Endpoint:**
-
-```bash
-https://esakoapi.org/api/cows/35
-```
-
-**Description:**
-
-The prefix *https://esakoapi.org/api/* is always required.
-
-| Type of Calculation | Quantity of cows            |
-| ------------------- | --------------------------- |
-| cows = `string`     | 35 number of cattle = `int` |
-
-**Sample Response:**
-
-```json
-{
-  "code": 200,
-  "response": 1,
-  "requirements": [
-    "Must have entered its second year (natural or domestic).",
-    "It is preferable to offer a female, but a male is also acceptable.",
-    "Must be a cattle species."
-  ],
-  "unit": "Heads",
-  "date": "Monday 13-October-2025",
-  "time": "10:33 AM"
-}
-```
-
----
-
-### 7. Sheep/Goat Zakat
-
-**Endpoint:**
-
-```bash
-https://esakoapi.org/api/sheep/62
-```
-
-**Description:**
-
-The prefix *https://esakoapi.org/api/* is always required.
-
-| Type of Calculation | Quantity of Sheep/Goats          |
-| ------------------- | -------------------------------- |
-| sheep = `string`    | 62 number of sheep/goats = `int` |
-
-**Sample Response:**
-
-```json
-{
-  "code": 200,
-  "response": 1,
-  "requirements": [
-    "If they are lambs, they must be one year old.",
-    "If they are goats, they must be at least two years old."
-  ],
-  "unit": "Heads",
-  "date": "Monday 13-October-2025",
-  "time": "10:33 AM"
-}
-```
-
----
-
-## Programming Language
-
-The API is built using **Python**, making it easy to integrate into both frontend and backend projects.  
-You can also use any programming language, such as:
-
-- JavaScript
-- Go
-- Ruby
-- C#
-- C++
-- Python
-
-### JavaScript Example
+### JavaScript
 
 ```js
-const sakoapi = "https://esakoapi.org/api/rikaas/100";
-const sako = async () => {
-  try {
-    const response = await fetch(sakoapi);
-    const data = await response.json();
-    console.log(data);
-    console.log(`You owe ${data.response} ${data.unit}`); // Example: You owe 20 Grams
-  } catch (error) {
-    console.log(error);
-  }
-};
+const url = "https://esakoapi.org/api/rikaas/100";
 
-sako();
+async function calculateZakat() {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    console.log(data);
+    console.log(`You owe ${data.response} ${data.unit}`);
+  } catch (error) {
+    console.error("Request failed:", error);
+  }
+}
+
+calculateZakat();
 ```
 
-### Python Example
+### Python
 
 ```py
 import requests
@@ -334,27 +233,148 @@ import requests
 url = "https://esakoapi.org/api/rikaas/100"
 
 try:
-    response = requests.get(url)
-    response.raise_for_status()  # Check if the request was successful
-    data = response.json()       # Extract JSON response
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+    data = response.json()
     print(data)
-except requests.exceptions.RequestException as e:
-    print("Error:", e)
+except requests.exceptions.RequestException as error:
+    print("Request failed:", error)
 ```
 
-## 🤝 Contribute
+## Local Development
 
-This is an open-source project licensed under **MIT**.  
-Contributions are welcome!
+### Requirements
 
----
+- Python 3.10 or newer
+- `pip`
+- A working internet connection for gold and silver price requests
 
-## ⚠️ Note
+### Setup
 
-This project is still under testing.  
-If you find any **legal, textual, or technical errors**, feel free to report them.
+```bash
+git clone https://github.com/jumhuur/E-sakoAPI.git
+cd E-sakoAPI
+python -m venv env
+```
 
----
+Activate the virtual environment:
 
-📧 **Email:** jumhuur123@hotmail.com  
-📞 **Phone:** +252634645195
+```bash
+# Windows PowerShell
+.\env\Scripts\Activate.ps1
+```
+
+```bash
+# macOS/Linux
+source env/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a `.env` file:
+
+```env
+URL_DAHAB=https://example.com/gold-price-api
+URL_FIDO=https://example.com/silver-price-api
+```
+
+Run the development server:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8000
+```
+
+API docs generated by FastAPI are available at:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+## Testing
+
+Run all tests:
+
+```bash
+pytest
+```
+
+Run a specific test file:
+
+```bash
+pytest tests/test_gold.py
+```
+
+If tests fail because price APIs are unavailable, check your `.env` values and network connection.
+
+## Project Structure
+
+```text
+.
+|-- app/
+|   |-- main.py             # FastAPI application and routes
+|   |-- calculators/        # Zakat calculation modules
+|   |-- services/           # Price, info, and external service helpers
+|   |-- utils/              # Shared constants, responses, and errors
+|   `-- schemas/            # Future request/response schemas
+|-- tests/                  # Test suite
+|-- docs/                   # Contributor-facing documentation
+|-- static/                 # Public website and documentation pages
+|-- files/                  # Local JSON data files
+|-- requirements.txt
+`-- Readme.md
+```
+
+## Contributing
+
+Contributions are welcome. You can help by:
+
+- Fixing bugs
+- Improving documentation
+- Adding tests
+- Reviewing Zakat rules and calculation logic
+- Improving UI/UX for the static website
+- Translating documentation
+
+Before opening a pull request:
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Make your changes.
+4. Run the tests.
+5. Open a pull request with a clear description.
+
+For changes related to Islamic rulings, please include references or a clear explanation of the source used.
+
+## Roadmap Ideas
+
+- Add formal contribution guidelines.
+- Add GitHub issue and pull request templates.
+- Add GitHub Actions CI for automated testing.
+- Add more detailed Zakat rule documentation.
+- Improve API versioning.
+- Add multi-language documentation.
+
+## License
+
+This project is open source and licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Maintainer
+
+Created and maintained by Jumhuur.
+
+- GitHub: [jumhuur](https://github.com/jumhuur)
+- Email: jumhuur123@hotmail.com
+
+## Note
+
+This project is still under testing. If you find a legal, textual, scholarly, or technical issue, please open an issue or submit a pull request.

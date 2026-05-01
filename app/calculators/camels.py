@@ -1,7 +1,7 @@
-from fastapi.responses import JSONResponse
-from Errors import Errors
-from Nisaabyo import Sako
-from jawaabo import jawaab
+﻿from fastapi.responses import JSONResponse
+from app.utils.errors import Errors
+from app.utils.nisab import Sako
+from app.utils.responses import jawaab
 import re
 
 def Geel(xadi:int):

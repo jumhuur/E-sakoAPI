@@ -1,7 +1,7 @@
-from fastapi.responses import JSONResponse
+﻿from fastapi.responses import JSONResponse
 from datetime import datetime
-from Geel import Geel
-from Nisaabyo import Sako
+from app.calculators.camels import Geel
+from app.utils.nisab import Sako
 import json
 import pytest
 

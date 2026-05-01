@@ -1,8 +1,8 @@
-import re
-from Errors import Errors
+﻿import re
+from app.utils.errors import Errors
 from fastapi.responses import JSONResponse
-from Nisaabyo import Sako, selfinfo
-from jawaabo import jawaab
+from app.utils.nisab import Sako, selfinfo
+from app.utils.responses import jawaab
 
 
 def Dalag(quantity: int, option: int):
