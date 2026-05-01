@@ -21,12 +21,15 @@ def saafi(nooc: int,xadiga: int) -> int:
 def xisaab_Dahab(xadiga:int, nooc: int):
     g_24, _, _,_, = Price_24_1g().values()
     Sako.data_collection(xadiga, nooc, sako="Dahab")
-    reg = r"^\d{2}$"
-    reg_exp = r"^\d+$"
+    reg = r"^\d{2}$" # regx to check Type data
+    reg_exp = r"^\d+$" 
+
     if not re.match(reg_exp, str(xadiga)):
         return JSONResponse(status_code=461, content=Errors(461))
+    
     if not re.match(reg, str(nooc)):
         return JSONResponse(status_code=465, content=Errors(465))
+
     grams = []
     for n_key, n_value in Sako.Noocyo.items():
         grams.append(n_value)
@@ -41,17 +44,17 @@ def xisaab_Dahab(xadiga:int, nooc: int):
         jw = round(int(xadiga) / Sako.Dahab_40, 4)
         usd_price = round(jw * g_24, 4)
         conditions = [
-                    "It must be 100% pure gold.",
-                    "You must have possessed it for one full year.",
-                    f"If you are paying in cash, the amount is {usd_price}$."
-                ]
+        "It must be 100% pure gold.",
+        "You must have possessed it for one full year.",
+        f"If you are paying in cash, the amount is {usd_price}$."
+        ]
         return JSONResponse(
             status_code=200,
             content=jawaab(
                 jw,
                 conditions
                 ,
-                "Grams"
+                "-Grams"
             )
         )
 
@@ -69,7 +72,7 @@ def xisaab_Dahab(xadiga:int, nooc: int):
                         "You must have possessed it for one full year.",
                         f"If you are paying in cash, the amount is {usd_price}$."
                     ],
-                    "Grams"
+                    "-Grams"
                 )
             )
         else:
@@ -89,7 +92,7 @@ def xisaab_Dahab(xadiga:int, nooc: int):
                         "You must have possessed it for one full year.",
                         f"If you are paying in cash, the amount is {usd_price}$."
                     ],
-                    "Grams"
+                    "-Grams"
                 )
             )
         else:
@@ -109,7 +112,7 @@ def xisaab_Dahab(xadiga:int, nooc: int):
                         "You must have possessed it for one full year.",
                         f"If you are paying in cash, the amount is {usd_price}$."
                     ],
-                    "Grams"
+                    "-Grams"
                 )
             )
         else:
@@ -129,7 +132,7 @@ def xisaab_Dahab(xadiga:int, nooc: int):
                         "You must have possessed it for one full year.",
                         f"If you are paying in cash, the amount is {usd_price}$."
                     ],
-                    "Grams"
+                    "-Grams"
                 )
             )
         else:
@@ -149,7 +152,7 @@ def xisaab_Dahab(xadiga:int, nooc: int):
                         "You must have possessed it for one full year.",
                         f"If you are paying in cash, the amount is {usd_price}$."
                     ],
-                    "Grams"
+                    "-Grams"
                 )
             )
         else:

@@ -42,10 +42,11 @@ async def not_found(request: Request, exc):
 
 
 @app.get("/api/gold/{xadiga}")
-async def xisaab(xadiga,Type:int=24,):
-    if Type and xadiga:
+async def xisaab(xadiga,Type=24,):
+    if xadiga:
         return  xisaab_Dahab(xadiga,Type)
-    raise JSONResponse(
+    else:
+        raise JSONResponse(
             status_code=467,
             content= Errors(467)
         )
