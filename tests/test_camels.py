@@ -9,16 +9,6 @@ date = datetime.now()
 Date_format = f"{date.strftime("%A %d-%B-%Y")}"
 Time_format = f"{date.strftime("%I:%M %p")}"
 
-
-# @pytest.fixture
-# def amount_cases():
-#     invalida_amount = "amsadhsa"
-#     valid_amount = 160
-#     return {
-#         "valid":valid_amount,
-#         "invalid":invalida_amount
-#     }
-
 def test_valid_amount_and_nisab():
     amount = "55"
     response = Geel(amount)
