@@ -2,61 +2,67 @@
   {
     "city": "Burco",
     "country": "SO",
-    "loc": "2.7700,66.0960",
+    "loc": "2.79700,66.01960",
     "org": "AS37563 SOMTEL INTERNATIONAL Ltd"
   },
   {
     "city": "Burco",
     "country": "SO",
-    "loc": "2.7700,66.0960",
+    "loc": "2.77020,66.09620",
     "org": "AS37563 SOMTEL INTERNATIONAL Ltd"
   },
   {
     "city": "Burco",
     "country": "SO",
-    "loc": "2.7700,66.0960",
+    "loc": "2.77400,66.0960",
     "org": "AS37563 SOMTEL INTERNATIONAL Ltd"
   },
   {
     "city": "Burco",
     "country": "SO",
-    "loc": "2.7700,66.0960",
+    "loc": "2.770110,66.660960",
     "org": "AS37563 SOMTEL INTERNATIONAL Ltd"
   },
   {
     "city": "Burco",
     "country": "SO",
-    "loc": "2.7700,66.0960",
+    "loc": "2.700700,66.069960",
     "org": "AS37563 SOMTEL INTERNATIONAL Ltd"
   },
   {
     "city": "Burco",
     "country": "SO",
-    "loc": "2.7700,66.0960",
+    "loc": "2.33,66.333",
     "org": "AS37563 SOMTEL INTERNATIONAL Ltd"
   },
   {
     "city": "Burco",
     "country": "SO",
-    "loc": "2.7700,66.0960",
+    "loc": "2.77300,663.0960",
     "org": "AS37563 SOMTEL INTERNATIONAL Ltd"
   },
   {
     "city": "Burco",
     "country": "SO",
-    "loc": "2.7700,66.0960",
+    "loc": "2.77100,66.01960",
     "org": "AS37563 SOMTEL INTERNATIONAL Ltd"
   },
   {
     "city": "Hargeysa",
     "country": "SO",
-    "loc": "9.5600,44.0650",
+    "loc": "9.562100,44.021650",
     "org": "AS37563 SOMTEL INTERNATIONAL Ltd"
   },
   {
     "city": "Hargeysa",
     "country": "SO",
-    "loc": "9.5600,44.0650",
+    "loc": "9.560900,44.008650",
     "org": "AS328959 SO! Limited"
+  },
+  {
+    "city": "Hargeysa",
+    "country": "SO",
+    "loc": "9.5600,44.0650",
+    "org": "AS37563 SOMTEL INTERNATIONAL Ltd"
   }
 ]
