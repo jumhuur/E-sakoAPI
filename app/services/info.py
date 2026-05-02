@@ -17,7 +17,6 @@ def InfoAnswer(totalRequests:int, code=200):
     "success": True,
     "message": "Request completed successfully",
     "data": {
-    "createdBy": "Jumhuur",
     "statusCode": 200,
     "totalRequests": totalRequests 
   },
