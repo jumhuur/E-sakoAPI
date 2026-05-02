@@ -27,10 +27,17 @@ def InfoAnswer(totalRequests:int, code=200):
 
 
 def LoadUsers():
+    filtered_data = []
     try:
         with open(User_File, "r", encoding="utf-8") as File:
             data  = json.loads(File.read())
-            return data
+            for item in data:
+                new_items:dict = {}
+                for key,value in item.items():
+                    if key not in ["loc", "org"]:
+                        new_items[key] = value
+            filtered_data.append(new_items)
+            return filtered_data
     except:
         return []
     
