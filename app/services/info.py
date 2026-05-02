@@ -39,10 +39,21 @@ def LoadUsers():
             return filtered_data
     except:
         return []
+
+
+def LoadDataFromFile():
+    try:
+        with open(User_File, "r", encoding="utf-8") as File:
+            data  = json.loads(File.read())
+            return data
+    except FileNotFoundError:
+        return []
+    except Exception as e:
+        return []
     
 
 def save_User(user):
-    users = LoadUsers()
+    users = LoadDataFromFile()
     for us in users:
         if us["org"] == user["org"] and us["loc"] == user["loc"]:
             return

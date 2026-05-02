@@ -39,7 +39,7 @@ def Adhi(quantity):
         ]
         return JSONResponse(
             status_code=200,
-            content=jawaab(jw, requirements, "heads")
+            content=jawaab(jw, requirements, "-heads")
         )
 
     if int(quantity) > nisaab[1] and int(quantity) <= nisaab[2]:
@@ -50,7 +50,7 @@ def Adhi(quantity):
         ]
         return JSONResponse(
             status_code=200,
-            content=jawaab(jw, requirements, "heads")
+            content=jawaab(jw, requirements, "-heads")
         )
 
     if int(quantity) > nisaab[2] and int(quantity) <= nisaab[3]:
@@ -61,7 +61,7 @@ def Adhi(quantity):
         ]
         return JSONResponse(
             status_code=200,
-            content=jawaab(jw, requirements, "heads")
+            content=jawaab(jw, requirements, "-heads")
         )
 
     if int(quantity) > nisaab[3] and int(quantity) < nisaab[4]:
@@ -72,7 +72,7 @@ def Adhi(quantity):
         ]
         return JSONResponse(
             status_code=200,
-            content=jawaab(jw, requirements, "heads")
+            content=jawaab(jw, requirements, "-heads")
         )
 
     if int(quantity) >= nisaab[4]:
@@ -83,7 +83,7 @@ def Adhi(quantity):
         ]
         return JSONResponse(
             status_code=200,
-            content=jawaab(jw, requirements, "heads")
+            content=jawaab(jw, requirements, "-heads")
         )
 
 

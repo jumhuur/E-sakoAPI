@@ -13,9 +13,6 @@ def Fido(amount: int):
     if not re.match(reg_exp, str(amount)):
         return JSONResponse(status_code=464, content=Errors(464))
 
-    # if type(amount) != int:
-    #     return JSONResponse(status_code=465, content=Errors(465))
-
     if int(int(amount)) < Sako.Nisaab_Fidada:
         return JSONResponse(status_code=321, content=Errors(321, True))
 
