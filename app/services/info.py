@@ -25,7 +25,18 @@ def InfoAnswer(totalRequests:int, code=200):
 }
 
 
-def LoadUsers():
+def LoadDataFromFile():
+    try:
+        with open(User_File, "r", encoding="utf-8") as File:
+            data  = json.loads(File.read())
+            print("data", data)
+            return data
+    except FileNotFoundError:
+        return []
+    except Exception as e:
+        return []
+
+def LoadUsers() -> list:
     filtered_data = []
     try:
         with open(User_File, "r", encoding="utf-8") as File:
@@ -35,21 +46,15 @@ def LoadUsers():
                 for key,value in item.items():
                     if key not in ["loc", "org"]:
                         new_items[key] = value
-            filtered_data.append(new_items)
+                        filtered_data.append(new_items)
             return filtered_data
-    except:
-        return []
-
-
-def LoadDataFromFile():
-    try:
-        with open(User_File, "r", encoding="utf-8") as File:
-            data  = json.loads(File.read())
-            return data
     except FileNotFoundError:
         return []
     except Exception as e:
         return []
+
+
+
     
 
 def save_User(user):

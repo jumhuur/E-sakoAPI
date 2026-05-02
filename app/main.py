@@ -10,7 +10,7 @@ from app.calculators.cows import Loa
 from app.calculators.sheep import Adhi
 from app.calculators.crops import Dalag
 from app.utils.errors import Errors
-from app.services.info import Info, Main_Location, LoadUsers,Locations
+from app.services.info import Info, Main_Location, LoadUsers
 from app.services.metals import gold_silver_price
 
 #app
