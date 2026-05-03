@@ -44,4 +44,4 @@ def Dalag(quantity: int, option: int):
             "Must be harvested and storable (e.g., wheat, rice, or maize)."
         ]
 
-    return JSONResponse(status_code=200, content=jawaab(jw, requirements, "Kg"))
+    return JSONResponse(status_code=200, content=jawaab(jw, requirements, "-KG"))
