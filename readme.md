@@ -52,18 +52,18 @@ Example response:
 
 ## Endpoints
 
-| Category | Method | Endpoint | Description |
-| --- | --- | --- | --- |
-| Gold | GET | `/api/gold/{grams}?Type={karat}` | Calculates Zakat on gold by weight and karat. |
-| Money | GET | `/api/money/{amount}` | Calculates Zakat on money in USD. |
-| Silver | GET | `/api/silver/{grams}` | Calculates Zakat on silver by weight. |
-| Rikaas | GET | `/api/rikaas/{amount}` | Calculates Zakat on rikaas/minerals. |
-| Crops | GET | `/api/crops/{kg}?Type={method}` | Calculates Zakat on crops by irrigation method. |
-| Camels | GET | `/api/camels/{count}` | Calculates livestock Zakat for camels. |
-| Cows | GET | `/api/cows/{count}` | Calculates livestock Zakat for cattle. |
-| Sheep/Goats | GET | `/api/sheep/{count}` | Calculates livestock Zakat for sheep or goats. |
-| Prices | GET | `/api/price` | Returns current gold and silver prices used by the API. |
-| Info | GET | `/api/info` | Returns API metadata and request count. |
+| Category    | Method | Endpoint                         | Description                                             |
+| ----------- | ------ | -------------------------------- | ------------------------------------------------------- |
+| Gold        | GET    | `/api/gold/{grams}?Type={karat}` | Calculates Zakat on gold by weight and karat.           |
+| Money       | GET    | `/api/money/{amount}`            | Calculates Zakat on money in USD.                       |
+| Silver      | GET    | `/api/silver/{grams}`            | Calculates Zakat on silver by weight.                   |
+| Rikaas      | GET    | `/api/rikaas/{amount}`           | Calculates Zakat on rikaas/minerals.                    |
+| Crops       | GET    | `/api/crops/{kg}?Type={method}`  | Calculates Zakat on crops by irrigation method.         |
+| Camels      | GET    | `/api/camels/{count}`            | Calculates livestock Zakat for camels.                  |
+| Cows        | GET    | `/api/cows/{count}`              | Calculates livestock Zakat for cattle.                  |
+| Sheep/Goats | GET    | `/api/sheep/{count}`             | Calculates livestock Zakat for sheep or goats.          |
+| Prices      | GET    | `/api/price`                     | Returns current gold and silver prices used by the API. |
+| Info        | GET    | `/api/info`                      | Returns API metadata and request count.                 |
 
 ## Endpoint Examples
 
@@ -75,14 +75,14 @@ GET https://esakoapi.org/api/gold/145?Type=24
 
 Gold karat types supported:
 
-| Type | Meaning |
-| --- | --- |
+| Type | Meaning                                   |
+| ---- | ----------------------------------------- |
 | `24` | 24K gold, pure gold. This is the default. |
-| `22` | 22K gold |
-| `21` | 21K gold |
-| `20` | 20K gold |
-| `18` | 18K gold |
-| `16` | 16K gold |
+| `22` | 22K gold                                  |
+| `21` | 21K gold                                  |
+| `20` | 20K gold                                  |
+| `18` | 18K gold                                  |
+| `16` | 16K gold                                  |
 
 Sample response:
 
@@ -125,11 +125,11 @@ GET https://esakoapi.org/api/crops/9920?Type=1
 
 Crop irrigation types:
 
-| Type | Meaning | Rate |
-| --- | --- | --- |
-| `1` | Rain-fed or naturally irrigated crops | 10% |
-| `2` | Crops irrigated with paid/artificial water | 5% |
-| `3` | Mixed rain-fed and paid/artificial irrigation | 7.5% |
+| Type | Meaning                                       | Rate |
+| ---- | --------------------------------------------- | ---- |
+| `1`  | Rain-fed or naturally irrigated crops         | 10%  |
+| `2`  | Crops irrigated with paid/artificial water    | 5%   |
+| `3`  | Mixed rain-fed and paid/artificial irrigation | 7.5% |
 
 ### Livestock Zakat
 
@@ -179,28 +179,28 @@ Most successful calculation responses follow this shape:
 
 Common fields:
 
-| Field | Description |
-| --- | --- |
-| `code` | API status or domain-specific code. |
-| `response` | The calculated Zakat amount. |
-| `requirements` | Conditions and notes for the calculation. |
-| `unit` | Unit of the returned amount, such as `$`, `Grams`, `Kg`, or `Heads`. |
+| Field           | Description                                                                |
+| --------------- | -------------------------------------------------------------------------- |
+| `code`          | API status or domain-specific code.                                        |
+| `response`      | The calculated Zakat amount.                                               |
+| `requirements`  | Conditions and notes for the calculation.                                  |
+| `unit`          | Unit of the returned amount, such as `$`, `Grams`, `Kg`, or `Heads`.       |
 | `date` / `time` | Timestamp for the response. Price-based calculations can change over time. |
 
 ## Error Codes
 
-| Code | Meaning |
-| --- | --- |
-| `404` | The requested URL does not exist. |
-| `403` | Required file or resource was not found. |
-| `460` | Please try again later. |
-| `461` | Please enter a valid numeric amount. |
-| `462` | The selected option is not allowed. |
-| `463` | The selected gold type is not recognized. |
-| `464` | Please use numbers only. |
-| `465` | Please use a number that contains at least two digits. |
-| `466` | Zakat is not applicable to the entered gold amount/type. |
-| `467` | Invalid URL. |
+| Code  | Meaning                                                              |
+| ----- | -------------------------------------------------------------------- |
+| `404` | The requested URL does not exist.                                    |
+| `403` | Required file or resource was not found.                             |
+| `460` | Please try again later.                                              |
+| `461` | Please enter a valid numeric amount.                                 |
+| `462` | The selected option is not allowed.                                  |
+| `463` | The selected gold type is not recognized.                            |
+| `464` | Please use numbers only.                                             |
+| `465` | Please use a number that contains at least two digits.               |
+| `466` | Zakat is not applicable to the entered gold amount/type.             |
+| `467` | Invalid URL.                                                         |
 | `468` | Invalid crop calculation type. Accepted values are `1`, `2`, or `3`. |
 
 ## Usage Examples
