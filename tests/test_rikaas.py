@@ -14,7 +14,7 @@ def test_valid_rikas_calc():
         "Must be pure Rikaas.",
         "Must be inherited or passed down and show its original markings.",
     ]
-    expected = JSONResponse(status_code=200, content=jawaab(31, requirements, "Grams"))
+    expected = JSONResponse(status_code=200, content=jawaab(31, requirements, "-Grams"))
     assert json.loads(response.body.decode("utf-8"))["response"] == json.loads(expected.body.decode("utf-8"))["response"]
     assert response.status_code == expected.status_code
 

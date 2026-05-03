@@ -13,7 +13,7 @@ def test_Silver_sakat_calc():
         # f"If paying in cash, the amount is {money}$."
     ]
     response = Fido(amount)
-    expected = JSONResponse(status_code=200, content=jawaab(24.975,requirements, "Grams"))
+    expected = JSONResponse(status_code=200, content=jawaab(24.975,requirements, "-Grams"))
     assert response.status_code == expected.status_code
     assert json.loads(response.body.decode("utf-8"))["response"] == json.loads(expected.body.decode("utf-8"))["response"]
 
