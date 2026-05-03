@@ -20,7 +20,7 @@ def test_valid_amount_and_nisab():
         "It Must Have Entered Its Fourth Year",
         "It Must Be Female"
         ],
-        "Unit": "heads",
+        "Unit": "-heads",
         "date": Date_format,
         "time": Time_format
     })
@@ -49,7 +49,7 @@ def test_if_nisab_greater_than_121_head():
         "code": 200,
         "response": 4,
         "requirements": req,
-        "Unit": "heads",
+        "Unit": "-heads",
         "date": Date_format,
         "time": Time_format
     })

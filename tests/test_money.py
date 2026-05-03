@@ -57,11 +57,11 @@ def test_amount_lessthan_nisaab_gold_and_silver():
 
 
 def test_amount_less_than_gold_nisab_and_greater_than_silver_nisab():
-    amount = "1000"
+    amount = "1500"
     response = Lacag(amount)
     expected = JSONResponse(status_code=200, content={
         "code": 200,
-        "response": 25,
+        "response": 37.5,
         "requirements": [
         "The amount must be in US dollars 'USD'.",
         "You must have possessed it for one full year.",

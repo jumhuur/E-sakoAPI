@@ -23,7 +23,7 @@ def test_valid_calc_crops_op_1():
         "code": 200,
         "response":99,
         "requirements" :requirements,
-        "Unit":"Kg",
+        "Unit":"-KG",
         "date":Date_format,
         "time":Time_format
     })
@@ -45,7 +45,7 @@ def test_valid_calc_crops_op_2():
         "code": 200,
         "response":49.5,
         "requirements" :requirements,
-        "Unit":"Kg",
+        "Unit":"-KG",
         "date":Date_format,
         "time":Time_format
     })
@@ -66,7 +66,7 @@ def test_valid_calc_crops_op_3():
         "code": 200,
         "response":74.25,
         "requirements" :requirements,
-        "Unit":"Kg",
+        "Unit":"-KG",
         "date":Date_format,
         "time":Time_format
     })

@@ -25,7 +25,7 @@ def test_vali_amount_less_then_60():
         "code": 200,
         "response":1,
         "requirements": requirements,
-        "Unit": "heads",
+        "Unit": "-heads",
         "date": Date_format,
         "time": Time_format
     })
@@ -47,7 +47,7 @@ def test_vali_amount_greater_then_60():
         "code": 200,
         "response":4,
         "requirements": requirements,
-        "Unit": "heads",
+        "Unit": "-heads",
         "date": Date_format,
         "time": Time_format
 

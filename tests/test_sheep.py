@@ -26,7 +26,7 @@ def test_valid_amount_response():
         "requirements":requirements,
         "date":Date_format,
         "time":Time_format ,
-        "Unit": "heads"
+        "Unit": "-heads"
     })
 
     assert response.status_code == expected.status_code
@@ -62,7 +62,7 @@ def test_if_amount_greater_then_400_heead():
         "requirements":requirements,
         "date":Date_format,
         "time":Time_format ,
-        "Unit": "heads"
+        "Unit": "-heads"
     })
 
     assert response.status_code == expected.status_code

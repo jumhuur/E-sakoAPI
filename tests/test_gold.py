@@ -20,7 +20,7 @@ def test_check_if_gold_calc():
             "You must have possessed it for one full year.", 
             "If you are paying in cash, the amount is 433.0741$."
              ], 
-        "Unit": "Grams", 
+        "Unit": "-Grams", 
         "date": Date_format, 
         "time": Time_format
     })
