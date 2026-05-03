@@ -4,9 +4,7 @@ import json
 from datetime import datetime
 import pytz
 import requests
-
 User_File = "files/location/Userslocation.json"
-
 def InfoAnswer(totalRequests:int, code=200):
     local_time = pytz.timezone("Africa/Mogadishu")
     date = datetime.now(local_time)
@@ -23,8 +21,6 @@ def InfoAnswer(totalRequests:int, code=200):
     "date": Date_format, 
     "time": Time_format          
 }
-
-
 def LoadUsers() -> list:
     filtered_data = []
     try:
@@ -42,8 +38,6 @@ def LoadUsers() -> list:
         return []
     except Exception as e:
         return []
-
-
 def LoadDataFromFile():
     try:
         with open(User_File, "r", encoding="utf-8") as File:
@@ -53,8 +47,6 @@ def LoadDataFromFile():
         return []
     except Exception as e:
         return []
-    
-
 def save_User(user):
     users = LoadDataFromFile()
     for us in users:
@@ -73,8 +65,6 @@ def Info():
         return JSONResponse(status_code=403, content=Errors(code=403))
     except Exception as e:
         return JSONResponse(status_code=403, content=Errors(code=403))
-
-
 def Locations(client_ip: str = None):
     URL = f"https://ipinfo.io/{client_ip}/json" if client_ip and client_ip not in ["127.0.0.1", "::1"] else "https://ipinfo.io/json"
     try:
@@ -85,10 +75,6 @@ def Locations(client_ip: str = None):
     except requests.exceptions.RequestException as e:
         print("Error", e)
         return {}
-
-
-
-
 def Main_Location(client_ip: str = None):
     Userdata  = Locations(client_ip)
     AllData = {
@@ -99,7 +85,3 @@ def Main_Location(client_ip: str = None):
         }
     save_User(AllData)
     return Userdata
-
-
-
-
