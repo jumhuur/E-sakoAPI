@@ -118,11 +118,48 @@ body {
 .hero p {
   font-size: 18px;
   color: var(--text-muted);
-  margin-bottom: 40px;
+  margin-bottom: 22px;
   line-height: 1.6;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.project-sponsor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+  padding: 8px 12px 8px 14px;
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(20, 184, 166, 0.06)),
+    var(--card);
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.project-sponsor-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--primary);
+  flex: 0 0 auto;
+}
+
+.project-sponsor img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  padding: 3px;
+  flex: 0 0 auto;
 }
 
 /* Buttons */
@@ -752,6 +789,15 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
+  .project-sponsor {
+    border-radius: 12px;
+    padding: 10px 12px;
+  }
+
+  .project-sponsor span {
+    text-align: left;
+  }
+
   .price-card {
     padding: 18px;
   }
