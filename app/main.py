@@ -1,6 +1,7 @@
 ﻿from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse , FileResponse
+from fastapi.staticfiles import StaticFiles
 from app.calculators.gold import xisaab_Dahab
 from app.calculators.money import Lacag
 from app.calculators.silver import Fido
@@ -21,6 +22,8 @@ app = FastAPI(
     # redoc_url=None,
     # openapi_url=None
     )
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 app.add_middleware(

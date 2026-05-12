@@ -8,8 +8,8 @@ User_File = "files/location/Userslocation.json"
 def InfoAnswer(totalRequests:int, code=200):
     local_time = pytz.timezone("Africa/Mogadishu")
     date = datetime.now(local_time)
-    Date_format = f"{date.strftime("%A-%d-%B-%Y")}"
-    Time_format = f"{date.strftime("%I:%M %p")}"
+    Date_format = f"{date.strftime('%A-%d-%B-%Y')}"
+    Time_format = f"{date.strftime('%I:%M %p')}"
     return {
     "code": code,         
     "success": True,
@@ -31,7 +31,6 @@ def LoadUsers() -> list:
                 for key,value in item.items():
                     if key not in ["loc", "org"]:
                         new_items.update({key:value})
-                        print(new_items)
                 filtered_data.append(new_items)
             return filtered_data
     except FileNotFoundError:
@@ -53,8 +52,11 @@ def save_User(user):
         if us["org"] == user["org"] and us["loc"] == user["loc"]:
             return
     users.append(user)
-    with open(User_File, "w", encoding="utf-8") as File:
-        json.dump(users, File, indent=2)
+    try:
+        with open(User_File, "w", encoding="utf-8") as File:
+            json.dump(users, File, indent=2)
+    except Exception as e:
+        print(f"Save failed: {e}")
 
 def Info():
     try:
