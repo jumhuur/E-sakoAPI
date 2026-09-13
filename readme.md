@@ -191,12 +191,12 @@ Common fields:
 
 HTTP status and the JSON `code` have different roles:
 
-| HTTP status | Meaning |
-| --- | --- |
-| `200` | Calculation completed, including amounts below Nisaab. |
-| `422` | Invalid amount or calculation type. |
-| `404` | The requested URL does not exist. |
-| `500` | Internal server failure, including unavailable or unreadable report data. |
+| HTTP status | Meaning                                                                   |
+| ----------- | ------------------------------------------------------------------------- |
+| `200`       | Calculation completed, including amounts below Nisaab.                    |
+| `422`       | Invalid amount or calculation type.                                       |
+| `404`       | The requested URL does not exist.                                         |
+| `500`       | Internal server failure, including unavailable or unreadable report data. |
 
 Below-Nisaab responses retain application codes `320`–`327` and `ok: true`.
 Gold below Nisaab after purity conversion retains `code: 466`, also with HTTP `200` and `ok: true`.
@@ -207,7 +207,7 @@ The table below lists JSON application codes, not HTTP status codes; `403`, `460
 | Code  | Meaning                                                              |
 | ----- | -------------------------------------------------------------------- |
 | `404` | The requested URL does not exist.                                    |
-| `500` | Internal server error.                                              |
+| `500` | Internal server error.                                               |
 | `403` | Required file or resource was not found.                             |
 | `460` | Please try again later.                                              |
 | `461` | Please enter a valid numeric amount.                                 |
@@ -393,22 +393,4 @@ Created and maintained by Jumhuur.
 
 ## Note
 
-This project is still under testing. If you find a legal, textual, scholarly, or technical issue, please open an issue or submit a pull request.
-
-# SSH Backup
-
-This folder contains:
-
-- sshd_config
-- authorized_keys
-- sshd_config.d
-- ssh_host_keys
-
-Created:
-2026-07-10
-
-Server:
-srv1030399
-
-Purpose:
-Restore SSH quickly if configuration is lost.
+If you find a legal, textual, scholarly, or technical issue, please open an issue or submit a pull request.
