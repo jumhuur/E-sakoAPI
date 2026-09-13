@@ -1,5 +1,6 @@
-﻿import json
+import json
 from app.calculators.money import Lacag
+from app.utils.errors import Errors
 from fastapi.responses import JSONResponse
 from datetime import datetime
 date = datetime.now()
@@ -32,7 +33,7 @@ def test_mone_valid_cal():
 def test_invalid_amount():
     amount = "maxadasdas"
     response = Lacag(amount)
-    expected = JSONResponse(status_code=464, content={
+    expected = JSONResponse(status_code=422, content={
         "code": 464,
         "message": "Please use numbers only Read more details this URL: https://esakoapi.org/doc .",
         "ok": False
@@ -46,14 +47,10 @@ def test_invalid_amount():
 def test_amount_lessthan_nisaab_gold_and_silver():
     amount = "100"
     response = Lacag(amount)
-    expected = JSONResponse(status_code=325, content={
-        "code": 325,
-        "message": "Please use numbers only Read more details this URL: https://esakoapi.org/doc .",
-        "ok": False
-        }
-    )
+    expected = JSONResponse(status_code=200, content=Errors(325, True))
 
     assert response.status_code == expected.status_code
+    assert json.loads(response.body) == json.loads(expected.body)
 
 
 def test_amount_less_than_gold_nisab_and_greater_than_silver_nisab():

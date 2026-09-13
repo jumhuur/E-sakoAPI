@@ -1,4 +1,4 @@
-﻿from app.utils.errors import Errors
+from app.utils.errors import Errors
 from app.utils.nisab import Sako , selfinfo
 from app.utils.responses import jawaab
 from fastapi.responses import JSONResponse
@@ -13,7 +13,7 @@ def Loa(xadi):
 
     reg_exp = r"^\d+$"
     if not re.match(reg_exp, str(xadi)):
-        return JSONResponse(status_code=464, content=Errors(464))
+        return JSONResponse(status_code=422, content=Errors(464))
     if int(xadi) > Sako.Nisaab_lo and int(xadi) < nisaab[1]:
         jw = 1
         shuruudo = [
@@ -86,4 +86,4 @@ def Loa(xadi):
             ]
             return JSONResponse(status_code=200, content=jawaab(jw, shuruudo, "-heads"))
     else:
-        return JSONResponse(status_code=324, content=Errors(324))
+        return JSONResponse(status_code=200, content=Errors(324, True))

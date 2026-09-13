@@ -1,4 +1,4 @@
-﻿from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse
 from app.utils.errors import Errors
 from app.utils.nisab import Sako
 from app.utils.responses import jawaab
@@ -10,10 +10,10 @@ def Rikaas(amount: int):
     Sako.data_collection(amount, sako="Rikaas")
     reg_exp = r"^\d+$"
     if not re.match(reg_exp, str(amount)):
-        return JSONResponse(status_code=464, content=Errors(464))
+        return JSONResponse(status_code=422, content=Errors(464))
 
     if int(int(amount)) < Sako.Nisaab_Rikaas:
-        return JSONResponse(status_code=323, content=Errors(323, True))
+        return JSONResponse(status_code=200, content=Errors(323, True))
 
     # Zakat calculation
     jw = round(int(amount) / 5, 4)

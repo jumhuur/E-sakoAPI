@@ -1,4 +1,4 @@
-﻿from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse
 from datetime import datetime
 from app.calculators.sheep import Adhi
 from app.utils.nisab import Sako
@@ -38,7 +38,7 @@ def test_valid_amount_response():
 def test_invalid_amount_response():
     amount = "invalid"
     response = Adhi(amount)
-    expected = JSONResponse(status_code=464, content={
+    expected = JSONResponse(status_code=422, content={
         "code": 464,
         "message": f"Please use numbers only Read more details this URL: {URL_DOC} .",
         "ok": False
@@ -72,10 +72,10 @@ def test_if_amount_greater_then_400_heead():
 def test_if_amount_less_then_nisab():
     amount = "20"
     response = Adhi(amount)
-    expected = JSONResponse(status_code=322, content={
+    expected = JSONResponse(status_code=200, content={
         "code": 322,
         "message": f"The number of sheep you entered has not reached the Zakat threshold. The Nisaab for sheep is {Sako.Nisaab_adhi} heads.",
-        "ok": False
+        "ok": True
     })
 
     assert response.status_code == expected.status_code

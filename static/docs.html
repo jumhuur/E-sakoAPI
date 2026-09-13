@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -890,44 +890,34 @@
       </div>
 
       <div class="section">
-        <h2><span>04.</span> Error Codes</h2>
+        <h2><span>04.</span> HTTP Status and Application Codes</h2>
+        <p>
+          The HTTP status describes whether the request succeeded. The JSON
+          <code class="inline">code</code> describes the application result and
+          does not have to match the HTTP status.
+        </p>
         <table>
           <thead>
-            <tr>
-              <th class="status-code-col">Code</th>
-              <th>Description</th>
-            </tr>
+            <tr><th class="status-code-col">HTTP status</th><th>Description</th></tr>
           </thead>
           <tbody>
-            <tr>
-              <td><strong>200</strong></td>
-              <td>OK â€” Request was successful</td>
-            </tr>
-            <tr>
-              <td><strong>400</strong></td>
-              <td>Bad Request â€” Invalid parameters</td>
-            </tr>
-            <tr>
-              <td><strong>404</strong></td>
-              <td>Not Found â€” Endpoint or resource not found</td>
-            </tr>
-            <tr>
-              <td><strong>464</strong></td>
-              <td>
-                Value Error â€” Non-numeric value provided where a number was
-                expected
-              </td>
-            </tr>
-            <tr>
-              <td><strong>467</strong></td>
-              <td>Invalid URL â€” Malformed request URL</td>
-            </tr>
-            <tr>
-              <td><strong>500</strong></td>
-              <td>Server Error â€” Internal server error</td>
-            </tr>
+            <tr><td><strong>200</strong></td><td>Calculation completed, including amounts below Nisaab.</td></tr>
+            <tr><td><strong>422</strong></td><td>Invalid numeric amount or calculation type.</td></tr>
+            <tr><td><strong>404</strong></td><td>The requested URL does not exist.</td></tr>
+            <tr><td><strong>500</strong></td><td>Internal server failure, including unavailable or unreadable report data.</td></tr>
           </tbody>
         </table>
+        <p>
+          Below-Nisaab results keep JSON codes <code class="inline">320–327</code>
+          and <code class="inline">ok: true</code>, with HTTP 200. Gold below Nisaab
+          after purity conversion uses JSON code <code class="inline">466</code>
+          with the same HTTP status and success flag.
+        </p>
+        <p>
+          Validation errors keep JSON codes <code class="inline">461, 463, 464, 465, 468</code>
+          and <code class="inline">ok: false</code>, with HTTP 422. Clients that
+          previously received HTTP 200 for invalid input must now handle HTTP 422.
+        </p>
       </div>
     </div>
 

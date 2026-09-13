@@ -1,4 +1,4 @@
-﻿from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse
 from app.utils.nisab import Sako
 import re
 from app.utils.errors import Errors
@@ -25,20 +25,21 @@ def xisaab_Dahab(xadiga:int, nooc: int):
     reg_exp = r"^\d+$" 
 
     if not re.match(reg_exp, str(xadiga)):
-        return JSONResponse(status_code=461, content=Errors(461))
+        return JSONResponse(status_code=422, content=Errors(461))
     
     if not re.match(reg, str(nooc)):
-        return JSONResponse(status_code=465, content=Errors(465))
+        return JSONResponse(status_code=422, content=Errors(465))
 
+    nooc = int(nooc)
     grams = []
     for n_key, n_value in Sako.Noocyo.items():
         grams.append(n_value)
 
     if nooc not in grams:
-        return JSONResponse(status_code=463, content=Errors(463))
+        return JSONResponse(status_code=422, content=Errors(463))
 
     if int(xadiga) < Sako.Nisaab_dahab:
-        return JSONResponse(status_code=320, content=Errors(320, True))
+        return JSONResponse(status_code=200, content=Errors(320, True))
         # The actual calculation starts here
     if nooc == Sako.Noocyo["24"]:
         jw = round(int(xadiga) / Sako.Dahab_40, 4)

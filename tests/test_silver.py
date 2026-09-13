@@ -1,4 +1,4 @@
-﻿from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse
 from app.calculators.silver import Fido
 from app.utils.nisab import Sako
 from app.utils.responses import jawaab
@@ -22,7 +22,7 @@ def test_invalid_silver_amount():
     URL_DOC = "https://esakoapi.org/doc"
     amount = "invalidamount"
     response = Fido(amount)
-    expected = JSONResponse(status_code=464, content={
+    expected = JSONResponse(status_code=422, content={
         "code": 464,
         "message": f"Please use numbers only Read more details this URL: {URL_DOC} .",
         "ok" :False
@@ -34,7 +34,7 @@ def test_invalid_silver_amount():
 def test_silver_amount_less_then_nisaab():
     amount = "7"
     response = Fido(amount)
-    expected = JSONResponse(status_code=321, content={
+    expected = JSONResponse(status_code=200, content={
         "code": 321,
         "message": f"The amount of silver has not reached the Zakat threshold. The Nisaab for silver is {round(Sako.Nisaab_Fidada, 4)} grams.",
         "ok" :True

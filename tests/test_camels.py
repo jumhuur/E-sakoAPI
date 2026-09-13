@@ -1,4 +1,4 @@
-﻿from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse
 from datetime import datetime
 from app.calculators.camels import Geel
 from app.utils.nisab import Sako
@@ -30,7 +30,7 @@ def test_valid_amount_and_nisab():
 def test_invalid_amount():
     amount = "maxamad"
     response = Geel(amount)
-    expected = JSONResponse(status_code=464, content={
+    expected = JSONResponse(status_code=422, content={
         "code": 464,
         "message": f"Please use numbers only Read more details this URL: https://esakoapi.org/doc .",
         "ok": False
@@ -61,10 +61,10 @@ def test_if_nisab_greater_than_121_head():
 def test_amount_less_then_nisaab():
     amount = "3"
     response = Geel(amount)
-    expected = JSONResponse(status_code=326, content={
+    expected = JSONResponse(status_code=200, content={
         "code": 326,
         "message": f"The number of camels you entered has not reached the Zakat threshold. The Nisaab for camels is {Sako.Nisaab_Geel} heads.",
-        "ok": False
+        "ok": True
     })
 
     assert json.loads(response.body.decode("utf-8")) == json.loads(expected.body.decode("utf-8"))

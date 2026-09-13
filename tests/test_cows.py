@@ -1,4 +1,4 @@
-﻿from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse
 from datetime import datetime
 from app.utils.errors import Errors
 from app.calculators.cows import Loa
@@ -60,7 +60,7 @@ def test_vali_amount_greater_then_60():
 def test_invalid_amount():
     amount = "invalid"
     response = Loa(amount)
-    expected = JSONResponse(status_code=464, content=Errors(464))
+    expected = JSONResponse(status_code=422, content=Errors(464))
 
     assert response.status_code == expected.status_code
     assert json.loads(response.body.decode("utf-8")) == json.loads(expected.body.decode("utf-8"))
@@ -70,10 +70,10 @@ def test_invalid_amount():
 def test_if_amount_less_then_nisab():
     amount = "4"
     response = Loa(amount)
-    expected = JSONResponse(status_code=324, content={
+    expected = JSONResponse(status_code=200, content={
         "code":324, 
         "message": f"The number of cows you entered has not reached the Zakat threshold. The Nisaab for cows is {Sako.Nisaab_lo} heads.",
-        "ok": False
+        "ok": True
     })
 
     assert response.status_code == expected.status_code

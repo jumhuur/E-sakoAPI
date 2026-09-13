@@ -64,9 +64,9 @@ def Info():
             content = json.loads(File.read())
             return JSONResponse(status_code=200, content=InfoAnswer(len(content)))
     except FileNotFoundError:
-        return JSONResponse(status_code=403, content=Errors(code=403))
+        return JSONResponse(status_code=500, content=Errors(code=500))
     except Exception as e:
-        return JSONResponse(status_code=403, content=Errors(code=403))
+        return JSONResponse(status_code=500, content=Errors(code=500))
 def Locations(client_ip: str = None):
     URL = f"https://ipinfo.io/{client_ip}/json" if client_ip and client_ip not in ["127.0.0.1", "::1"] else "https://ipinfo.io/json"
     try:

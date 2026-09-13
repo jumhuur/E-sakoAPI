@@ -1,4 +1,4 @@
-﻿from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse , FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -40,95 +40,47 @@ app.add_middleware(
 async def not_found(request: Request, exc):
     return JSONResponse(
         status_code=404,
-        content=Errors(467,False)
+        content=Errors(404)
     )
 
 
 @app.get("/api/gold/{xadiga}")
 async def xisaab(xadiga,Type=24,):
-    if xadiga:
-        return  xisaab_Dahab(xadiga,Type)
-    else:
-        raise JSONResponse(
-            status_code=467,
-            content= Errors(467)
-        )
+    return  xisaab_Dahab(xadiga,Type)
 
 @app.get("/api/money/{xadi}")
 async def lacag(xadi):
-    if xadi:
-        return Lacag(xadi)
-    else:
-        raise JSONResponse(
-            status_code=467,
-            content= Errors(467)
-        )
+    return Lacag(xadi)
 
 
 
 @app.get("/api/silver/{xadi}")
 async def Fido_sako(xadi):
-    if xadi:
-        return Fido(xadi)
-    else:
-        return JSONResponse(
-            status_code=467,
-            content= Errors(467)
-        )
+    return Fido(xadi)
 
 
 @app.get("/api/rikaas/{xadi}")
 async def Rikaas_xisaab(xadi):
-    if xadi:
-        return Rikaas(xadi)
-    else:
-        return JSONResponse(
-            status_code=467,
-            content= Errors(467)
-        )
+    return Rikaas(xadi)
 
 @app.get("/api/camels/{xadi}")
 async def xisaab_geel(xadi):
-    if xadi:
-        return Geel(xadi)
-    else:
-        return JSONResponse(
-            status_code=467,
-            content= Errors(467)
-        )
+    return Geel(xadi)
 
 @app.get("/api/cows/{xadi}")
 async def xisaab_lo(xadi):
-    if xadi:
-        return Loa(xadi)
-    else:
-        return JSONResponse(
-            status_code=467,
-            content= Errors(467)
-        )
+    return Loa(xadi)
 
 
 
 @app.get("/api/sheep/{xadi}")
 async def xisaab_adhi(xadi):
-    if xadi:
-        return Adhi(xadi)
-    else:
-        return JSONResponse(
-            status_code=467,
-            content= Errors(467)
-        )
+    return Adhi(xadi)
 
 
 @app.get("/api/crops/{xadi}")
 async def xisaab_dalag(xadi,Type=1):
-    if xadi:
-        return Dalag(xadi,Type)
-    else:
-        return JSONResponse(
-            status_code=467,
-            content= Errors(467)
-        )
+    return Dalag(xadi,Type)
 
 
 @app.get("/api/price")

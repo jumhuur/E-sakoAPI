@@ -1,4 +1,4 @@
-﻿import json
+import json
 from fastapi.responses import JSONResponse
 from app.calculators.gold import xisaab_Dahab
 from datetime import datetime
@@ -39,12 +39,13 @@ def test_check_if_gold_calc():
 def test_check_invalid_amount():
     amount = "asdsa"
     Type = "24"
-    Expected =JSONResponse(status_code=200, content={
+    Expected =JSONResponse(status_code=422, content={
         "code": 461,
         "message": "Please enter a valid numeric amount Read more details this URL: https://esakoapi.org/doc.",
         "ok": False}
     )
     result = xisaab_Dahab(amount,Type)
+    assert result.status_code == Expected.status_code
     assert json.loads(result.body.decode("utf-8")) == json.loads(Expected.body.decode("utf-8"))
 
 
@@ -52,7 +53,7 @@ def test_check_invalid_Type():
     amount = "100"
     Types = {24,22,21,20,18,16}
     Type = "66"
-    Expected = JSONResponse(status_code=463, content={
+    Expected = JSONResponse(status_code=422, content={
         "code": 463,
         "message": "The selected type is not among the recognized gold types Read more details this URL: https://esakoapi.org/doc.",
         "ok": False
@@ -60,6 +61,7 @@ def test_check_invalid_Type():
     result = xisaab_Dahab(amount,Type)
 
     assert  Type not in Types
+    assert result.status_code == Expected.status_code
     assert  json.loads(result.body.decode("utf-8")) == json.loads(Expected.body.decode("utf-8"))
 
 

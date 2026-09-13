@@ -1,4 +1,4 @@
-﻿import re
+import re
 from app.utils.errors import Errors
 from fastapi.responses import JSONResponse
 from app.utils.nisab import Sako, selfinfo
@@ -12,17 +12,17 @@ def Dalag(quantity: int, option: int):
     reg_exp = r"^\d+$"
 
     if not re.match(reg_exp, str(quantity)):
-        return JSONResponse(status_code=464, content=Errors(464))
+        return JSONResponse(status_code=422, content=Errors(464))
 
     if not re.match(reg_exp, str(option)):
-        return JSONResponse(status_code=464, content=Errors(464))
+        return JSONResponse(status_code=422, content=Errors(464))
 
     if int(option) not in valid_options:
-        return JSONResponse(status_code=468, content=Errors(468))
+        return JSONResponse(status_code=422, content=Errors(468))
 
 
     if int(quantity) < Sako.Nisaab_Midhaha:
-        return JSONResponse(status_code=327, content=Errors(327))
+        return JSONResponse(status_code=200, content=Errors(327, True))
 
     # Calculate Zakat amount
     jw = int(quantity) * rates[int(option)]

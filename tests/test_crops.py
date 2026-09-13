@@ -1,4 +1,4 @@
-﻿from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse
 from datetime import datetime
 import pytz
 from app.calculators.crops import Dalag
@@ -81,7 +81,7 @@ def test_invalid_amount_crops():
     amount = "invalid"
     option = "3"
     response = Dalag(amount, option)
-    expected = JSONResponse(status_code=464, content={
+    expected = JSONResponse(status_code=422, content={
         "code": 464,
         "message": f"Please use numbers only Read more details this URL: {URL_DOC} .",
         "ok": False
@@ -94,7 +94,7 @@ def test_if_option_is_str():
     amount = "990"
     option = "invalid"
     response = Dalag(amount, option)
-    expected = JSONResponse(status_code=464, content={
+    expected = JSONResponse(status_code=422, content={
         "code": 464,
         "message": f"Please use numbers only Read more details this URL: {URL_DOC} .",
         "ok": False
@@ -108,7 +108,7 @@ def test_if_option_int_but_is_valid():
     amount = "990"
     option = "22"
     response = Dalag(amount, option)
-    expected = JSONResponse(status_code=468, content={
+    expected = JSONResponse(status_code=422, content={
         "code": 468,
         "message": f"The calculation type you requested is invalid. Accepted types are 1, 2, or 3. Read more details here: {URL_DOC}",
         "ok": False
@@ -121,7 +121,7 @@ def test_crop_amount_less_then_crop_nisab_response():
     amount = "200"
     option = "1"
     response = Dalag(amount, option)
-    expected = JSONResponse(status_code=327, content=Errors(327))
+    expected = JSONResponse(status_code=200, content=Errors(327, True))
 
     assert response.status_code == expected.status_code
     assert json.loads(response.body.decode("utf-8")) == json.loads(expected.body.decode("utf-8"))

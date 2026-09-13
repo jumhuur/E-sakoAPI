@@ -1,4 +1,4 @@
-﻿from app.utils.errors import Errors
+from app.utils.errors import Errors
 from app.utils.nisab import Sako, selfinfo
 from app.utils.responses import jawaab
 from fastapi.responses import JSONResponse
@@ -19,15 +19,15 @@ def Adhi(quantity):
     reg_exp = r"^\d+$"
     if not re.match(reg_exp, str(quantity)):
         return JSONResponse(
-            status_code=464,
+            status_code=422,
             content=Errors(464)
         )
 
     # Check if the quantity meets the minimum Zakat threshold
     if int(quantity) < Sako.Nisaab_adhi:
         return JSONResponse(
-            status_code=322,
-            content=Errors(322)
+            status_code=200,
+            content=Errors(322, True)
         )
 
     # Determine Zakat due based on quantity ranges

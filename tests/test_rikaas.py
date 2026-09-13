@@ -1,4 +1,4 @@
-﻿import json
+import json
 from fastapi.responses import JSONResponse
 from app.calculators.rikaas import Rikaas
 from datetime import datetime
@@ -23,7 +23,7 @@ def test_invalid_rikaas_amount():
     URL_DOC = "https://esakoapi.org/doc"
     amount = "Testing"
     response = Rikaas(amount)
-    expected = JSONResponse(status_code=464, content={
+    expected = JSONResponse(status_code=422, content={
         "code":464,
         "message":f"Please use numbers only Read more details this URL: {URL_DOC} .",
         "ok":False
@@ -36,7 +36,7 @@ def test_invalid_rikaas_amount():
 def test_rikaas_amount_less_then_nisaab():
     amount = "2"
     response = Rikaas(amount)
-    expected = JSONResponse(status_code=323, content={
+    expected = JSONResponse(status_code=200, content={
         "code":323,
         "message":f"The amount of rikaas has not reached the Zakat threshold. The Nisaab for rikaas is {round(Sako.Nisaab_Rikaas, 4)} grams.",
         "ok":True

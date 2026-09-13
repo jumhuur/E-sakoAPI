@@ -1,4 +1,4 @@
-﻿from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse
 from app.utils.errors import Errors
 from app.utils.nisab import Sako
 from app.utils.responses import jawaab
@@ -19,9 +19,9 @@ def Geel(xadi:int):
     }
     reg_exp = r"^\d+$"
     if not re.match(reg_exp, str(xadi)):
-        return JSONResponse(status_code=464, content=Errors(464))
+        return JSONResponse(status_code=422, content=Errors(464))
     if int(xadi) < Sako.Nisaab_Geel:
-        return JSONResponse(status_code=326, content=Errors(326))
+        return JSONResponse(status_code=200, content=Errors(326, True))
     if int(xadi) > Sako.Nisaab_Geel and int(xadi) < nisaab[1]:
         jw = 1
         shuruudo = ["The payment will be livestock (sheep)".title(), 
